@@ -1,8 +1,10 @@
-package fr.clic1prof;
+package fr.clic1prof.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import fr.clic1prof.R;
 
 public class MainActivity extends AppCompatActivity {
 
