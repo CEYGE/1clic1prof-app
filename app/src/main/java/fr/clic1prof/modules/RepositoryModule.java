@@ -8,9 +8,9 @@ import fr.clic1prof.repositories.ContactRepository;
 import fr.clic1prof.repositories.ContactRepositoryImpl;
 
 @Module
-@InstallIn(ActivityRetainedComponent.class)
+@InstallIn(ActivityRetainedComponent.class) // Specific for ViewModel.
 public abstract class RepositoryModule {
 
-    @Binds
+    @Binds // Binding ContactRepository with ContactRepositoryImpl.
     public abstract ContactRepository bindContactRepository(ContactRepositoryImpl repository);
 }

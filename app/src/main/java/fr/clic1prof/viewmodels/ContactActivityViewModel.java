@@ -12,7 +12,7 @@ public class ContactActivityViewModel extends ViewModel {
     private final ContactRepository repository;
     private final MutableLiveData<ContactModel> contacts = new MutableLiveData<>();
 
-    @ViewModelInject
+    @ViewModelInject // ViewModel injection annotation.
     public ContactActivityViewModel(ContactRepository repository) {
         this.repository = repository;
     }

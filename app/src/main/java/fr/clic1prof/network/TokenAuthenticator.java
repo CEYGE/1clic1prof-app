@@ -45,6 +45,7 @@ public class TokenAuthenticator implements Authenticator {
 
         Call<Token> call = controller.login(credentials);
 
+        // Trying to refresh the session.
         retrofit2.Response<Token> authentication = call.execute();
 
         // Cannot authenticate.

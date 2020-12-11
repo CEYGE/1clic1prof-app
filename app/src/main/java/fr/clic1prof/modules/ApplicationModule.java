@@ -13,9 +13,9 @@ import fr.clic1prof.network.RetrofitNetworkProvider;
 @InstallIn(ApplicationComponent.class)
 public abstract class ApplicationModule {
 
-    @Binds
+    @Binds // Binding UserSessionModel with UserSession.
     public abstract UserSessionModel bindUserSessionModel(UserSession session);
 
-    @Binds
+    @Binds // Binding NetworkProvider with RetrofitNetworkProvider.
     public abstract NetworkProvider bindNetworkProvider(RetrofitNetworkProvider provider);
 }
