@@ -13,6 +13,7 @@ import fr.clic1prof.api.ContactController;
 import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.models.contacts.ContactManager;
 import fr.clic1prof.models.contacts.ContactModel;
+import fr.clic1prof.models.user.UserSessionModel;
 import fr.clic1prof.network.NetworkProvider;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +26,7 @@ public class ContactRepositoryImpl implements ContactRepository {
     private final NetworkProvider provider;
 
     @Inject
-    public ContactRepositoryImpl(NetworkProvider provider) {
+    public ContactRepositoryImpl(NetworkProvider provider, UserSessionModel model) {
         this.provider = provider;
     }
 

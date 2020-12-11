@@ -1,8 +1,8 @@
 package fr.clic1prof.api;
 
-import fr.clic1prof.model.Registration;
-import fr.clic1prof.model.Credentials;
-import fr.clic1prof.model.Token;
+import fr.clic1prof.models.user.Credentials;
+import fr.clic1prof.models.user.Registration;
+import fr.clic1prof.models.user.Token;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

@@ -1,5 +1,9 @@
 package fr.clic1prof.network;
 
+import javax.inject.Inject;
+
+import fr.clic1prof.models.user.UserSession;
+import fr.clic1prof.models.user.UserSessionModel;
 import okhttp3.OkHttpClient;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
@@ -11,9 +15,17 @@ public class RetrofitNetworkProvider implements NetworkProvider {
     private static final Converter.Factory CONVERTER_FACTORY = GsonConverterFactory.create();
 
     private final Retrofit retrofit;
+    private final UserSessionModel model;
 
-    public RetrofitNetworkProvider() {
+    @Inject
+    public RetrofitNetworkProvider(UserSessionModel model) {
+        this.model = model;
         this.retrofit = this.provideRetrofit();
+    }
+
+    @Override
+    public <T> T getService(Class<T> clazz) {
+        return this.retrofit.create(clazz);
     }
 
     private Retrofit provideRetrofit() {
@@ -28,14 +40,10 @@ public class RetrofitNetworkProvider implements NetworkProvider {
     }
 
     private OkHttpClient provideHttpClient() {
-        return new OkHttpClient.Builder()
-                .addInterceptor(new TokenInterceptor())
-                .authenticator(new TokenAuthenticator())
-                .build();
-    }
 
-    @Override
-    public <T> T getService(Class<T> clazz) {
-        return this.retrofit.create(clazz);
+        return new OkHttpClient.Builder()
+                .addInterceptor(new TokenInterceptor(this.model))
+                .authenticator(new TokenAuthenticator(this, this.model))
+                .build();
     }
 }

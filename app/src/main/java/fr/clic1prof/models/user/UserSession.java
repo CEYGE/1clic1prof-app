@@ -1,9 +1,14 @@
 package fr.clic1prof.models.user;
 
+import javax.inject.Inject;
+
 public class UserSession implements UserSessionModel {
 
     private Credentials credentials;
     private Token token;
+
+    @Inject
+    public UserSession() {}
 
     @Override
     public void open(Credentials credentials, Token token) {

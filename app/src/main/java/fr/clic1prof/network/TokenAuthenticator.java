@@ -1,13 +1,15 @@
 package fr.clic1prof.network;
 
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 
-import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 import fr.clic1prof.api.UserController;
-import fr.clic1prof.model.Credentials;
-import fr.clic1prof.model.Token;
+import fr.clic1prof.models.user.Credentials;
+import fr.clic1prof.models.user.Token;
+import fr.clic1prof.models.user.UserSessionModel;
 import okhttp3.Authenticator;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -18,29 +20,32 @@ public class TokenAuthenticator implements Authenticator {
 
     private static final int MAX_RETRY = 3;
 
-    @Inject
-    public NetworkProvider provider;
+    private final NetworkProvider provider;
+    private final UserSessionModel session;
 
     @Inject
-    public SessionManager manager;
+    public TokenAuthenticator(NetworkProvider provider, UserSessionModel session) {
+        this.provider = provider;
+        this.session = session;
+    }
 
-    @Nullable
     @Override
-    public Request authenticate(@Nullable Route route, Response response) throws IOException {
+    public Request authenticate(Route route, @NonNull Response response) throws IOException {
 
         // This is the case for login or register.
         // Do not do anything else then.
-        if(!this.manager.isSessionOpened()) return null;
+        if(!this.session.isOpened()) return null;
 
         // Retry limit exceeded. Do not try anymore.
         if(this.countRetries(response) >= MAX_RETRY) return null;
 
         UserController controller = this.provider.getService(UserController.class);
 
-        Credentials credentials = this.manager.getCredentials();
+        Credentials credentials = this.session.getCredentials();
 
         Call<Token> call = controller.login(credentials);
 
+        // Trying to refresh the session.
         retrofit2.Response<Token> authentication = call.execute();
 
         // Cannot authenticate.
@@ -48,7 +53,7 @@ public class TokenAuthenticator implements Authenticator {
 
         Token token = authentication.body();
 
-        this.manager.setToken(token);
+        this.session.refresh(token);
 
         return response.request()
                 .newBuilder()
