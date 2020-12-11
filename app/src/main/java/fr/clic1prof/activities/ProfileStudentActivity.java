@@ -9,10 +9,13 @@ import fr.clic1prof.R;
 
 public class ProfileStudentActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_student_page);
+
     }
 
     public void Disconnect(View view){
