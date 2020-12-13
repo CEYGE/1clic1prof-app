@@ -1,4 +1,4 @@
-package fr.clic1prof.viewModel;
+package fr.clic1prof.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 

@@ -24,15 +24,15 @@ public class ProfileStudentActivity extends AppCompatActivity {
     }
 
     public void modifyImage(View view){
-        System.out.println("Modify image's profil");
+
     }
 
     public void sendHomePage(View view){
-        System.out.println("Return to Home page");
+
     }
 
     public void onOffNotification(){
-        System.out.println("Activate or desactivate notification");
+
     }
     
 
