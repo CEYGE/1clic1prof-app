@@ -3,8 +3,10 @@ package fr.clic1prof.repositories;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,15 +25,19 @@ public class ContactRepositoryImpl implements ContactRepository {
 
     private static final String TAG = "ContactRepositoryImpl";
 
+    private final ContactModel model;
     private final NetworkProvider provider;
 
     @Inject
-    public ContactRepositoryImpl(NetworkProvider provider, UserSessionModel model) {
+    public ContactRepositoryImpl(NetworkProvider provider, ContactModel model) {
         this.provider = provider;
+        this.model = model;
     }
 
     @Override
-    public void getContacts(MutableLiveData<ContactModel> data) {
+    public LiveData<List<Contact>> getContacts() {
+
+        MutableLiveData<List<Contact>> data = new MutableLiveData<>();
 
         ContactController controller = this.getController();
 
@@ -46,10 +52,9 @@ public class ContactRepositoryImpl implements ContactRepository {
 
                     List<Contact> contacts = response.body();
 
-                    ContactModel model = new ContactManager();
-                    model.setContacts(contacts);
+                    ContactRepositoryImpl.this.model.setContacts(response.body());
 
-                    data.postValue(model);
+                    data.postValue(contacts);
 
                 } else data.postValue(null);
             }
@@ -60,6 +65,18 @@ public class ContactRepositoryImpl implements ContactRepository {
                 Log.e(TAG, "Cannot retrieve user's contacts.", throwable);
             }
         });
+        return data;
+    }
+
+    @Override
+    public LiveData<List<Contact>> getContactsByPrefix(String prefix) {
+
+        List<Contact> contacts = this.model.getContactsByPrefix(prefix);
+
+        MutableLiveData<List<Contact>> data = new MutableLiveData<>();
+        data.postValue(contacts);
+
+        return data;
     }
 
     private ContactController getController() {

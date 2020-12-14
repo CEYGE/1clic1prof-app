@@ -24,6 +24,7 @@ public class UserRepositoryImpl implements UserRepository {
     private final NetworkProvider provider;
     private final UserSessionModel session;
 
+    @Inject
     public UserRepositoryImpl(NetworkProvider provider, UserSessionModel session) {
         this.provider = provider;
         this.session = session;

@@ -1,10 +1,15 @@
 package fr.clic1prof.repositories;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import fr.clic1prof.models.contacts.ContactModel;
+import java.util.List;
+
+import fr.clic1prof.models.contacts.Contact;
 
 public interface ContactRepository {
 
-    void getContacts(MutableLiveData<ContactModel> data);
+    LiveData<List<Contact>> getContacts();
+
+    LiveData<List<Contact>> getContactsByPrefix(String prefix);
 }

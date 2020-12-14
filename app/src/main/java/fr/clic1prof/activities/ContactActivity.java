@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import fr.clic1prof.Application;
 import fr.clic1prof.R;
 import fr.clic1prof.viewmodels.ContactActivityViewModel;
 
@@ -19,8 +23,9 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        // Associate the ModelView with the current activity.
-        this.viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(ContactActivityViewModel.class);
+        this.viewModel = new ViewModelProvider(this).get(ContactActivityViewModel.class);
+
+        this.setEditTextListener();
 
         // Setup contact observer.
         this.setContactObserver();
@@ -29,10 +34,39 @@ public class ContactActivity extends AppCompatActivity {
     private void setContactObserver() {
 
         // Observe the list of contacts and make view update when necessary.
-        this.viewModel.getContactMutableLiveData().observe(this, contacts -> {
+        this.viewModel.getContactLiveData().observe(this, contacts -> {
             // Update view here.
             // If contact list is null, then there is an error.
             // Else, display contacts.
+
+            System.out.println("update !"); // TODO To remove.
+
+            TextView view = findViewById(R.id.textView); // TODO To change.
+            view.setText(contacts.isEmpty() ? "Aucun contact trouvé !" : "Affichage des contacts.");
+        });
+    }
+
+    private void setEditTextListener() {
+
+        EditText text = super.findViewById(R.id.editTextTextPersonName);
+
+        text.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String prefix = s.toString();
+                viewModel.searchContacts(prefix);
+            }
         });
     }
 }
