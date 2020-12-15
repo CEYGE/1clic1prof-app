@@ -1,4 +1,4 @@
-package fr.clic1prof.model;
+package fr.clic1prof.models.user;
 
 import fr.clic1prof.repositories.ProfilStudentRepository;
 

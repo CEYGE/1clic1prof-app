@@ -31,7 +31,8 @@ public class InscriptionActivity extends AppCompatActivity {
 
     public void visiblePassword(View view){
         EditText password = (EditText) findViewById(R.id.passwordText);
-        if(password.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD) ){
+        boolean flag = password.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        if(flag){
             password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         }else{
             password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD );

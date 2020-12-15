@@ -1,4 +1,4 @@
-package fr.clic1prof.model;
+package fr.clic1prof.models.user;
 
 public interface ProfilInformation {
 
