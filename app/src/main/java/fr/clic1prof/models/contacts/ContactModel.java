@@ -1,6 +1,7 @@
 package fr.clic1prof.models.contacts;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface ContactModel {
 
@@ -8,5 +9,7 @@ public interface ContactModel {
 
     boolean hasContacts();
 
-    Collection<Contact> getContacts();
+    List<Contact> getContactsByPrefix(String prefix);
+
+    List<Contact> getContacts();
 }
