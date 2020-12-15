@@ -10,9 +10,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.util.List;
+
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
+import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.viewmodels.ContactActivityViewModel;
+import fr.clic1prof.viewmodels.ResultType;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
@@ -36,15 +40,29 @@ public class MainActivity extends AppCompatActivity {
     private void setContactObserver() {
 
         // Observe the list of contacts and make view update when necessary.
-        this.viewModel.getContactLiveData().observe(this, contacts -> {
+        this.viewModel.getContactLiveData().observe(this, result -> {
             // Update view here.
             // If contact list is null, then there is an error.
             // Else, display contacts.
 
-            System.out.println("update !");
+            TextView view = findViewById(R.id.textView); // TODO To change.
+            String text;
 
-            TextView view = findViewById(R.id.textView);
-            view.setText(contacts.isEmpty() ? "Aucun contact trouvé !" : "Affichage des contacts.");
+            if(result.getType() == ResultType.SUCCESS) {
+
+                List<Contact> contacts = result.getData();
+
+                text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
+
+            } else if(result.getType() == ResultType.ERROR) {
+
+                text = "Une erreur est survenue";
+
+            } else {
+
+                text = "Chargement des contacts...";
+            }
+            view.setText(text);
         });
     }
 
@@ -73,6 +91,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void connect(View view) {
-        this.viewModel.searchContacts("prefix");
+        this.viewModel.retrieveContacts();
     }
 }

@@ -10,8 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
 import fr.clic1prof.R;
+import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.viewmodels.ContactActivityViewModel;
+import fr.clic1prof.viewmodels.ResultType;
 
 public class ContactActivity extends AppCompatActivity {
 
@@ -34,15 +38,29 @@ public class ContactActivity extends AppCompatActivity {
     private void setContactObserver() {
 
         // Observe the list of contacts and make view update when necessary.
-        this.viewModel.getContactLiveData().observe(this, contacts -> {
+        this.viewModel.getContactLiveData().observe(this, result -> {
             // Update view here.
             // If contact list is null, then there is an error.
             // Else, display contacts.
 
-            System.out.println("update !"); // TODO To remove.
-
             TextView view = findViewById(R.id.textView); // TODO To change.
-            view.setText(contacts.isEmpty() ? "Aucun contact trouvé !" : "Affichage des contacts.");
+            String text;
+
+            if(result.getType() == ResultType.SUCCESS) {
+
+                List<Contact> contacts = result.getData();
+
+                text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
+
+            } else if(result.getType() == ResultType.ERROR) {
+
+                text = "Une erreur est survenue";
+
+            } else {
+
+                text = "Chargement des contacts...";
+            }
+            view.setText(text);
         });
     }
 

@@ -17,20 +17,24 @@ import fr.clic1prof.repositories.ContactRepository;
 public class ContactActivityViewModel extends ViewModel {
 
     private final ContactRepository repository;
-
-    private final MediatorLiveData<List<Contact>> contactsLiveData = new MediatorLiveData<>();
+    private final MediatorLiveData<Result<List<Contact>>> contactsLiveData = new MediatorLiveData<>();
 
     @ViewModelInject // ViewModel injection annotation.
     public ContactActivityViewModel(ContactRepository repository) {
         this.repository = repository;
+        this.retrieveContacts();
     }
 
     public void retrieveContacts() {
+
+        this.contactsLiveData.postValue(Result.loading());
+
         LiveData<List<Contact>> data = this.repository.getContacts();
         this.assignData(data);
     }
 
     public void searchContacts(String prefix) {
+
         LiveData<List<Contact>> data = this.repository.getContactsByPrefix(prefix);
         this.assignData(data);
     }
@@ -39,12 +43,14 @@ public class ContactActivityViewModel extends ViewModel {
 
         this.contactsLiveData.addSource(data, contacts -> {
 
-            this.contactsLiveData.postValue(contacts);
+            Result<List<Contact>> result = contacts != null ? Result.success(contacts) : Result.error();
+
+            this.contactsLiveData.postValue(result);
             this.contactsLiveData.removeSource(data);
         });
     }
 
-    public LiveData<List<Contact>> getContactLiveData() {
+    public LiveData<Result<List<Contact>>> getContactLiveData() {
         return this.contactsLiveData;
     }
 }

@@ -1,15 +1,34 @@
 package fr.clic1prof.viewmodels;
 
-import androidx.hilt.lifecycle.ViewModelInject;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 
-import fr.clic1prof.models.user.UserSessionModel;
+import javax.inject.Inject;
 
-public class LoginActivityViewModel extends ViewModel {
+import fr.clic1prof.models.user.Credentials;
+import fr.clic1prof.models.user.Token;
+import fr.clic1prof.repositories.UserRepository;
 
-    private final MutableLiveData<UserSessionModel> data = new MutableLiveData<>();
+public class LoginActivityViewModel {
 
-    @ViewModelInject
-    public LoginActivityViewModel(){}
+    private final UserRepository repository;
+    private final MediatorLiveData<Result<Void>> tokenLiveData = new MediatorLiveData<>();
+
+    @Inject
+    public LoginActivityViewModel(UserRepository repository) {
+        this.repository = repository;
+    }
+
+    public void login(Credentials credentials) {
+
+        LiveData<Token> data = this.repository.login(credentials);
+
+        this.tokenLiveData.addSource(data, token -> {
+
+            Result<Void> result = token != null ? Result.success(null) : Result.error();
+
+            this.tokenLiveData.postValue(result);
+            this.tokenLiveData.removeSource(data);
+        });
+    }
 }
