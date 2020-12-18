@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.LoginActivity">
+    android:id="@+id/layout_login"
+    tools:context=".activities.LoginActivity">
 
     <TextView
         android:id="@+id/registerRef"
@@ -113,7 +114,7 @@
                 android:layout_weight="0.1"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="visiblePassword"
+                android:onClick="visibilityPassword"
                 android:src="@drawable/eye"
                 android:contentDescription="TODO" />
         </LinearLayout>
@@ -132,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearInfomartionLayout" />
 
     <Button
-        android:id="@+id/inscriptionButton"
+        android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
@@ -141,8 +142,8 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/rectangle"
-        android:onClick="sendToProfil"
         android:text="@string/Button_Connection"
+        android:onClick="connect"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -155,14 +156,13 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginRight="160dp"
         android:contentDescription="@string/Icon_name"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inscriptionButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/illustration_work" />
 

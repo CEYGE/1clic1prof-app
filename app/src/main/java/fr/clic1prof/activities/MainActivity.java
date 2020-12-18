@@ -1,13 +1,16 @@
 package fr.clic1prof.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.List;
@@ -28,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button button = findViewById(R.id.buttonLog);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendLog();
+            }
+        });
+
+
 
         this.viewModel = new ViewModelProvider(this).get(ContactActivityViewModel.class);
 
@@ -35,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Setup contact observer.
         this.setContactObserver();
+    }
+
+    private void sendLog() {
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
     }
 
     private void setContactObserver() {
@@ -53,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 List<Contact> contacts = result.getData();
 
                 text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
+                sendLog();
 
             } else if(result.getType() == ResultType.ERROR) {
 
@@ -93,4 +111,6 @@ public class MainActivity extends AppCompatActivity {
     public void connect(View view) {
         this.viewModel.retrieveContacts();
     }
+
+
 }

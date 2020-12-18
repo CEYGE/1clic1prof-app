@@ -13,7 +13,6 @@ import javax.inject.Inject;
 
 import fr.clic1prof.api.ContactController;
 import fr.clic1prof.models.contacts.Contact;
-import fr.clic1prof.models.contacts.ContactManager;
 import fr.clic1prof.models.contacts.ContactModel;
 import fr.clic1prof.models.user.UserSessionModel;
 import fr.clic1prof.network.NetworkProvider;
