@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:title="Tableau de bord">
+    </item>
+
+    <item
+        android:id="@+id/nav_agenda"
+        android:title="Agenda">
+    </item>
+
+    <item
+        android:id="@+id/nav_teacher"
+        android:title="Mes Professseurs">
+    </item>
+
+    <item
+        android:id="@+id/nav_invoice"
+        android:title="Facture">
+    </item>
+
+    <item
+        android:id="@+id/nav_disconnection"
+        android:title="Déconnexion">
+    </item>
+
+</menu>

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
             System.out.println("update !");
 
-            TextView view = findViewById(R.id.textView);
+            TextView view = findViewById(R.id.titleFragment);
             view.setText(contacts.isEmpty() ? "Aucun contact trouvé !" : "Affichage des contacts.");
         });
     }

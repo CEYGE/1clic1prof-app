@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/agendaFragment"
+        android:name="fr.clic1prof.activities.AgendaFragment"
+        android:label="fragment_agenda"
+        tools:layout="@layout/fragment_agenda" >
+        <action
+            android:id="@+id/action_agendaFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_agendaFragment_to_homeFragment3"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="fr.clic1prof.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_agendaFragment"
+            app:destination="@id/agendaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_agendaFragment2"
+            app:destination="@id/agendaFragment" />
+    </fragment>
+</navigation>

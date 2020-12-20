@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -41,7 +40,7 @@ public class ContactActivity extends AppCompatActivity {
 
             System.out.println("update !"); // TODO To remove.
 
-            TextView view = findViewById(R.id.textView); // TODO To change.
+            TextView view = findViewById(R.id.titleFragment); // TODO To change.
             view.setText(contacts.isEmpty() ? "Aucun contact trouvé !" : "Affichage des contacts.");
         });
     }
