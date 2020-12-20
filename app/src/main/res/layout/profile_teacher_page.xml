@@ -20,11 +20,11 @@
 
         <TextView
             android:id="@+id/textReturnView"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:text="Name" />
+            android:text="@string/FirstName" />
 
 
     </LinearLayout>
@@ -58,7 +58,7 @@
 
         <TextView
             android:id="@+id/textView5"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="0.2"
@@ -87,7 +87,7 @@
 
         <TextView
             android:id="@+id/textFirstNameView"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
@@ -110,7 +110,7 @@
 
         <TextView
             android:id="@+id/textLastNameView"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
@@ -132,7 +132,7 @@
 
         <TextView
             android:id="@+id/textMailView"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
@@ -142,7 +142,7 @@
 
         <EditText
             android:id="@+id/editMail"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
@@ -155,7 +155,7 @@
 
         <TextView
             android:id="@+id/textPasswordView"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
@@ -177,8 +177,9 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="top|left"
-            android:hint="Description"
+            android:gravity="top|start"
+            android:hint="@string/Hint_description"
+            android:autofillHints="@string/Hint_description"
             android:inputType="text|textMultiLine"
             android:maxLines="5"
             android:minLines="1"
@@ -187,7 +188,7 @@
 
         <Spinner
             android:id="@+id/spinnerSpeciality"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="12dp"
@@ -206,12 +207,12 @@
 
             <TextView
                 android:id="@+id/textCBView"
-                style="@style/TextApparence"
+                style="@style/EntryText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
                 android:gravity="center_vertical"
-                android:text="IBAN"
+                android:text="@string/IBAN_Text"
                 android:textSize="14sp"
                 tools:ignore="NestedWeights" />
 
@@ -264,7 +265,7 @@
 
         <TextView
             android:id="@+id/textLogOutView"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"

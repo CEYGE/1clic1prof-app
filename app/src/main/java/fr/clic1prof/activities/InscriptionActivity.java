@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 
 import fr.clic1prof.R;
+import fr.clic1prof.models.user.Registration;
+import fr.clic1prof.viewmodels.InscriptionActivityViewModel;
 
 public class InscriptionActivity extends AppCompatActivity {
 
+    private InscriptionActivityViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +27,14 @@ public class InscriptionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void Inscription(View view) {
+    public void inscription(View view) {
+        String lastName = findViewById(R.id.InscriptionlastNameText).toString();
+        String firstName = findViewById(R.id.InscriptionfirstNameText).toString();
+        String email = findViewById(R.id.InscriptionmailText).toString();
+        String password = findViewById(R.id.InscriptionpasswordText).toString();
+        Registration register = new Registration(firstName, lastName, email, password);
+
+
         Intent intent = new Intent(this, ProfileTeacherActivity.class);
         startActivity(intent);
     }

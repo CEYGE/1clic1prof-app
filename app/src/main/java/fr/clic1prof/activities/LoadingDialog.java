@@ -11,7 +11,7 @@ import java.util.logging.Handler;
 import fr.clic1prof.R;
 
 public class LoadingDialog {
-    private Activity activity;
+    private final Activity activity;
     private AlertDialog dialog;
 
     LoadingDialog(Activity activity){
@@ -34,7 +34,7 @@ public class LoadingDialog {
 
     public void ErrorDialog(){
         TextView text = dialog.findViewById(R.id.loadingText);
-        text.setText("Erreur de connection");
+        text.setText(R.string.Dialog_error);
         dialog.setCancelable(true);
     }
 }

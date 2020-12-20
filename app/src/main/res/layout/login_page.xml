@@ -13,22 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:clickable="true"
         android:focusable="true"
         android:onClick="sendToInscription"
         android:text="@string/Inscription"
-        android:textColor="@color/cyan"
-        android:textSize="20sp"
+        style="@style/BigTitleClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iconImage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:contentDescription="@string/Icon_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerRef"
@@ -41,7 +38,6 @@
         android:layout_height="300dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,36 +58,39 @@
             android:id="@+id/mailView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
+            android:layout_weight="0.15"
+            android:gravity="bottom|start"
             android:contentDescription="@string/Email_Text"
             android:text="@string/Email_Text"
-            android:textColor="@color/cyan"
-            android:textSize="12sp" />
+            android:padding="3dp"
+            style="@style/TitleText" />
 
         <EditText
             android:id="@+id/mailText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"
-            android:autofillHints="@string/Email_Text"
+            android:layout_weight="0.15"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="@string/Email_Text"
+            android:autofillHints="@string/Email_Text"
             android:inputType="textPersonName"
-            android:textColor="#000"
-            android:textSize="12sp" />
+            style="@style/EntryText"/>
 
         <TextView
             android:id="@+id/passwordView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
+            android:layout_weight="0.1"
+            android:gravity="bottom|start"
             android:text="@string/Password_Text"
-            android:textColor="@color/cyan" />
+            android:padding="3dp"
+            style="@style/TitleText"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
+            android:layout_weight="0.1"
             android:orientation="horizontal">
 
             <EditText
@@ -104,7 +103,8 @@
                 android:ems="10"
                 android:hint="@string/Hint_pwd"
                 android:inputType="textPassword"
-                tools:ignore="NestedWeights" />
+                tools:ignore="NestedWeights"
+                style="@style/EntryText"/>
 
             <ImageView
                 android:id="@+id/visiblePwdView"
@@ -116,7 +116,8 @@
                 android:focusable="true"
                 android:onClick="visibilityPassword"
                 android:src="@drawable/eye"
-                android:contentDescription="TODO" />
+                android:layout_marginBottom="12dp"
+                android:contentDescription="@string/Description_visibility" />
         </LinearLayout>
 
     </LinearLayout>
@@ -127,8 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/Forgot_Password"
-        android:textColor="@color/cyan"
-        android:textSize="12sp"
+        style="@style/TitleText"
         app:layout_constraintEnd_toEndOf="@+id/linearInfomartionLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearInfomartionLayout" />
 
@@ -137,14 +137,11 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
         android:background="@drawable/rectangle"
-        android:text="@string/Button_Connection"
         android:onClick="connect"
-        android:textColor="@color/white"
+        android:text="@string/Button_Connection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

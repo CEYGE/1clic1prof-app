@@ -47,22 +47,20 @@ public class LoginActivity extends AppCompatActivity {
 
 
             if(result.getType() == ResultType.SUCCESS) {
-                System.out.println("##### REUSSITE ####");
                 this.loadingDialog.dismissDialog();
                 sendToProfil();
 
             } else if(result.getType() == ResultType.ERROR) {
-                System.out.println("#### ECHEC ####");
                 this.loadingDialog.ErrorDialog();
 
             } else {
-                System.out.println("##### ATTENTE ####");
                 this.loadingDialog.startLoadingDialog();
             }
         });
     }
 
     public void connect(View view) {
+        //TODO : Verification String
         String email = findViewById(R.id.mailText).toString();
         String password = findViewById(R.id.passwordText).toString();
         Credentials credentials = new Credentials(email,password);

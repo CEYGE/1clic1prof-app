@@ -20,12 +20,12 @@
 
         <TextView
             android:id="@+id/textReturnView"
-            style="@style/TextApparence"
+            style="@style/Theme.1clic1prof"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:onClick="sendHomePage"
-            android:text="Name" />
+            android:text="@string/FirstName" />
 
 
     </LinearLayout>
@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/textView5"
-            style="@style/TextApparence"
+            style="@style/TitleText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="0.2"
@@ -88,7 +88,7 @@
 
         <TextView
             android:id="@+id/textFirstNameView"
-            style="@style/TextApparence"
+            style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
@@ -99,51 +99,48 @@
             android:id="@+id/editTextTextFirstName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
             android:layout_weight="0.225"
-            android:autofillHints="@string/FirstName"
+            android:layout_marginBottom="8dp"
             android:ems="10"
-            android:gravity="bottom"
             android:hint="@string/FirstName"
+            android:autofillHints="@string/FirstName"
             android:inputType="textPersonName"
-            android:textSize="14sp" />
+            style="@style/EntryText" />
 
 
         <TextView
             android:id="@+id/textLastNameView"
-            style="@style/TextApparence"
+            style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
-            android:text="@string/LastName"
-            android:textSize="14sp" />
+            android:text="@string/LastName" />
 
         <EditText
             android:id="@+id/editTextTextLastName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
             android:layout_weight="0.225"
-            android:autofillHints="@string/LastName"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="@string/LastName"
+            android:autofillHints="@string/LastName"
             android:inputType="textPersonName"
-            android:textSize="14sp" />
+            style="@style/EntryText" />
 
 
         <TextView
             android:id="@+id/textMailView"
-            style="@style/TextApparence"
+            style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
-            android:text="@string/Email_Text"
-            android:textSize="14sp" />
+            android:text="@string/Email_Text" />
 
 
         <EditText
             android:id="@+id/editTextTextMail"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
@@ -156,7 +153,7 @@
 
         <TextView
             android:id="@+id/textPasswordView"
-            style="@style/TextApparence"
+            style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
@@ -167,13 +164,13 @@
             android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
             android:layout_weight="0.225"
-            android:autofillHints="@string/Hint_pwd"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="@string/Hint_pwd"
+            android:autofillHints="@string/Hint_pwd"
             android:inputType="textPassword"
-            android:textSize="14sp" />
+            style="@style/EntryText"/>
 
 
         <LinearLayout
@@ -185,7 +182,7 @@
 
             <TextView
                 android:id="@+id/textCBView"
-                style="@style/TextApparence"
+                style="@style/TitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -199,17 +196,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:autofillHints="@string/CB_Text"
                 android:ems="10"
                 android:hint="@string/CB_Text"
+                android:autofillHints="@string/CB_Text"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                style="@style/EntryText" />
         </LinearLayout>
 
 
         <Spinner
             android:id="@+id/spinnerSchoolLevel"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="12dp"
@@ -225,7 +222,7 @@
             android:layout_marginTop="16dp"
             android:layout_weight="0.2"
             android:text="@string/Notification"
-            android:textSize="14sp"
+            style="@style/EntryText"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     </LinearLayout>
@@ -253,7 +250,7 @@
 
         <TextView
             android:id="@+id/textLogOutView"
-            style="@style/TextApparence"
+            style="@style/EntryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"

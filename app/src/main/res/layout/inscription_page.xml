@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.InscriptionActivity">
+    tools:context=".activities.InscriptionActivity">
 
 
     <TextView
@@ -13,22 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:clickable="true"
         android:onClick="sendToLogIn"
         android:focusable="true"
         android:text="@string/Button_Connection"
-        android:textColor="@color/cyan"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        style="@style/BigTitleClick"/>
 
     <ImageView
         android:id="@+id/iconImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
         android:contentDescription="@string/Icon_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connexionRef"
@@ -36,20 +33,17 @@
 
     <TextView
         android:id="@+id/welcomeMessage"
-        android:layout_width="160dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:isScrollContainer="false"
-        android:text="@string/Welcome_Message"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="@+id/iconImage"
         app:layout_constraintTop_toBottomOf="@+id/iconImage"
         app:layout_constraintVertical_bias="0.0"
+        android:text="@string/Welcome_Message"
+        android:textSize="18sp"
+        android:textStyle="bold"
         tools:textColor="@color/black" />
 
     <LinearLayout
@@ -74,20 +68,22 @@
 
             <TextView
                 android:id="@+id/lastNameView"
-                style="@style/TextApparence"
+                style="@style/TitleText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:text="@string/LastName"
-                tools:ignore="NestedWeights" />
+                tools:ignore="NestedWeights"
+                android:padding="3dp"/>
 
             <TextView
                 android:id="@+id/firstNameView"
-                style="@style/TextApparence"
+                style="@style/TitleText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:text="@string/FirstName" />
+                android:text="@string/FirstName"
+                android:padding="3dp"/>
 
         </LinearLayout>
 
@@ -98,55 +94,54 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/lastNameText"
+                android:id="@+id/InscriptionlastNameText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:autofillHints="@string/LastName"
                 android:ems="10"
                 android:hint="@string/LastName"
+                android:autofillHints="@string/LastName"
                 android:inputType="textPersonName"
-                android:textSize="14sp"
-                tools:ignore="NestedWeights" />
+                style="@style/EntryText" />
 
             <EditText
-                android:id="@+id/firstNameText"
+                android:id="@+id/InscriptionfirstNameText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:autofillHints="@string/FirstName"
                 android:ems="10"
                 android:hint="@string/FirstName"
+                android:autofillHints="@string/FirstName"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                style="@style/EntryText" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/mailView"
-            style="@style/TextApparence"
+            style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/Email_Text"
-            android:text="@string/Email_Text" />
+            android:text="@string/Email_Text"
+            android:padding="3dp"/>
 
         <EditText
-            android:id="@+id/mailText"
+            android:id="@+id/InscriptionmailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="@string/Email_Text"
             android:ems="10"
             android:hint="@string/Email_Text"
+            android:autofillHints="@string/Email_Text"
             android:inputType="textPersonName"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/EntryText" />
 
         <TextView
             android:id="@+id/pwdView"
-            style="@style/TextApparence"
+            style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="@string/Password_Text" />
+            android:layout_marginTop="16dp"
+            android:text="@string/Password_Text"
+            android:padding="3dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -155,7 +150,8 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/passwordText"
+                android:id="@+id/InscriptionpasswordText"
+                style="@style/EntryText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
@@ -163,8 +159,7 @@
                 android:cursorVisible="false"
                 android:ems="10"
                 android:hint="@string/Hint_pwd"
-                android:inputType="textPassword"
-                android:textSize="14sp" />
+                android:inputType="textPassword" />
 
             <ImageView
                 android:id="@+id/visiblePwdView"
@@ -172,8 +167,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.1"
+                android:layout_marginBottom="12dp"
                 android:clickable="true"
-                android:contentDescription="null"
+                android:contentDescription="@string/Description_visibility"
                 android:focusable="true"
                 android:onClick="visiblePassword"
                 android:src="@drawable/eye" />
@@ -185,8 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/statutIs"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/EntryText" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/ChipGroup"
@@ -197,23 +192,20 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipEtudiant"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/ChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="50dp"
                 android:text="@string/Student"
-                android:textSize="14sp"
                 android:theme="@style/Theme.MaterialComponents.Light" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipProfesseur"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/ChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="50dp"
                 android:text="@string/Teacher"
                 android:textSize="14sp"
@@ -225,13 +217,12 @@
 
     <Button
         android:id="@+id/inscriptionButton"
+        style="@style/TextButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/rectangle"
-        android:onClick="Inscription"
         android:text="@string/Inscription"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"

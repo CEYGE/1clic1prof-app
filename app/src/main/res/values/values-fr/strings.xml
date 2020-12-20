@@ -14,5 +14,5 @@
     <string name="Welcome_Message">Bienvenue</string>
     <string name="Student">Étudiant</string>
     <string name="Teacher">Professeur</string>
-    <string name="statutIs">je suis un :</string>
+    <string name="statutIs">je suis :</string>
 </resources>

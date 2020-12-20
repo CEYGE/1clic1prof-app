@@ -41,5 +41,11 @@
         <item>SVT</item>
         <item>Économie</item>
     </string-array>
-    <string name="statutIs">je suis un :</string>
+    <string name="statutIs">je suis :</string>
+    <string name="Hint_description">Description</string>
+    <string name="Dialog_error" translatable="false">Une erreur est survenue</string>
+    <string name="Dialog_connection" translatable="false">Connection en cours</string>
+    <string name="Dialog_logIn" translatable="false">Connection réussie</string>
+    <string name="IBAN_Text" translatable="false">IBAN</string>
+    <string name="Description_visibility" translatable="false">Icône pour changer la visibilité</string>
 </resources>
