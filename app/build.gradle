@@ -55,5 +55,8 @@ dependencies {
     kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
     kapt 'com.google.dagger:hilt-android-compiler:2.28-alpha'
 
+    // Index RecyclerView
+    implementation 'com.github.myinnos:AlphabetIndex-Fast-Scroll-RecyclerView:1.0.92'
+
     annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 }

@@ -9,10 +9,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import fr.clic1prof.ContactsAdapter;
 import fr.clic1prof.R;
 import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.viewmodels.ContactActivityViewModel;
@@ -20,21 +25,30 @@ import fr.clic1prof.viewmodels.ResultType;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
-
+    private List<Contact> contacts;
     private ContactActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        //getSupportActionBar().hide(); //Hide title bar
         setContentView(R.layout.activity_main);
 
         this.viewModel = new ViewModelProvider(this).get(ContactActivityViewModel.class);
 
         this.setEditTextListener();
-
-        // Setup contact observer.
         this.setContactObserver();
+
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+
+        contacts = new ArrayList<>();
+        for (int i = 0; i < 200; i++) {
+            contacts.add(new Contact("Enzo", "DE SOUSA", "Bac +2"));
+        }
+        ContactsAdapter adapter = new ContactsAdapter(contacts);
+        rvContacts.setAdapter(adapter);
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setContactObserver() {
@@ -50,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(result.getType() == ResultType.SUCCESS) {
 
-                List<Contact> contacts = result.getData();
+                contacts = result.getData();
 
                 text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
 
