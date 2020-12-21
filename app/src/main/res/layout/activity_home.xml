@@ -7,7 +7,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.HomeActivity">
+    tools:context=".activities.DashboardActivity">
 
 
     <LinearLayout
@@ -22,9 +22,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="65sp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageView
@@ -52,32 +51,40 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="50sp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingRight="15sp">
+                android:paddingRight="20sp">
 
                 <ImageView
                     android:id="@+id/imageView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="30sp"
+                    android:layout_width="20sp"
+                    android:layout_height="20sp"
+                    android:adjustViewBounds="false"
+                    android:cropToPadding="true"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/bell" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="75sp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:gravity="center|center_horizontal"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="50sp"
+                        android:layout_height="50sp"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -95,7 +102,8 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_graph" />
+                app:navGraph="@navigation/nav_graph"
+                tools:visibility="visible" />
         </LinearLayout>
 
     </LinearLayout>

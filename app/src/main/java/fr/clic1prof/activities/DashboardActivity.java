@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 import fr.clic1prof.R;
 import fr.clic1prof.viewmodels.HomeViewModel;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private HomeViewModel ViewModel;
 
     @Override

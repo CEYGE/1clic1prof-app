@@ -12,28 +12,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import fr.clic1prof.viewmodels.HomeFragmentViewModel;
+import fr.clic1prof.viewmodels.DashboardViewModel;
 import fr.clic1prof.R;
 
-public class HomeFragment extends Fragment {
+public class DashboardFragment extends Fragment {
 
-    private HomeFragmentViewModel mViewModel;
+    private DashboardViewModel mViewModel;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static DashboardFragment newInstance() {
+        return new DashboardFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_dashboard, container, false);
 
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
         // TODO: Use the ViewModel
     }
 
