@@ -8,22 +8,22 @@
 
     <item
         android:id="@+id/nav_agenda"
-        android:title="Agenda">
-    </item>
+        android:icon="@drawable/calendrier"
+        android:title="Agenda"></item>
 
     <item
         android:id="@+id/nav_teacher"
-        android:title="Mes Professseurs">
-    </item>
+        android:icon="@drawable/contact"
+        android:title="Mes Professseurs"></item>
 
     <item
         android:id="@+id/nav_invoice"
-        android:title="Facture">
-    </item>
+        android:icon="@drawable/facture"
+        android:title="Facture"></item>
 
     <item
         android:id="@+id/nav_disconnection"
-        android:title="Déconnexion">
-    </item>
+        android:icon="@drawable/deconnexion"
+        android:title="Déconnexion"></item>
 
 </menu>
