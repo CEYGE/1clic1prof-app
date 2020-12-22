@@ -64,14 +64,16 @@ public class LoginActivity extends AppCompatActivity {
         //TODO : Verification String
         String email = findViewById(R.id.mailText).toString();
         String password = findViewById(R.id.passwordText).toString();
-        if(verifMail(email) && verifPwd(password)) {
+        Credentials credentials = new Credentials(email, password);
+        this.viewModel.login(credentials);
+        /*if(verifMail(email) && verifPwd(password)) {
             Credentials credentials = new Credentials(email, password);
             this.viewModel.login(credentials);
         }else {
             this.loadingDialog.launchLoadingDialog();
             this.loadingDialog.startLoadingDialog();
             this.loadingDialog.errorEntries(getResources().getColor(R.color.red));
-        }
+        }*/
     }
 
 
