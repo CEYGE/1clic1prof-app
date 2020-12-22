@@ -18,16 +18,15 @@ public class LoadingDialog {
         this.activity = activity;
     }
 
-    public void startLoadingDialog(){
+    public void launchLoadingDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = activity.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.dialog_log,null));
         builder.setCancelable(false);
-
         dialog = builder.create();
-        dialog.show();
     }
 
+    public void startLoadingDialog(){ dialog.show();}
     public void dismissDialog(){
         dialog.dismiss();
     }
@@ -35,6 +34,13 @@ public class LoadingDialog {
     public void ErrorDialog(){
         TextView text = dialog.findViewById(R.id.loadingText);
         text.setText(R.string.Dialog_error);
+        dialog.setCancelable(true);
+    }
+
+    public void errorEntries(int color){
+        TextView view = dialog.findViewById(R.id.loadingText);
+        view.setText("Mail ou Mot de passe ne répond pas aux critères !");
+        view.setTextColor(color);
         dialog.setCancelable(true);
     }
 }
