@@ -17,7 +17,7 @@ import fr.clic1prof.viewmodels.AgendaViewModel;
 
 public class AgendaFragment extends Fragment {
 
-    private AgendaViewModel mViewModel;
+    private AgendaViewModel ViewModel;
 
     public static AgendaFragment newInstance() {
         return new AgendaFragment();
@@ -32,7 +32,7 @@ public class AgendaFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AgendaViewModel.class);
+        ViewModel = new ViewModelProvider(this).get(AgendaViewModel.class);
         // TODO: Use the ViewModel
     }
 

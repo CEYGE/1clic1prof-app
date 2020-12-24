@@ -58,7 +58,7 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:gravity="bottom|center"
-                                android:text="Nov,07"
+                                android:text="Nov, 07"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -104,7 +104,8 @@
                                 android:id="@+id/imageView11"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                tools:srcCompat="@tools:sample/avatars" />
+                                android:layout_margin="15sp"
+                                app:srcCompat="@drawable/profil_img" />
                         </LinearLayout>
                     </LinearLayout>
 

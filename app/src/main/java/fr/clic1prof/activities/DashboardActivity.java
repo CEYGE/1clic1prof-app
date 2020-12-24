@@ -59,6 +59,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawerLayout.closeDrawer(GravityCompat.START);
         if (item.getItemId() == R.id.nav_dashboard) navController.navigate(R.id.action_global_homeFragment);
         else if (item.getItemId() == R.id.nav_agenda) navController.navigate(R.id.action_global_agendaFragment);
+        else if (item.getItemId() == R.id.nav_notebook) navController.navigate(R.id.action_global_notebookFragment);
 
         return true;
     }

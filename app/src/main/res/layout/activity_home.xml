@@ -80,9 +80,9 @@
 
                     <ImageView
                         android:id="@+id/imageView7"
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:layout_width="40sp"
+                        android:layout_height="40sp"
+                        app:srcCompat="@drawable/profil_img1" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -92,7 +92,7 @@
             android:id="@+id/Content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15sp"
+            android:layout_marginTop="5sp"
             android:orientation="vertical">
 
             <fragment

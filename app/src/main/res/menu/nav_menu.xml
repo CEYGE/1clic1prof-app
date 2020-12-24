@@ -3,27 +3,32 @@
 
     <item
         android:id="@+id/nav_dashboard"
-        android:title="Tableau de bord">
-    </item>
+        android:icon="@drawable/accueil"
+        android:title="Tableau de bord"></item>
 
     <item
         android:id="@+id/nav_agenda"
         android:icon="@drawable/calendrier"
-        android:title="Agenda"></item>
+        android:title="Agenda"/>
+
+    <item
+        android:id="@+id/nav_notebook"
+        android:icon="@drawable/carnet"
+        android:title="Carnet d'élève" />
 
     <item
         android:id="@+id/nav_teacher"
         android:icon="@drawable/contact"
-        android:title="Mes Professseurs"></item>
+        android:title="Mes Professseurs"/>
 
     <item
         android:id="@+id/nav_invoice"
         android:icon="@drawable/facture"
-        android:title="Facture"></item>
+        android:title="Facture"/>
 
     <item
         android:id="@+id/nav_disconnection"
         android:icon="@drawable/deconnexion"
-        android:title="Déconnexion"></item>
+        android:title="Déconnexion"/>
 
 </menu>
