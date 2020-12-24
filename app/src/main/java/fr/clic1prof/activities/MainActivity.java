@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -27,6 +28,32 @@ import fr.clic1prof.viewmodels.ResultType;
 public class MainActivity extends AppCompatActivity {
     private List<Contact> contacts;
     private ContactActivityViewModel viewModel;
+
+    static String getAlphaNumericString(int n)
+    {
+
+        // chose a Character random from this String
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        // create StringBuffer size of AlphaNumericString
+        StringBuilder sb = new StringBuilder(n);
+
+        for (int i = 0; i < n; i++) {
+
+            // generate a random number between
+            // 0 to AlphaNumericString variable length
+            int index
+                    = (int)(AlphaNumericString.length()
+                    * Math.random());
+
+            // add Character one by one in end of sb
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+
+        return sb.toString();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
         contacts = new ArrayList<>();
         for (int i = 0; i < 200; i++) {
-            contacts.add(new Contact("Enzo", "DE SOUSA", "Bac +2"));
+            contacts.add(new Contact(getAlphaNumericString(5), getAlphaNumericString(10), "Bac +2"));
         }
+        Collections.sort(contacts);
         ContactsAdapter adapter = new ContactsAdapter(contacts);
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));

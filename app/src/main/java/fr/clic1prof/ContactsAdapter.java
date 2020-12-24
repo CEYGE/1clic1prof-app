@@ -4,26 +4,34 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.clic1prof.models.contacts.Contact;
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
-    private List<Contact> mContacts;
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> implements SectionIndexer {
+    private final List<Contact> mContacts;
+    private ArrayList<Integer> mSectionPositions;
 
     // Pass in the contact array into the constructor
     public ContactsAdapter(List<Contact> contacts) {
         mContacts = contacts;
     }
+
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
+        public ImageView imageView;
         public TextView nameTextView;
         public TextView studyLevelTextView;
 
@@ -34,21 +42,17 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             // to access the context from any ViewHolder instance.
             super(itemView);
 
+            imageView = (ImageView) itemView.findViewById(R.id.contact_profilePic);
             nameTextView = (TextView) itemView.findViewById(R.id.contact_firstName);
             studyLevelTextView = (TextView) itemView.findViewById(R.id.contact_study_level);
         }
     }
 
+    @NotNull
     @Override
     public ContactsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-
-        // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.item_contact, parent, false);
-
-        // Return a new holder instance
-        return new ViewHolder(contactView);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
+        return new ViewHolder(v);
     }
 
     // Involves populating data into the item through holder
@@ -68,5 +72,36 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     @Override
     public int getItemCount() {
         return mContacts.size();
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        return 0;
+    }
+
+    @Override
+    public Object[] getSections() {
+        List<String> sections = new ArrayList<>(27);
+        ArrayList<String> alphabetFull = new ArrayList<>();
+
+        mSectionPositions = new ArrayList<>();
+        for (int i = 0, size = mContacts.size(); i < size; i++) {
+            String section = String.valueOf(mContacts.get(i).getFirstName().charAt(0)).toUpperCase();
+            if (!sections.contains(section)) {
+                sections.add(section);
+                mSectionPositions.add(i);
+            }
+        }
+        final String mSections = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        for (int i = 0; i < mSections.length(); i++) {
+            alphabetFull.add(String.valueOf(mSections.charAt(i)));
+        }
+
+        return alphabetFull.toArray(new String[0]);
+    }
+
+    @Override
+    public int getPositionForSection(int sectionIndex) {
+        return mSectionPositions.get(sectionIndex);
     }
 }

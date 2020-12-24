@@ -1,6 +1,6 @@
 package fr.clic1prof.models.contacts;
 
-public class Contact {
+public class Contact implements Comparable<Contact> {
 
     private final String firstName;
     private final String lastName;
@@ -22,5 +22,10 @@ public class Contact {
 
     public String getStudyLevel() {
         return this.studyLevel;
+    }
+
+    @Override
+    public int compareTo(Contact o) {
+        return Character.toString(firstName.charAt(0)).compareTo(Character.toString(o.firstName.charAt(0)));
     }
 }

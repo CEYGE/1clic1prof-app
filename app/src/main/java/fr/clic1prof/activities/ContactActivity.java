@@ -18,7 +18,6 @@ import fr.clic1prof.viewmodels.ContactActivityViewModel;
 import fr.clic1prof.viewmodels.ResultType;
 
 public class ContactActivity extends AppCompatActivity {
-
     private ContactActivityViewModel viewModel;
 
     @Override
@@ -77,7 +76,7 @@ public class ContactActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                text.setText(s);
             }
 
             @Override
