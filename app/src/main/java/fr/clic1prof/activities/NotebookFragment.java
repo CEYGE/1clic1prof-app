@@ -39,12 +39,8 @@ public class NotebookFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(NotebookViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
-    public void onResume() {
-        super.onResume();
         setListenerNotebook();
+        // TODO: Use the ViewModel
     }
 
     public void setListenerNotebook(){
