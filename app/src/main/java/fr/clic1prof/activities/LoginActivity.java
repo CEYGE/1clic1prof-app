@@ -2,11 +2,14 @@ package fr.clic1prof.activities;
 
 import java.util.regex.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 
@@ -30,10 +33,6 @@ public class LoginActivity extends AppCompatActivity {
 
         this.loadingDialog = new LoadingDialog(LoginActivity.this);
 
-        System.out.println("\n"+"TEST de test@gmail.com:"+verifMail("test@gmail.com") +"\n");
-        System.out.println("\n"+"TEST de test68@gmail.com:"+verifMail("test68@gmail.com") +"\n");
-        System.out.println("\n"+"TEST de test@gmail54.com:"+verifMail("test@gmail54.com") +"\n");
-        System.out.println("\n"+"TEST de test.548@gmail.com:"+verifMail("test.548@gmail.com") +"\n");
 
         this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
@@ -62,18 +61,18 @@ public class LoginActivity extends AppCompatActivity {
 
     public void connect(View view) {
         //TODO : Verification String
-        String email = findViewById(R.id.mailText).toString();
-        String password = findViewById(R.id.passwordText).toString();
-        Credentials credentials = new Credentials(email, password);
-        this.viewModel.login(credentials);
-        /*if(verifMail(email) && verifPwd(password)) {
+        EditText emailView = findViewById(R.id.mailText);
+        EditText passwordView = findViewById(R.id.passwordText);
+        String email = emailView.getText().toString();
+        String password = passwordView.getText().toString();
+        if(verifMail(email) && verifPwd(password)) {
             Credentials credentials = new Credentials(email, password);
             this.viewModel.login(credentials);
         }else {
             this.loadingDialog.launchLoadingDialog();
             this.loadingDialog.startLoadingDialog();
             this.loadingDialog.errorEntries(getResources().getColor(R.color.red));
-        }*/
+        }
     }
 
 
@@ -86,6 +85,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void sendToInscription(View view){
         Intent intent = new Intent(this, InscriptionActivity.class);
+        startActivity(intent);
+    }
+
+    public void sendToRequestPassword(View view){
+        Intent intent = new Intent(this, RequestPasswordActivity.class);
         startActivity(intent);
     }
 
@@ -120,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
      * @return True if email meets the criteria
      */
     private boolean verifMail(String mail) {
-        return Pattern.matches("^[a-zA-Z1-9._%+-]*@[a-zA-Z1-9]*\\.(com|net|fr){1}$", mail);
+        return ( !TextUtils.isEmpty(mail) && Patterns.EMAIL_ADDRESS.matcher(mail).matches() );
     }
 
 }

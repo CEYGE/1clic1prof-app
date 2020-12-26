@@ -74,7 +74,7 @@
             android:ems="10"
             android:hint="@string/Email_Text"
             android:autofillHints="@string/Email_Text"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             style="@style/EntryText"/>
 
         <TextView
@@ -130,7 +130,8 @@
         android:text="@string/Forgot_Password"
         style="@style/TitleText"
         app:layout_constraintEnd_toEndOf="@+id/linearInfomartionLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearInfomartionLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearInfomartionLayout"
+        android:onClick="sendToRequestPassword"/>
 
     <Button
         android:id="@+id/loginButton"
