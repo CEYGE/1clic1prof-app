@@ -6,19 +6,18 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
 
 import fr.clic1prof.R;
-import fr.clic1prof.models.contacts.Contact;
-import fr.clic1prof.viewmodels.ContactActivityViewModel;
+import fr.clic1prof.models.contacts.TeacherContact;
 import fr.clic1prof.viewmodels.ResultType;
+import fr.clic1prof.viewmodels.contacts.StudentContactActivityViewModel;
 
 public class ContactActivity extends AppCompatActivity {
-    private ContactActivityViewModel viewModel;
+    private StudentContactActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,7 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        this.viewModel = new ViewModelProvider(this).get(ContactActivityViewModel.class);
+        this.viewModel = new ViewModelProvider(this).get(StudentContactActivityViewModel.class);
 
         this.setEditTextListener();
 
@@ -47,7 +46,7 @@ public class ContactActivity extends AppCompatActivity {
 
             if(result.getType() == ResultType.SUCCESS) {
 
-                List<Contact> contacts = result.getData();
+                List<TeacherContact> contacts = result.getData();
 
                 text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
 

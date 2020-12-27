@@ -1,4 +1,4 @@
-package fr.clic1prof.models.user;
+package fr.clic1prof.models.session;
 
 import com.google.gson.annotations.SerializedName;
 

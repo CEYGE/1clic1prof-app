@@ -7,19 +7,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class ContactManager implements ContactModel {
+public class ContactHandlerImpl<T extends Contact> implements ContactHandler<T> {
 
-    private final List<Contact> contacts = new ArrayList<>();
+    private final List<T> contacts = new ArrayList<>();
 
     @Inject
-    public ContactManager() {}
+    public ContactHandlerImpl() {}
 
     @Override
-    public void setContacts(Collection<Contact> contacts) {
-
-        if(contacts == null)
-            throw new IllegalArgumentException("Contacts list cannot be null.");
-
+    public void updateContacts(Collection<T> contacts) {
         this.contacts.clear();
         this.contacts.addAll(contacts);
     }
@@ -30,15 +26,25 @@ public class ContactManager implements ContactModel {
     }
 
     @Override
-    public List<Contact> getContactsByPrefix(String prefix) {
+    public T getContact(int id) {
+
+        for(T contact : this.contacts) {
+
+            if(contact.getId() == id) return contact;
+        }
+        return null;
+    }
+
+    @Override
+    public List<T> getContactsByPrefix(String prefix) {
 
         if(prefix == null || prefix.equals("")) return this.contacts;
 
         prefix = prefix.toLowerCase();
 
-        List<Contact> contacts = new ArrayList<>();
+        List<T> contacts = new ArrayList<>();
 
-        for(Contact contact : this.contacts) {
+        for(T contact : this.contacts) {
 
             String firstName = contact.getFirstName().toLowerCase();
             String lastName = contact.getLastName().toLowerCase();
@@ -49,7 +55,7 @@ public class ContactManager implements ContactModel {
     }
 
     @Override
-    public List<Contact> getContacts() {
+    public List<T> getContacts() {
         return Collections.unmodifiableList(this.contacts);
     }
 }

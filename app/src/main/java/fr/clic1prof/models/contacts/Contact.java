@@ -1,27 +1,34 @@
 package fr.clic1prof.models.contacts;
 
 public class Contact implements Comparable<Contact> {
+    private final int id;
+    private final String firstName, lastName;
+    private final Bitmap picture;
 
-    private final String firstName;
-    private final String lastName;
-    private final String studyLevel;
-
-    public Contact(String firstName, String lastName, String studyLevel) {
+    public Contact(int id, String firstName, String lastName, Bitmap picture) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.studyLevel = studyLevel;
+        this.picture = picture;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    @NonNull
     public String getFirstName() {
         return this.firstName;
     }
 
+    @NonNull
     public String getLastName() {
         return this.lastName;
     }
 
-    public String getStudyLevel() {
-        return this.studyLevel;
+    @NonNull
+    public Bitmap getPicture() {
+        return this.picture;
     }
 
     @Override

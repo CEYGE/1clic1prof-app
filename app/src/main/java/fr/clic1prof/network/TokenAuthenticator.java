@@ -7,9 +7,12 @@ import java.io.IOException;
 import javax.inject.Inject;
 
 import fr.clic1prof.api.UserController;
-import fr.clic1prof.models.user.Credentials;
-import fr.clic1prof.models.user.Token;
-import fr.clic1prof.models.user.UserSessionModel;
+import fr.clic1prof.models.session.Credentials;
+import fr.clic1prof.models.session.SessionType;
+import fr.clic1prof.models.session.Token;
+import fr.clic1prof.models.session.UserSessionModel;
+import fr.clic1prof.network.authentication.AuthenticationRequest;
+import fr.clic1prof.network.authentication.AuthenticationResponse;
 import okhttp3.Authenticator;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -43,15 +46,18 @@ public class TokenAuthenticator implements Authenticator {
 
         Credentials credentials = this.session.getCredentials();
 
-        Call<Token> call = controller.login(credentials);
+        AuthenticationRequest request = new AuthenticationRequest(credentials.getEmail(), credentials.getPassword());
+
+        Call<AuthenticationResponse> call = controller.login(request);
 
         // Trying to refresh the session.
-        retrofit2.Response<Token> authentication = call.execute();
+        retrofit2.Response<AuthenticationResponse> authentication = call.execute();
 
         // Cannot authenticate.
         if(!authentication.isSuccessful()) return null;
 
-        Token token = authentication.body();
+        AuthenticationResponse authResponse = authentication.body();
+        Token token = new Token(authentication.body().getToken());
 
         this.session.refresh(token);
 
