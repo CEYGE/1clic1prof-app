@@ -2,7 +2,7 @@ package fr.clic1prof.models.profile;
 
 import android.graphics.Bitmap;
 
-import fr.clic1prof.models.user.SchoolLevel;
+import fr.clic1prof.models.other.SchoolLevel;
 
 public class StudentProfile extends Profile {
 
@@ -10,6 +10,7 @@ public class StudentProfile extends Profile {
 
     public StudentProfile(String email, String firstName, String lastName, Bitmap picture, SchoolLevel level) {
         super(email, firstName, lastName, picture);
+        this.level = level;
     }
 
     public SchoolLevel getLevel() {
