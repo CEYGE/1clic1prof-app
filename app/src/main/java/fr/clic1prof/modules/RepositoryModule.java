@@ -13,7 +13,9 @@ import fr.clic1prof.repositories.contacts.StudentContactRepository;
 import fr.clic1prof.repositories.contacts.TeacherContactRepository;
 import fr.clic1prof.repositories.profile.ProfileRepository;
 import fr.clic1prof.repositories.profile.StudentProfileRepository;
+import fr.clic1prof.repositories.profile.StudentProfileRepositoryImpl;
 import fr.clic1prof.repositories.profile.TeacherProfileRepository;
+import fr.clic1prof.repositories.profile.TeacherProfileRepositoryImpl;
 import fr.clic1prof.repositories.user.UserRepository;
 import fr.clic1prof.repositories.user.UserRepositoryImpl;
 
@@ -28,10 +30,10 @@ public abstract class RepositoryModule {
     public abstract ContactRepository<StudentContact> bindTeacherContactRepository(TeacherContactRepository teacherContactRepository);
 
     @Binds
-    public abstract ProfileRepository<TeacherProfile> bindTeacherProfileRepository(TeacherProfileRepository teacherProfileRepository);
+    public abstract ProfileRepository<TeacherProfile> bindTeacherProfileRepository(TeacherProfileRepositoryImpl teacherProfileRepository);
 
     @Binds
-    public abstract ProfileRepository<StudentProfile> bindStudentProfileRepository(StudentProfileRepository studentProfileRepository);
+    public abstract ProfileRepository<StudentProfile> bindStudentProfileRepository(StudentProfileRepositoryImpl studentProfileRepository);
 
     @Binds
     public abstract UserRepository bindUserRepository(UserRepositoryImpl repository);
