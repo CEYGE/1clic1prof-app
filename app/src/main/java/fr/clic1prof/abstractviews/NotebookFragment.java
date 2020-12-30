@@ -11,7 +11,6 @@ import fr.clic1prof.R;
 public abstract class NotebookFragment extends AbstractFragment {
 
     //TODO add specific method for Notebook here
-
     /**
      * Creating listener for showing the bottom sheet dialog about course.
      * Layout ID in paremeter
