@@ -22,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         //redirect for testing purposes
-        Intent intent = new Intent(this, DashboardActivity.class);
+        Intent intent = new Intent(this, MainStudentActivity.class);
         startActivity(intent);
         //
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

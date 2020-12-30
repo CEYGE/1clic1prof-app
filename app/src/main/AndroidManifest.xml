@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.1clic1prof"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.DashboardActivity"></activity>
+        <activity android:name=".activities.CreationEventActivity"></activity>
+        <activity android:name=".activities.TeacherActivity" />
+        <activity android:name=".activities.MainStudentActivity" />
         <activity android:name=".activities.ContactActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

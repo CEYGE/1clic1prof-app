@@ -7,7 +7,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DashboardActivity">
+    tools:context=".activities.MainStudentActivity">
 
 
     <LinearLayout
@@ -102,7 +102,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_graph"
+                app:navGraph="@navigation/nav_graph_teacher"
                 tools:visibility="visible" />
         </LinearLayout>
 

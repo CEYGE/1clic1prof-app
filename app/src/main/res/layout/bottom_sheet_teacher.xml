@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheetContainer"
     android:layout_width="match_parent"
@@ -44,21 +43,20 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/top_right_date_container" />
 
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:text="20 Oct.\n2020"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+                android:layout_marginRight="30dp"
+                android:src="@drawable/file_plus" />
 
         </FrameLayout>
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/notebook_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="30sp"
@@ -82,11 +80,137 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
+                <LinearLayout
+                    android:id="@+id/date_picker_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView26"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Début"
+                            android:textColor="#333"
+                            tools:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10sp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:gravity="clip_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="5sp"
+                                    android:layout_height="15sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/calendar" />
+
+                                <TextView
+                                    android:layout_width="100sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="3sp"
+                                    android:layout_weight="1"
+                                    android:text="TextView" />
+
+                                <ImageView
+                                    android:layout_height="5sp"
+                                    android:layout_width="5sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/arrow" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="2sp"
+                                android:src="@drawable/line_date" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView27"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Fin"
+                            android:textColor="#333"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10sp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40sp"
+                                android:gravity="clip_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_height="15sp"
+                                    android:layout_width="5sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/calendar" />
+
+                                <TextView
+                                    android:layout_width="100sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="3sp"
+                                    android:layout_weight="1"
+                                    android:text="TextView" />
+
+                                <ImageView
+                                    android:id="@+id/imageView25"
+                                    android:layout_height="5sp"
+                                    android:layout_width="5sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/arrow" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/imageView28"
+                                android:layout_width="match_parent"
+                                android:layout_height="2sp"
+                                android:src="@drawable/line_date" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/textView22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20sp"
+                    android:layout_marginTop="10sp"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus dictum diam sit amet placerat.  - Proin lectus dui, tincidunt nec feugiat quis, viverra et nisi.  - Donec tincidunt tempor lacus, at lobortis lorem ullamcorper eu.  - Integer luctus fermentum mollis. Phasellus a dui urna." />
 
                 <ImageView

@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15sp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +83,6 @@
 
                 <TextView
                     android:id="@+id/textView26"
-                    tools:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Début"
@@ -102,14 +102,15 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView24"
+
+                            android:layout_width="15sp"
                             android:layout_height="15sp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/calendar" />
 
                         <TextView
-                            android:id="@+id/textView28"
+
                             android:layout_width="100sp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -118,7 +119,7 @@
                             android:text="TextView" />
 
                         <ImageView
-                            android:id="@+id/imageView25"
+                            android:layout_width="5sp"
                             android:layout_height="5sp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -126,7 +127,7 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/imageView28"
+
                         android:layout_width="match_parent"
                         android:layout_height="2sp"
                         app:srcCompat="@drawable/line_date" />
@@ -163,6 +164,7 @@
 
                         <ImageView
                             android:id="@+id/imageView24"
+                            android:layout_width="15sp"
                             android:layout_height="15sp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -178,7 +180,7 @@
                             android:text="TextView" />
 
                         <ImageView
-                            android:id="@+id/imageView25"
+                            android:layout_width="5sp"
                             android:layout_height="5sp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -186,7 +188,7 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/imageView28"
+
                         android:layout_width="match_parent"
                         android:layout_height="2sp"
                         app:srcCompat="@drawable/line_date" />
@@ -203,7 +205,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView34"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Élève(s)"
@@ -225,7 +227,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView31"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="left|center_vertical"
@@ -236,7 +238,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView35"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -254,7 +256,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView34"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rappel"
@@ -276,7 +278,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView31"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="left|center_vertical"
@@ -286,7 +288,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView35"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -333,6 +335,7 @@
 
                     <ImageView
                         android:id="@+id/imageView25"
+                        android:layout_width="5sp"
                         android:layout_height="5sp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
@@ -340,7 +343,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/imageView28"
+
                     android:layout_width="match_parent"
                     android:layout_height="2sp"
                     app:srcCompat="@drawable/line_frequency" />

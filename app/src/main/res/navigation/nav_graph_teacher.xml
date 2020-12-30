@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_teacher"
+    app:startDestination="@id/teacher_dashboard">
+
+
+    <fragment
+        android:id="@+id/teacher_dashboard"
+        android:name="fr.clic1prof.activities.TeacherDashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/teacher_dashboard" />
+    <action android:id="@+id/action_global_dashboardFragment" app:destination="@id/teacher_dashboard" />
+    <fragment
+        android:id="@+id/teacher_agenda"
+        android:name="fr.clic1prof.activities.TeacherAgendaFragment"
+        android:label="fragment_agenda"
+        tools:layout="@layout/teacher_agenda" >
+        <action
+            android:id="@+id/action_teacher_agenda_to_creationEventActivity"
+            app:destination="@id/creationEventActivity"
+            app:popUpTo="@id/teacher_agenda" />
+    </fragment>
+    <action android:id="@+id/action_global_agendaFragment" app:destination="@id/teacher_agenda"/>
+    <fragment
+        android:id="@+id/teacher_notebook"
+        android:name="fr.clic1prof.activities.TeacherNotebookFragment"
+        android:label="fragment_notebook"
+        tools:layout="@layout/teacher_notebook"/>
+    <action android:id="@+id/action_global_notebookFragment" app:destination="@id/teacher_notebook" />
+
+    <activity
+        android:id="@+id/creationEventActivity"
+        android:name="fr.clic1prof.activities.CreationEventActivity"
+        android:label="CreationEventActivity"
+        tools:layout="@layout/creation_event"
+        />
+
+
+</navigation>
+
+
