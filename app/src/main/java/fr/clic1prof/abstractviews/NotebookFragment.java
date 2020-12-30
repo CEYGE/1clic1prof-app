@@ -13,7 +13,7 @@ public abstract class NotebookFragment extends AbstractFragment {
     //TODO add specific method for Notebook here
 
     /**
-     * Creating listener for showing the bottom sheet dialog about courses.
+     * Creating listener for showing the bottom sheet dialog about course.
      * Layout ID in paremeter
      * @param R_layout_bottom_sheet
      */
