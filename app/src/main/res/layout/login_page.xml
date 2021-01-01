@@ -95,32 +95,47 @@
 
             <EditText
                 android:id="@+id/passwordText"
+                style="@style/EntryText"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
                 android:autofillHints="@string/Hint_pwd"
                 android:cursorVisible="false"
                 android:ems="10"
                 android:hint="@string/Hint_pwd"
                 android:inputType="textPassword"
-                tools:ignore="NestedWeights"
-                style="@style/EntryText"/>
+                tools:ignore="NestedWeights" />
 
             <ImageView
                 android:id="@+id/visiblePwdView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="24dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginBottom="12dp"
                 android:layout_weight="0.1"
                 android:clickable="true"
+                android:contentDescription="@string/Description_visibility"
                 android:focusable="true"
                 android:onClick="visibilityPassword"
-                android:src="@drawable/eye"
-                android:layout_marginBottom="12dp"
-                android:contentDescription="@string/Description_visibility" />
+                android:src="@drawable/eye" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/errorInvisibleViewLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/error_Entries"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/forgotPasswordRef"
+        app:layout_constraintEnd_toStartOf="@+id/forgotPasswordRef"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearInfomartionLayout" />
+
 
     <TextView
         android:id="@+id/forgotPasswordRef"
@@ -138,7 +153,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/rectangle"
         android:onClick="connect"
@@ -151,11 +166,11 @@
     <ImageView
         android:id="@+id/imageIllustrationView"
         android:layout_width="294dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="160dp"
         android:contentDescription="@string/Icon_name"
-        android:scaleType="fitStart"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -163,5 +178,6 @@
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/illustration_work" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

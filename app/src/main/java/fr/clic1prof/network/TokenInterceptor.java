@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import fr.clic1prof.models.user.Token;
-import fr.clic1prof.models.user.UserSessionModel;
+import fr.clic1prof.models.session.Token;
+import fr.clic1prof.models.session.UserSessionModel;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

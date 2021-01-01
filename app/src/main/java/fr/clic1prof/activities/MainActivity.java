@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.models.contacts.Contact;
-import fr.clic1prof.viewmodels.ContactActivityViewModel;
+import fr.clic1prof.viewmodels.contacts.ContactActivityViewModel;
 import fr.clic1prof.viewmodels.ResultType;
 
 @AndroidEntryPoint
@@ -46,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         this.setEditTextListener();
 
         // Setup contact observer.
-        this.setContactObserver();
+        /*
+        this.setContactObserver();*/
     }
 
     private void sendLog() {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setContactObserver() {
-
+        /*
         // Observe the list of contacts and make view update when necessary.
         this.viewModel.getContactLiveData().observe(this, result -> {
             // Update view here.
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 text = "Chargement des contacts...";
             }
             view.setText(text);
-        });
+        });*/
     }
 
     private void setEditTextListener() {

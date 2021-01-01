@@ -215,18 +215,34 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/errorInvisibleViewInscription"
+        style="@style/BigTitleClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearInformationLayout" />
+
     <Button
         android:id="@+id/inscriptionButton"
         style="@style/TextButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="36dp"
-        android:background="@drawable/rectangle"
-        android:text="@string/Inscription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearInformationLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/errorInvisibleViewInscription"
+        android:background="@drawable/rectangle"
+        android:text="@string/Inscription"
+        android:onClick="inscription"/>
 
     <ImageView
         android:id="@+id/imageIllustrationView"
@@ -240,5 +256,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inscriptionButton"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/illustration_work" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

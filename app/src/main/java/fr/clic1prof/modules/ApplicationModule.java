@@ -4,8 +4,6 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
-import fr.clic1prof.models.user.UserSession;
-import fr.clic1prof.models.user.UserSessionModel;
 import fr.clic1prof.network.NetworkProvider;
 import fr.clic1prof.network.RetrofitNetworkProvider;
 
@@ -13,6 +11,6 @@ import fr.clic1prof.network.RetrofitNetworkProvider;
 @InstallIn(ApplicationComponent.class)
 public abstract class ApplicationModule {
 
-    @Binds // Binding NetworkProvider with RetrofitNetworkProvider.
+    @Binds
     public abstract NetworkProvider bindNetworkProvider(RetrofitNetworkProvider provider);
 }

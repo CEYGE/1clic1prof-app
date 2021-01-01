@@ -18,6 +18,16 @@
     <string name="Welcome_Message">Bienvenue</string>
     <string name="Teacher">Professeur</string>
     <string name="Student">Etudiant</string>
+    <string name="statutIs">je suis :</string>
+    <string name="Hint_description">Description</string>
+    <string name="Dialog_error" translatable="false">Une erreur est survenue</string>
+    <string name="Dialog_connectionLoading" translatable="false">Connection en cours</string>
+    <string name="Dialog_loginConfirmed" translatable="false">Connection réussie</string>
+    <string name="IBAN_Text" translatable="false">IBAN</string>
+    <string name="Description_visibility" translatable="false">Icône pour changer la visibilité</string>
+    <string name="Dialog_teacher" translatable="false">Vous ne pouvez vous inscrire en tant que professeur sur l\'application. Veuillez passer par le site <a href="https://1clic1prof.fr/">1clic1prof</a> pour cela.</string>
+    <string name="Dialog_inscriptionLoading" translatable="false">Inscription en cours</string>
+
     <string-array name="SchoolLevel">
         <item>CP</item>
         <item>CE1</item>
@@ -41,11 +51,5 @@
         <item>SVT</item>
         <item>Économie</item>
     </string-array>
-    <string name="statutIs">je suis :</string>
-    <string name="Hint_description">Description</string>
-    <string name="Dialog_error" translatable="false">Une erreur est survenue</string>
-    <string name="Dialog_connection" translatable="false">Connection en cours</string>
-    <string name="Dialog_logIn" translatable="false">Connection réussie</string>
-    <string name="IBAN_Text" translatable="false">IBAN</string>
-    <string name="Description_visibility" translatable="false">Icône pour changer la visibilité</string>
+    <string name="error_Entries" translatable="false">L\'adresse mail ou le mot de passe est erroné</string>
 </resources>

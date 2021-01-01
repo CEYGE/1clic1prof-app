@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.1clic1prof"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.RequestPasswordActivity"></activity>
         <activity android:name=".activities.ContactActivity" />
         <activity android:name=".activities.ProfileStudentActivity" />
+        <activity android:name=".activities.ProfileTeacherActivity"/>
         <activity android:name=".activities.InscriptionActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

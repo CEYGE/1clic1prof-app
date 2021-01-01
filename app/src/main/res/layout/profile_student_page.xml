@@ -91,12 +91,13 @@
             style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.15"
+            android:layout_weight="0.2"
             android:text="@string/FirstName"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginBottom="6dp" />
 
-        <EditText
-            android:id="@+id/editTextTextFirstName"
+        <TextView
+            android:id="@+id/editTextFirstName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.225"
@@ -104,7 +105,6 @@
             android:ems="10"
             android:hint="@string/FirstName"
             android:autofillHints="@string/FirstName"
-            android:inputType="textPersonName"
             style="@style/EntryText" />
 
 
@@ -113,11 +113,12 @@
             style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:text="@string/LastName" />
+            android:layout_weight="0.2"
+            android:text="@string/LastName"
+            android:layout_marginBottom="6dp" />
 
-        <EditText
-            android:id="@+id/editTextTextLastName"
+        <TextView
+            android:id="@+id/editTextLastName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.225"
@@ -125,7 +126,6 @@
             android:ems="10"
             android:hint="@string/LastName"
             android:autofillHints="@string/LastName"
-            android:inputType="textPersonName"
             style="@style/EntryText" />
 
 
@@ -134,43 +134,39 @@
             style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:text="@string/Email_Text" />
+            android:layout_weight="0.2"
+            android:text="@string/Email_Text"
+            android:layout_marginBottom="6dp"/>
 
 
-        <EditText
-            android:id="@+id/editTextTextMail"
+        <TextView
+            android:id="@+id/editTextMail"
             style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_weight="0.225"
             android:autofillHints="@string/Email_Text"
-            android:hint="@string/Email_Text"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/grey"
-            android:textSize="14sp" />
+            android:hint="@string/Email_Text" />
 
         <TextView
             android:id="@+id/textPasswordView"
             style="@style/TitleText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.15"
+            android:layout_weight="0.2"
             android:text="@string/Password_Text"
-            android:textSize="14sp" />
+            android:layout_marginBottom="6dp"/>
 
-        <EditText
+
+        <TextView
             android:id="@+id/editTextTextPassword"
+            style="@style/EntryText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.225"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="@string/Hint_pwd"
+            android:layout_weight="0.3"
             android:autofillHints="@string/Hint_pwd"
-            android:inputType="textPassword"
-            style="@style/EntryText"/>
+            android:hint="@string/Hint_pwd" />
 
 
         <LinearLayout
@@ -210,7 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="12dp"
-            android:layout_weight="0.15"
+            android:layout_weight="0.2"
             android:entries="@array/SchoolLevel"
             android:spinnerMode="dropdown" />
 
@@ -219,8 +215,8 @@
             android:id="@+id/switchNotification"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="0.2"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.25"
             android:text="@string/Notification"
             style="@style/EntryText"
             tools:ignore="UseSwitchCompatOrMaterialXml" />

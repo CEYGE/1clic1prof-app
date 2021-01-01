@@ -2,11 +2,9 @@ package fr.clic1prof.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
-import java.util.logging.Handler;
 
 import fr.clic1prof.R;
 
@@ -26,21 +24,30 @@ public class LoadingDialog {
         dialog = builder.create();
     }
 
-    public void startLoadingDialog(){ dialog.show();}
+    public void startLoadingDialog(){
+        dialog.show();
+    }
     public void dismissDialog(){
-        dialog.dismiss();
+        if(this.dialog != null)dialog.dismiss();
     }
 
-    public void ErrorDialog(){
+    public void errorDialog(int string){
+        if(dialog == null){
+            launchLoadingDialog();
+        }
         TextView text = dialog.findViewById(R.id.loadingText);
-        text.setText(R.string.Dialog_error);
+        text.setText(string);
         dialog.setCancelable(true);
+
     }
 
-    public void errorEntries(int color){
-        TextView view = dialog.findViewById(R.id.loadingText);
-        view.setText("Mail ou Mot de passe ne répond pas aux critères !");
-        view.setTextColor(color);
-        dialog.setCancelable(true);
+    public void inscriptionText(){
+        TextView text = dialog.findViewById(R.id.loadingText);
+        text.setText(R.string.Dialog_inscriptionLoading);
+    }
+
+    public void connectionText(){
+        TextView text = dialog.findViewById(R.id.loadingText);
+        text.setText(R.string.Dialog_connectionLoading);
     }
 }

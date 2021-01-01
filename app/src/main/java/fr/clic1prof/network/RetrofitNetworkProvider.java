@@ -2,8 +2,7 @@ package fr.clic1prof.network;
 
 import javax.inject.Inject;
 
-import fr.clic1prof.models.user.UserSession;
-import fr.clic1prof.models.user.UserSessionModel;
+import fr.clic1prof.models.session.UserSessionModel;
 import okhttp3.OkHttpClient;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
@@ -43,6 +42,7 @@ public class RetrofitNetworkProvider implements NetworkProvider {
 
         return new OkHttpClient.Builder()
                 .addInterceptor(new TokenInterceptor(this.model))
+                .addInterceptor(new UrlInterceptor(this.model))
                 .authenticator(new TokenAuthenticator(this, this.model))
                 .build();
     }
