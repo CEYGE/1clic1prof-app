@@ -1,5 +1,7 @@
 package fr.clic1prof.modules;
 
+import javax.inject.Singleton;
+
 import dagger.Binds;
 import dagger.Module;
 import dagger.hilt.InstallIn;
@@ -16,11 +18,14 @@ import fr.clic1prof.models.session.UserSessionModel;
 public abstract class ModelModule {
 
     @Binds
+    @Singleton // Very important to have a unique instance of this class.
     public abstract UserSessionModel bindUserSessionModel(UserSession session);
 
     @Binds
+    @Singleton // Very important to have a unique instance of this class.
     public abstract ContactHandler<StudentContact> bindStudentContactHandler(ContactHandlerImpl<StudentContact> handler);
 
     @Binds
+    @Singleton // Very important to have a unique instance of this class.
     public abstract ContactHandler<TeacherContact> bindTeacherContactHandler(ContactHandlerImpl<TeacherContact> handler);
 }

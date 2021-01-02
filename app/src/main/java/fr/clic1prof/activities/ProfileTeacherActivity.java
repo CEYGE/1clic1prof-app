@@ -54,10 +54,10 @@ public class ProfileTeacherActivity extends AppCompatActivity {
         textLast.setText(profile.getLastName());
         TextView textMail = findViewById(R.id.editTextMail);
         textMail.setText(profile.getEmail());
-        //SchoolLevel profile
+        /*//SchoolLevel profile
         Spinner spinner = findViewById(R.id.spinnerSpeciality);
         spinner.setSelection(profile.getStudies().getId());
-        //Image bitmap profile
+        *///Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img);
         imgView.setImageBitmap(profile.getPicture());
     }

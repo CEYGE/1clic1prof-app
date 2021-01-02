@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     @Inject
     public UserSessionModel model;
 
-    private TextView error;
+    private ErrorEntrie error;
     private LoginActivityViewModel viewModel;
     private LoadingDialog loadingDialog;
 
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_page);
 
         this.loadingDialog = new LoadingDialog(LoginActivity.this);
-        this.error = findViewById(R.id.errorInvisibleViewLogin);
+        this.error = new ErrorEntrie(findViewById(R.id.errorInvisibleViewLogin));
         this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
         //Setup login observer
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void connect(View view) {
-        cleanse();
+        error.cleanse();
         EditText emailView = findViewById(R.id.mailText);
         EditText passwordView = findViewById(R.id.passwordText);
         String email = emailView.getText().toString();
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             AuthenticationRequest request = new AuthenticationRequest(email, password);
             this.viewModel.login(request);
         }else {
-            errorEntries();
+            error.showError();
         }
     }
 
@@ -152,15 +152,5 @@ public class LoginActivity extends AppCompatActivity {
         return ( !TextUtils.isEmpty(mail) && Patterns.EMAIL_ADDRESS.matcher(mail).matches() );
     }
 
-    private void errorEntries(){
-        this.error.setText(R.string.error_Entries);
-        this.error.setTextColor(getResources().getColor(R.color.red));
-        this.error.setVisibility(View.VISIBLE);
-    }
 
-    private void cleanse(){
-        if(this.error.getVisibility() == View.VISIBLE) {
-            this.error.setVisibility(View.GONE);
-        }
-    }
 }

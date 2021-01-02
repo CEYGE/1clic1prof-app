@@ -17,6 +17,8 @@ public abstract class ProfileActivityViewModel<T extends Profile> extends ViewMo
 
     private final ProfileRepository<T> repository;
     private final MediatorLiveData<Result<T>> profileLiveData = new MediatorLiveData<>();
+
+    private final MediatorLiveData<Result<String>> firstNameLiveDate = new MediatorLiveData<>();
     //1 livedata par info indépendant
     //1 livedata qui contient l'ensemble du profile
 
@@ -36,10 +38,15 @@ public abstract class ProfileActivityViewModel<T extends Profile> extends ViewMo
         LiveData<Bitmap> data = this.repository.updatePicture(bitmap);
     }
 
-    public void updateProfile(String firstName, String lastName, PasswordModifier modifier){
-        this.repository.updateFirstName(firstName);
-        this.repository.updateLastName(lastName);
-        this.repository.updatePassword(modifier);
+    public void updateFirstName(String value){
+        LiveData<String> data = this.repository.updateFirstName(value);
+        this.firstNameLiveDate.addSource(data, name -> {
+
+            Result<String> result = name != null ? Result.success(name) : Result.error();
+
+            this.firstNameLiveDate.postValue(result);
+            this.firstNameLiveDate.removeSource(data);
+        });
     }
 
     public ProfileRepository<T> getRepository() {

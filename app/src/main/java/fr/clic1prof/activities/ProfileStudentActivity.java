@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import java.util.regex.Pattern;
+
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.models.profile.StudentProfile;
@@ -24,6 +26,7 @@ import fr.clic1prof.viewmodels.profile.StudentProfileActivityViewModel;
 public class ProfileStudentActivity extends AppCompatActivity {
 
     private StudentProfileActivityViewModel viewModel;
+    private ErrorEntrie error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class ProfileStudentActivity extends AppCompatActivity {
         setContentView(R.layout.profile_student_page);
 
         this.viewModel = new ViewModelProvider(this).get(StudentProfileActivityViewModel.class);
-
+        this.error = new ErrorEntrie(findViewById(R.id.errorInvisibleViewProfile01));
         this.setObserver();
     }
 
@@ -57,24 +60,31 @@ public class ProfileStudentActivity extends AppCompatActivity {
         textLast.setText(profile.getLastName());
         TextView textMail = findViewById(R.id.editTextMail);
         textMail.setText(profile.getEmail());
-        //SchoolLevel profile
+        /*//SchoolLevel profile
         Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
-        spinner.setSelection(profile.getLevel().getId());
-        //Image bitmap profile
+        spinner.setSelection(profile.getLevel());
+        *///Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img);
         imgView.setImageBitmap(profile.getPicture());
     }
 
-    public void switchFirstNameAndUpdate(View view){
+    public void switchFirstNameAndUpdate01(View view){
         Button button = findViewById(R.id.switchFirstButton);
         ViewSwitcher switcher = (ViewSwitcher) findViewById(R.id.switchFirstName);
         if(button.getText().toString().equals("Modifier")) {
             switcher.showNext();
-            EditText text = switcher.findViewById(R.id.editTextFirstName);
+            changeTextButton(button);
         }else {
-            switcher.showNext();
+            EditText text = switcher.findViewById(R.id.editTextFirstName);
+            if(verifString(text.getText().toString())) {
+                this.viewModel.updateFirstName(text.getText().toString());
+                switcher.showNext();
+                changeTextButton(button);
+            }else {
+                error.setText("Le prénom ne répond pas aux critères.");
+                error.showError();
+            }
         }
-        changeTextButton(button);
     }
 
 
@@ -98,5 +108,9 @@ public class ProfileStudentActivity extends AppCompatActivity {
 
     private void changeTextButton(Button button){
         button.setText( button.getText().toString().equals("Valider") ? "Modifier" : "Valider");
+    }
+
+    private boolean verifString(String value){
+        return !Pattern.matches("^\\w$",value);
     }
 }

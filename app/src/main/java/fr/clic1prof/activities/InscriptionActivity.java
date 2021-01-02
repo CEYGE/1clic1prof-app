@@ -1,7 +1,6 @@
 package fr.clic1prof.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.android.material.chip.ChipGroup;
 
@@ -24,7 +22,7 @@ import fr.clic1prof.viewmodels.ResultType;
 public class InscriptionActivity extends AppCompatActivity {
 
     private InscriptionActivityViewModel viewModel;
-    private TextView error;
+    private ErrorEntrie error;
     private LoadingDialog dialog;
 
     @Override
@@ -34,7 +32,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
         this.viewModel = new ViewModelProvider(this).get(InscriptionActivityViewModel.class);
         this.dialog = new LoadingDialog(this);
-        error = findViewById(R.id.errorInvisibleViewInscription);
+        this.error = new ErrorEntrie(findViewById(R.id.errorInvisibleViewInscription));
 
         //Setup observer
         this.setInscriptionObserver();
@@ -50,7 +48,7 @@ public class InscriptionActivity extends AppCompatActivity {
             }else if(result.getType() == ResultType.ERROR){
                 this.dialog.dismissDialog();
                 this.error.setText(R.string.Dialog_error);
-                this.error.setVisibility(View.VISIBLE);
+                this.error.showError();
             }else {
                 this.dialog.launchLoadingDialog();
                 this.dialog.startLoadingDialog();
@@ -78,7 +76,7 @@ public class InscriptionActivity extends AppCompatActivity {
      * @param view
      */
     public void inscription(View view) {
-        cleanse();
+        this.error.cleanse();
         if(isStudent()) {
 
             EditText lastView = findViewById(R.id.InscriptionlastNameText);
@@ -95,7 +93,7 @@ public class InscriptionActivity extends AppCompatActivity {
             this.viewModel.register(register);
         }else{
             error.setText(R.string.Dialog_teacher);
-            error.setVisibility(View.VISIBLE);
+            error.showError();
         }
     }
 
@@ -116,15 +114,6 @@ public class InscriptionActivity extends AppCompatActivity {
     private boolean isStudent(){
         ChipGroup chipGroup = findViewById(R.id.ChipGroup);
         int identifier = chipGroup.getCheckedChipId();
-        if (identifier-2131296366 == 0){
-            return true;
-        }
-        return false;
-    }
-
-    private void cleanse(){
-        if(this.error.getVisibility() == View.VISIBLE) {
-            this.error.setVisibility(View.GONE);
-        }
+        return identifier - 2131296366 == 0;
     }
 }
