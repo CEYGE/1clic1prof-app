@@ -1,14 +1,10 @@
 package fr.clic1prof.viewmodels;
 
 import androidx.hilt.lifecycle.ViewModelInject;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.clic1prof.models.contacts.Contact;

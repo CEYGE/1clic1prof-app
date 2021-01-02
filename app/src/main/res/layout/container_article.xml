@@ -28,26 +28,29 @@
                 android:orientation="vertical">
 
                 <ImageView
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/img_actu" />
+                    app:srcCompat="@drawable/img_actu"
+                    android:contentDescription="@string/article_image" />
             </LinearLayout>
 
             <TextView
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15sp"
-                android:text="TextView" />
+                android:layout_marginStart="15sp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.  "
+                android:textColor="#333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15sp"
-                android:text="TextView" />
+                android:layout_marginStart="15sp"
+                android:text="@string/textview" />
         </LinearLayout>
 
     </LinearLayout>

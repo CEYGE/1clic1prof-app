@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //redirect for testing purposes
-        Intent intent = new Intent(this, MainStudentActivity.class);
+        Intent intent = new Intent(this, MainTeacherActivity.class);
         startActivity(intent);
         //
 

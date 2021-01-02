@@ -29,7 +29,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1.6"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -41,7 +42,7 @@
                                 android:id="@+id/textView19"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="15sp"
+                                android:layout_marginStart="15sp"
                                 android:layout_weight="1"
                                 android:gravity="bottom"
                                 android:text="30 oct. 2020"
@@ -52,9 +53,9 @@
                                 android:id="@+id/textView18"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="15sp"
+                                android:layout_marginStart="15sp"
                                 android:layout_weight="1"
-                                android:gravity="left"
+                                android:gravity="start"
                                 android:text="Cours de mathématiques"
                                 android:textColor="#FFFFFF"
                                 android:textSize="18sp"
@@ -85,7 +86,8 @@
                                     android:layout_width="40sp"
                                     android:layout_height="20sp"
                                     android:foregroundGravity="center"
-                                    android:src="@drawable/notebook_top_right_button" />
+                                    android:src="@drawable/notebook_top_right_button"
+                                    android:contentDescription="@string/number_file_attached" />
 
                                 <ImageView
                                     android:id="@+id/imageView10"
@@ -95,14 +97,14 @@
                                     android:layout_marginTop="5sp"
                                     android:layout_marginEnd="5sp"
                                     android:layout_marginBottom="5sp"
-                                    android:layout_weight="1"
-                                    android:src="@drawable/paper_clip" />
+                                    android:src="@drawable/paper_clip"
+                                    android:contentDescription="@string/file_attached" />
 
                                 <TextView
                                     android:id="@+id/textView17"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="22sp"
+                                    android:layout_marginStart="22sp"
                                     android:layout_marginTop="3sp"
                                     android:text="6"
                                     android:textColor=" #59ADFF"
@@ -144,8 +146,8 @@
                         android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15sp"
-                        android:text="Valider le cours pour voir la note"
+                        android:layout_marginStart="15sp"
+                        android:text="@string/validate_lesson"
                         android:textColor="#F9B300"
                         android:textSize="15sp" />
 
@@ -159,7 +161,8 @@
                             android:id="@+id/imageView14"
                             android:layout_width="wrap_content"
                             android:layout_height="20sp"
-                            android:src="@drawable/botton_valider" />
+                            android:src="@drawable/botton_valider"
+                            android:contentDescription="@string/validate_button" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -179,7 +182,7 @@
                     android:layout_marginLeft="20sp"
                     android:layout_marginRight="20sp"
                     android:layout_marginBottom="20sp"
-                    android:text="Historique"
+                    android:text="@string/historic"
                     android:textColor="#333333"
                     android:textStyle="bold" />
 
@@ -188,7 +191,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    tools:listitem="@layout/container_course_agenda">
+                    tools:listitem="@layout/container_course">
 
                 </androidx.recyclerview.widget.RecyclerView>
 

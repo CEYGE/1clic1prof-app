@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 import fr.clic1prof.api.UserController;
 import fr.clic1prof.models.user.Credentials;
-import fr.clic1prof.models.user.Registration;
 import fr.clic1prof.models.user.Token;
 import fr.clic1prof.models.user.UserSessionModel;
 import fr.clic1prof.network.NetworkProvider;

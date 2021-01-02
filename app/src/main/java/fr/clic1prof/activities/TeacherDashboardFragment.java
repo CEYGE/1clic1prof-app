@@ -21,8 +21,7 @@ public class TeacherDashboardFragment extends DashboardFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflateFragment(R.layout.teacher_dashboard, inflater, container);
-        return view;
+        return inflateFragment(R.layout.teacher_dashboard, inflater, container);
     }
 
 }

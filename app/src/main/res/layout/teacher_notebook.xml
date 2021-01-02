@@ -28,17 +28,18 @@
 
                     <ImageView
                         android:id="@+id/imageView32"
-                        android:layout_width="30sp"
+                        android:layout_width="0dp"
                         android:layout_height="30sp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/plus_upload" />
+                        app:srcCompat="@drawable/plus_upload"
+                        android:contentDescription="@string/add_document_button" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/textView32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ajouter une nouvelle note"
+                    android:text="@string/Add_new_note"
                     android:textColor="#BCD5ED"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -47,7 +48,7 @@
                     android:id="@+id/textView33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tu pourras aussi y associer des documents" />
+                    android:text="@string/associate_document" />
             </LinearLayout>
 
             <LinearLayout
@@ -69,7 +70,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1.6"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -81,7 +83,7 @@
                                 android:id="@+id/textView19"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="15sp"
+                                android:layout_marginStart="15sp"
                                 android:layout_weight="1"
                                 android:gravity="bottom"
                                 android:text="30 oct. 2020"
@@ -92,9 +94,9 @@
                                 android:id="@+id/textView18"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="15sp"
+                                android:layout_marginStart="15sp"
                                 android:layout_weight="1"
-                                android:gravity="left"
+                                android:gravity="start"
                                 android:text="Cours de mathématiques"
                                 android:textColor="#FFFFFF"
                                 android:textSize="18sp"
@@ -125,7 +127,8 @@
                                     android:layout_width="40sp"
                                     android:layout_height="20sp"
                                     android:foregroundGravity="center"
-                                    android:src="@drawable/notebook_top_right_button" />
+                                    android:src="@drawable/notebook_top_right_button"
+                                    android:contentDescription="@string/file_attached" />
 
                                 <ImageView
                                     android:id="@+id/imageView10"
@@ -135,14 +138,14 @@
                                     android:layout_marginTop="5sp"
                                     android:layout_marginEnd="5sp"
                                     android:layout_marginBottom="5sp"
-                                    android:layout_weight="1"
-                                    android:src="@drawable/paper_clip" />
+                                    android:src="@drawable/paper_clip"
+                                    android:contentDescription="@string/file_attached" />
 
                                 <TextView
                                     android:id="@+id/textView17"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="22sp"
+                                    android:layout_marginStart="22sp"
                                     android:layout_marginTop="3sp"
                                     android:text="6"
                                     android:textColor=" #59ADFF"
@@ -185,8 +188,8 @@
                         android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15sp"
-                        android:text="En attente de validation"
+                        android:layout_marginStart="15sp"
+                        android:text="@string/pending_validation"
                         android:textColor="#808080"
                         android:textSize="15sp" />
 
@@ -207,7 +210,7 @@
                     android:layout_marginLeft="20sp"
                     android:layout_marginRight="20sp"
                     android:layout_marginBottom="20sp"
-                    android:text="Historique"
+                    android:text="@string/historic"
                     android:textColor="#333333"
                     android:textStyle="bold" />
 
@@ -216,24 +219,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    tools:listitem="@layout/container_course_agenda">
+                    tools:listitem="@layout/container_course">
 
                 </androidx.recyclerview.widget.RecyclerView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25sp"
-                        android:layout_weight="1"
-                        android:text="Nom professeur" />
-                </LinearLayout>
 
             </LinearLayout>
 

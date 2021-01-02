@@ -20,7 +20,8 @@
             android:layout_height="5dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="30sp"
-            android:src="@drawable/sheet_bar" />
+            android:src="@drawable/sheet_bar"
+            android:contentDescription="@string/grey_drawer_line" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="Cours de "
+                android:text="@string/Lesson"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -39,18 +40,20 @@
                 android:id="@+id/imageView20"
                 android:layout_width="90dp"
                 android:layout_height="59dp"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:scaleType="centerInside"
-                android:src="@drawable/top_right_date_container" />
+                android:src="@drawable/top_right_date_container"
+                android:contentDescription="@string/top_right_drawer_date" />
 
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="30dp"
-                android:src="@drawable/file_plus" />
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/file_plus"
+                android:contentDescription="@string/file_attached_image" />
 
         </FrameLayout>
     </RelativeLayout>
@@ -67,7 +70,7 @@
             android:id="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mathématiques"
+            android:text="@string/Subject"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -85,7 +88,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,14 +101,14 @@
                             android:id="@+id/textView26"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Début"
+                            android:text="@string/Begin"
                             android:textColor="#333"
                             tools:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="10sp"
+                            android:layout_marginEnd="10sp"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -118,28 +122,24 @@
                                     android:layout_height="15sp"
                                     android:layout_gravity="center_vertical"
                                     android:layout_weight="1"
-                                    android:src="@drawable/calendar" />
+                                    android:src="@drawable/calendar"
+                                    android:contentDescription="@string/Calendar" />
 
                                 <TextView
                                     android:layout_width="100sp"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_marginLeft="3sp"
+                                    android:layout_marginStart="3sp"
                                     android:layout_weight="1"
-                                    android:text="TextView" />
+                                    android:text="@string/textview" />
 
-                                <ImageView
-                                    android:layout_height="5sp"
-                                    android:layout_width="5sp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_weight="1"
-                                    android:src="@drawable/arrow" />
                             </LinearLayout>
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="2sp"
-                                android:src="@drawable/line_date" />
+                                android:src="@drawable/line_date"
+                                android:contentDescription="@string/grey_line" />
 
                         </LinearLayout>
 
@@ -155,14 +155,14 @@
                             android:id="@+id/textView27"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Fin"
+                            android:text="@string/End"
                             android:textColor="#333"
                             android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="10sp"
+                            android:layout_marginEnd="10sp"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -176,30 +176,25 @@
                                     android:layout_width="5sp"
                                     android:layout_gravity="center_vertical"
                                     android:layout_weight="1"
-                                    android:src="@drawable/calendar" />
+                                    android:src="@drawable/calendar"
+                                    android:contentDescription="@string/Calendar" />
 
                                 <TextView
                                     android:layout_width="100sp"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_marginLeft="3sp"
+                                    android:layout_marginStart="3sp"
                                     android:layout_weight="1"
-                                    android:text="TextView" />
+                                    android:text="@string/textview" />
 
-                                <ImageView
-                                    android:id="@+id/imageView25"
-                                    android:layout_height="5sp"
-                                    android:layout_width="5sp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_weight="1"
-                                    android:src="@drawable/arrow" />
                             </LinearLayout>
 
                             <ImageView
                                 android:id="@+id/imageView28"
                                 android:layout_width="match_parent"
                                 android:layout_height="2sp"
-                                android:src="@drawable/line_date" />
+                                android:src="@drawable/line_date"
+                                android:contentDescription="@string/grey_line" />
 
                         </LinearLayout>
 
@@ -218,7 +213,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20sp"
-                    android:src="@drawable/line_header" />
+                    android:src="@drawable/line_header"
+                    android:contentDescription="@string/grey_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -231,7 +227,8 @@
                         android:layout_marginTop="20sp"
                         android:layout_marginBottom="20sp"
                         android:background="@drawable/background_file_attached"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="50sp"
@@ -242,11 +239,12 @@
 
                             <ImageView
                                 android:id="@+id/imageView12"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="11sp"
                                 android:layout_weight="1"
-                                android:src="@drawable/file" />
+                                android:src="@drawable/file"
+                                android:contentDescription="@string/file_attached_image" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -258,7 +256,7 @@
 
                             <TextView
                                 android:id="@+id/textView25"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="NomDuDocument.pdf" />
@@ -274,11 +272,12 @@
 
                             <ImageView
                                 android:id="@+id/imageView13"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:src="@drawable/download" />
+                                android:src="@drawable/download"
+                                android:contentDescription="@string/download_file_image" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

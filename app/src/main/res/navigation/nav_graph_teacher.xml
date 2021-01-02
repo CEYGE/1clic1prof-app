@@ -19,8 +19,7 @@
         tools:layout="@layout/teacher_agenda" >
         <action
             android:id="@+id/action_teacher_agenda_to_creationEventActivity"
-            app:destination="@id/creationEventActivity"
-            app:popUpTo="@id/teacher_agenda" />
+            app:destination="@id/creationEventActivity" />
     </fragment>
     <action android:id="@+id/action_global_agendaFragment" app:destination="@id/teacher_agenda"/>
     <fragment
@@ -29,7 +28,6 @@
         android:label="fragment_notebook"
         tools:layout="@layout/teacher_notebook"/>
     <action android:id="@+id/action_global_notebookFragment" app:destination="@id/teacher_notebook" />
-
     <activity
         android:id="@+id/creationEventActivity"
         android:name="fr.clic1prof.activities.CreationEventActivity"

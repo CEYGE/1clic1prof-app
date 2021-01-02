@@ -6,14 +6,17 @@
     tools:context=".activities.StudentAgendaFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/button_add_event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="20sp"
         android:backgroundTint="#59ADFF"
         android:clickable="true"
-        android:src="@drawable/add_vector" />
+        android:src="@drawable/add_vector"
+        android:tint="@null"
+        android:contentDescription="@string/add_event_button"
+        android:focusable="true" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -44,14 +47,15 @@
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/line_header" />
+                    android:src="@drawable/line_header"
+                    android:contentDescription="@string/grey_line" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20sp"
-                    android:text="Aujourd'hui"
+                    android:text="@string/today"
                     android:textColor="#333333"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -61,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    tools:listitem="@layout/container_course_agenda">
+                    tools:listitem="@layout/container_course">
 
                 </androidx.recyclerview.widget.RecyclerView>
 

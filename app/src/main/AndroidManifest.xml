@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.1clic1prof"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.CreationEventActivity"></activity>
-        <activity android:name=".activities.TeacherActivity" />
+        <activity android:name=".activities.CreationEventActivity" />
+        <activity android:name=".activities.MainTeacherActivity" />
         <activity android:name=".activities.MainStudentActivity" />
-        <activity android:name=".activities.ContactActivity" />
+        <activity android:name=".activities.ContactActivity"></activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

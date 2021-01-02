@@ -6,16 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import fr.clic1prof.api.ContactController;
 import fr.clic1prof.models.contacts.Contact;
-import fr.clic1prof.models.contacts.ContactManager;
 import fr.clic1prof.models.contacts.ContactModel;
-import fr.clic1prof.models.user.UserSessionModel;
 import fr.clic1prof.network.NetworkProvider;
 import retrofit2.Call;
 import retrofit2.Callback;

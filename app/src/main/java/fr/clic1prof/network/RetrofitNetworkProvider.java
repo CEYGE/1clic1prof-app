@@ -2,7 +2,6 @@ package fr.clic1prof.network;
 
 import javax.inject.Inject;
 
-import fr.clic1prof.models.user.UserSession;
 import fr.clic1prof.models.user.UserSessionModel;
 import okhttp3.OkHttpClient;
 import retrofit2.Converter;

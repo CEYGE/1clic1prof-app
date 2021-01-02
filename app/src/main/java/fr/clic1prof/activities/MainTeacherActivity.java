@@ -1,11 +1,13 @@
 package fr.clic1prof.activities;
 
+
 import android.os.Bundle;
+
 
 import fr.clic1prof.R;
 import fr.clic1prof.abstractviews.AbstractActivity;
 
-public class TeacherActivity extends AbstractActivity {
+public class MainTeacherActivity extends AbstractActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,5 +15,7 @@ public class TeacherActivity extends AbstractActivity {
         setContentView(R.layout.teacher_main_activity);
         this.setListenerMenu();
     }
+
+
 
 }

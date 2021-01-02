@@ -13,13 +13,13 @@ import fr.clic1prof.abstractviews.AgendaFragment;
 
 public class StudentAgendaFragment extends AgendaFragment {
 
-    public static StudentAgendaFragment newInstance() { return new StudentAgendaFragment(); }
+    public static StudentAgendaFragment newInstance() {
+        return new StudentAgendaFragment(); }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflateFragment(R.layout.student_agenda, inflater, container);
-        return view;
+        return inflateFragment(R.layout.student_agenda, inflater, container);
     }
 
 }

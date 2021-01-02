@@ -17,7 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60sp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,15 +30,16 @@
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="50sp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/ecosia" />
+                    app:srcCompat="@drawable/ecosia"
+                    android:contentDescription="@string/company_image" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20sp"
+                android:layout_marginStart="20sp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -46,7 +48,7 @@
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Intitulé du poste"
+                    android:text="@string/job_name"
                     android:textColor="#333"
                     android:textStyle="bold" />
 
@@ -54,7 +56,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ecosia - Stage" />
+                    android:text="@string/ecosia_internship" />
             </LinearLayout>
 
         </LinearLayout>
@@ -63,7 +65,8 @@
             android:id="@+id/imageView33"
             android:layout_width="match_parent"
             android:layout_height="2sp"
-            app:srcCompat="@drawable/line_header" />
+            app:srcCompat="@drawable/line_header"
+            android:contentDescription="@string/grey_line" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

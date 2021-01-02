@@ -25,10 +25,12 @@
             <ImageView
                 android:layout_width="10sp"
                 android:layout_height="10sp"
-                android:layout_marginRight="15sp"
-                android:src="@drawable/blue_dot" />
+                android:layout_marginEnd="15sp"
+                android:src="@drawable/blue_dot"
+                android:contentDescription="@string/blue_dot" />
 
             <TextView
+                android:id="@+id/textview_course_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="22 Oct. 2021 " />
@@ -42,11 +44,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/textview_course_title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
+                android:layout_marginStart="25sp"
                 android:layout_weight="1"
-                android:text="Intitulé du cours / chapitre abordé "
+                android:text="@string/chapter_lesson"
                 android:textColor="#333333"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -59,11 +62,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/textview_course_teacher_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
+                android:layout_marginStart="25sp"
                 android:layout_weight="1"
-                android:text="Nom professeur" />
+                android:text="@string/professor_name" />
         </LinearLayout>
 
     </LinearLayout>

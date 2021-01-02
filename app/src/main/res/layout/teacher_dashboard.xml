@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.TeacherActivity">
+    tools:context=".activities.MainTeacherActivity">
 
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -28,7 +28,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8sp"
-                        android:text="Prochain cours"
+                        android:text="@string/upcoming_class"
                         android:textColor="#333333"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -37,7 +37,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/rectangle_cours"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -74,7 +75,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:gravity="bottom|left"
+                                android:gravity="bottom|start"
                                 android:text="Mathématiques"
                                 android:textStyle="bold" />
 
@@ -83,8 +84,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:gravity="top|left"
-                                android:text="Mon Élève" />
+                                android:gravity="top|start"
+                                android:text="@string/my_student" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -98,7 +99,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="15sp"
-                                app:srcCompat="@drawable/profil_img" />
+                                app:srcCompat="@drawable/profil_img"
+                                android:contentDescription="@string/student_image" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -120,8 +122,8 @@
                             android:id="@+id/textView15"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15sp"
-                            android:text="Offres d'emplois et stages"
+                            android:layout_marginStart="15sp"
+                            android:text="@string/offer_job_intership"
                             android:textColor="#333333"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -166,8 +168,8 @@
                             android:id="@+id/textView10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15sp"
-                            android:text="Actualité"
+                            android:layout_marginStart="15sp"
+                            android:text="@string/News"
                             android:textColor="#333333"
                             android:textSize="16sp"
                             android:textStyle="bold" />

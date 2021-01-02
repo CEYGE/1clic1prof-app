@@ -26,7 +26,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8sp"
-                        android:text="Prochain cours"
+                        android:text="@string/upcoming_class"
                         android:textColor="#333333"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -35,7 +35,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/rectangle_cours"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -72,7 +73,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:gravity="bottom|left"
+                                android:gravity="bottom|start"
                                 android:text="Mathématiques"
                                 android:textStyle="bold" />
 
@@ -81,8 +82,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:gravity="top|left"
-                                android:text="Nom Élève" />
+                                android:gravity="top|start"
+                                android:text="@string/student_name" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -96,7 +97,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="15sp"
-                                app:srcCompat="@drawable/profil_img" />
+                                app:srcCompat="@drawable/profil_img"
+                                android:contentDescription="@string/professor_image" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -118,8 +120,8 @@
                             android:id="@+id/textView15"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15sp"
-                            android:text="Nos offres"
+                            android:layout_marginStart="15sp"
+                            android:text="@string/our_offers"
                             android:textColor="#333333"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -143,29 +145,32 @@
 
                                 <ImageView
                                     android:id="@+id/imageView17"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="15sp"
+                                    android:layout_marginEnd="15sp"
                                     android:layout_weight="1"
                                     android:adjustViewBounds="true"
                                     android:cropToPadding="false"
-                                    app:srcCompat="@drawable/img_cours" />
+                                    app:srcCompat="@drawable/img_cours"
+                                    android:contentDescription="@string/private_lesson" />
 
                                 <ImageView
                                     android:id="@+id/imageView16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="15sp"
+                                    android:layout_marginEnd="15sp"
                                     android:adjustViewBounds="true"
-                                    app:srcCompat="@drawable/img_soutien" />
+                                    app:srcCompat="@drawable/img_soutien"
+                                    android:contentDescription="@string/tutoring" />
 
                                 <ImageView
                                     android:id="@+id/imageView15"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="15sp"
+                                    android:layout_marginEnd="15sp"
                                     android:adjustViewBounds="true"
-                                    app:srcCompat="@drawable/img_cours" />
+                                    app:srcCompat="@drawable/img_cours"
+                                    android:contentDescription="Third button offer" />
 
                             </LinearLayout>
                         </HorizontalScrollView>
@@ -191,8 +196,8 @@
                             android:id="@+id/textView10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15sp"
-                            android:text="Actualité"
+                            android:layout_marginStart="15sp"
+                            android:text="@string/News"
                             android:textColor="#333333"
                             android:textSize="16sp"
                             android:textStyle="bold" />

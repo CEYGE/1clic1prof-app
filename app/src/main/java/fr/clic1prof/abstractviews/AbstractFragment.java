@@ -26,8 +26,8 @@ public abstract class AbstractFragment extends Fragment {
 
     // Permit to handle layout difference in child
     protected View inflateFragment(int resId, LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(resId, container, false);
-        return view;
+        return inflater.inflate(resId, container, false);
+
     }
 
 }

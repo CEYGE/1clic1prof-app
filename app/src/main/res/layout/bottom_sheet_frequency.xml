@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/sheet_bar" />
+        android:src="@drawable/sheet_bar"
+        android:contentDescription="@string/grey_line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,16 +25,17 @@
             android:id="@+id/textView29"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fréquence"
+            android:text="@string/Frequency"
             android:textColor="#333"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioGroup
+            android:id="@+id/radio_frequency"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="30sp"
-            android:gravity="left"
+            android:gravity="start"
             android:layoutDirection="rtl">
 
             <RadioButton
@@ -42,55 +44,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="Jamais" />
+                android:text="@string/Never" />
 
             <ImageView
                 android:id="@+id/imageView21"
                 android:layout_width="match_parent"
                 android:layout_height="4sp"
-                app:srcCompat="@drawable/line_date" />
+                app:srcCompat="@drawable/line_date"
+                android:contentDescription="@string/grey_line" />
 
             <RadioButton
                 android:id="@+id/radioButton5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tous les jours" />
+                android:text="@string/Everyday" />
 
             <ImageView
                 android:id="@+id/imageView22"
                 android:layout_width="match_parent"
                 android:layout_height="4sp"
-                app:srcCompat="@drawable/line_date" />
+                app:srcCompat="@drawable/line_date"
+                android:contentDescription="@string/grey_line" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tous les semaines" />
+                android:text="@string/EveryWeek" />
 
             <ImageView
                 android:id="@+id/imageView23"
                 android:layout_width="match_parent"
                 android:layout_height="4sp"
-                app:srcCompat="@drawable/line_date" />
+                app:srcCompat="@drawable/line_date"
+                android:contentDescription="@string/grey_line" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tous les mois" />
+                android:text="@string/EveryMonth" />
 
             <ImageView
                 android:id="@+id/imageView26"
                 android:layout_width="match_parent"
                 android:layout_height="4sp"
-                app:srcCompat="@drawable/line_date" />
+                app:srcCompat="@drawable/line_date"
+                android:contentDescription="@string/grey_line" />
 
             <RadioButton
                 android:id="@+id/radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tous les ans" />
+                android:text="@string/EveryYear" />
         </RadioGroup>
 
     </LinearLayout>
