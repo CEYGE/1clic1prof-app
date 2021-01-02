@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
@@ -49,7 +51,7 @@ public class ProfileStudentActivity extends AppCompatActivity {
         String fullName = profile.getFirstName() + profile.getLastName();
         view.setText(fullName);
         //TextView profile
-        TextView textFirst = findViewById(R.id.editTextFirstName);
+        TextView textFirst = findViewById(R.id.viewFirstName);
         textFirst.setText(profile.getFirstName());
         TextView textLast = findViewById(R.id.editTextLastName);
         textLast.setText(profile.getLastName());
@@ -61,6 +63,18 @@ public class ProfileStudentActivity extends AppCompatActivity {
         //Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img);
         imgView.setImageBitmap(profile.getPicture());
+    }
+
+    public void switchFirstNameAndUpdate(View view){
+        Button button = findViewById(R.id.switchFirstButton);
+        ViewSwitcher switcher = (ViewSwitcher) findViewById(R.id.switchFirstName);
+        if(button.getText().toString().equals("Modifier")) {
+            switcher.showNext();
+            EditText text = switcher.findViewById(R.id.editTextFirstName);
+        }else {
+            switcher.showNext();
+        }
+        changeTextButton(button);
     }
 
 
@@ -82,4 +96,7 @@ public class ProfileStudentActivity extends AppCompatActivity {
     }
     
 
+    private void changeTextButton(Button button){
+        button.setText( button.getText().toString().equals("Valider") ? "Modifier" : "Valider");
+    }
 }

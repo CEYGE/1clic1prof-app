@@ -3,7 +3,9 @@ package fr.clic1prof.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -60,4 +62,8 @@ public class ProfileTeacherActivity extends AppCompatActivity {
         imgView.setImageBitmap(profile.getPicture());
     }
 
+    public void Disconnect(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

@@ -9,8 +9,10 @@
 
     <LinearLayout
         android:id="@+id/linearReturnLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="82dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="start"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,16 +20,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/dashboard_return"
+        android:contentDescription="ReturnDashboard"
+        android:layout_marginEnd="4dp"/>
+
         <TextView
-            android:id="@+id/textReturnView"
-            style="@style/Theme.1clic1prof"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:onClick="sendHomePage"
-            android:text="@string/FirstName" />
-
-
+        android:id="@+id/textReturnView"
+        style="@style/EntryText"
+        android:layout_width="59dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="@string/FirstName" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,33 +87,62 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/linearLayoutLogOut"
+        app:layout_constraintBottom_toTopOf="@id/deconnexion_View"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearImageLayout"
         app:layout_constraintVertical_bias="0.52">
 
-
-        <TextView
-            android:id="@+id/textFirstNameView"
-            style="@style/TitleText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:text="@string/FirstName"
-            android:textSize="14sp"
-            android:layout_marginBottom="6dp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/editTextFirstName"
+            <TextView
+                android:id="@+id/textFirstNameView"
+                style="@style/TitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="@string/FirstName"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <Button
+                android:id="@+id/switchFirstButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.35"
+                android:text="Modifier"
+                />
+
+        </LinearLayout>
+
+        <ViewSwitcher
+            android:id="@+id/switchFirstName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.225"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="@string/FirstName"
-            android:autofillHints="@string/FirstName"
-            style="@style/EntryText" />
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/viewFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:text="@string/FirstName"
+                style="@style/EntryText"/>
+
+            <EditText
+                android:id="@+id/editTextFirstName"
+                android:hint="@string/FirstName"
+                android:autofillHints="@string/FirstName"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                style="@style/EntryText"/>
+        </ViewSwitcher>
+
 
 
         <TextView
@@ -223,35 +260,16 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayoutLogOut"
+    <ImageView
+        android:id="@+id/deconnexion_View"
+        android:onClick="Disconnect"
+        android:contentDescription="DeconnexionImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:gravity="center_horizontal"
-        android:onClick="Disconnect"
-        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/linearInformationLayout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearInformationLayout">
-
-        <ImageView
-            android:id="@+id/imageLogOutView"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:contentDescription="@string/Icon_name"
-            app:srcCompat="@drawable/rectangle" />
-
-        <TextView
-            android:id="@+id/textLogOutView"
-            style="@style/EntryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/LogOut" />
-
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/deconnexion_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

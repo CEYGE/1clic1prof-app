@@ -54,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
 
             if(result.getType() == ResultType.SUCCESS) {
                 this.loadingDialog.dismissDialog();
-                System.out.println(model.getSessionType());
                 if(model.getSessionType() == SessionType.STUDENT) sendToStudentProfile();
                 else sendToTeacherProfile();
 

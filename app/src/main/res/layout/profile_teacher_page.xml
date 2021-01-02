@@ -9,8 +9,10 @@
 
     <LinearLayout
         android:id="@+id/linearReturnLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="82dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="start"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,14 +20,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_return"
+            android:contentDescription="ReturnDashboard"
+            android:layout_marginEnd="4dp"/>
+
         <TextView
             android:id="@+id/textReturnView"
             style="@style/EntryText"
-            android:layout_width="0dp"
+            android:layout_width="59dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
             android:text="@string/FirstName" />
-
 
     </LinearLayout>
 
@@ -78,7 +88,7 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/linearLayoutLogOut"
+        app:layout_constraintBottom_toTopOf="@id/deconnexion_View"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearImageLayout"
@@ -159,10 +169,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
-            android:text="@string/Password_Text"
-            android:textSize="14sp" />
+            android:text="@string/Password_Text" />
 
         <EditText
+            style="@style/EntryText"
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -171,8 +181,7 @@
             android:autofillHints="@string/Hint_pwd"
             android:ems="10"
             android:hint="@string/Hint_pwd"
-            android:inputType="textPassword"
-            android:textSize="14sp" />
+            android:inputType="textPassword"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -183,7 +192,17 @@
             android:inputType="text|textMultiLine"
             android:maxLines="5"
             android:minLines="1"
-            android:maxLength="150"/>
+            android:maxLength="150"
+            android:layout_marginBottom="8dp"/>
+
+        <!--<Spinner
+            android:id="@+id/spinnerSchoolLevelTeacher"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"
+            android:entries="@array/SchoolLevel"
+            android:layout_marginBottom="8dp"
+            android:spinnerMode="dropdown"/>-->
 
 
         <Spinner
@@ -242,35 +261,17 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayoutLogOut"
+
+    <ImageView
+        android:id="@+id/deconnexion_View"
+        android:onClick="Disconnect"
+        android:contentDescription="DeconnexionImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:gravity="center_horizontal"
-        android:onClick="Disconnect"
-        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/linearInformationLayout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearInformationLayout">
-
-        <ImageView
-            android:id="@+id/imageLogOutView"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:contentDescription="@string/Icon_name"
-            app:srcCompat="@drawable/rectangle" />
-
-        <TextView
-            android:id="@+id/textLogOutView"
-            style="@style/EntryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/LogOut" />
-
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/deconnexion_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
