@@ -41,7 +41,7 @@ public class TeacherPayslipRepositoryImpl implements TeacherPayslipRepository {
 
             @Override
             public void onFailure(@NonNull Call<List<Document>> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot retrieve teacher's payslips.");
+                listener.onError("Cannot retrieve teacher's payslips.");
             }
         });
     }
@@ -59,12 +59,12 @@ public class TeacherPayslipRepositoryImpl implements TeacherPayslipRepository {
                     InputStream stream = response.body().byteStream();
                     listener.onSuccess(stream);
 
-                } else listener.onFailure(null, "Cannot retrieve student's invoice with id " + payslipId + ".");
+                } else listener.onError("Cannot retrieve student's invoice with id " + payslipId + ".");
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot retrieve teacher's payslip with id " + payslipId + ".");
+                listener.onError("Cannot retrieve teacher's payslip with id " + payslipId + ".");
             }
         });
     }

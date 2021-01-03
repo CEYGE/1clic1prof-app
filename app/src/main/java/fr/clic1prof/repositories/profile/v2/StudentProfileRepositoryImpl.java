@@ -27,12 +27,14 @@ public class StudentProfileRepositoryImpl extends UserProfileRepository<StudentP
 
             @Override
             public void onResponse(@NonNull Call<StudentProfile> call, @NonNull Response<StudentProfile> response) {
-                listener.onSuccess(response.body());
+
+                if(response.isSuccessful()) listener.onSuccess(response.body());
+                else listener.onError("Cannot retrieve student's profile.");
             }
 
             @Override
             public void onFailure(@NonNull Call<StudentProfile> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot retrieve student's profile.");
+                listener.onError("Cannot retrieve student's profile.");
             }
         });
     }
@@ -44,12 +46,14 @@ public class StudentProfileRepositoryImpl extends UserProfileRepository<StudentP
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                listener.onSuccess(level);
+
+                if(response.isSuccessful()) listener.onSuccess(level);
+                else listener.onError("Cannot update student's school level.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot update student's school level.");
+                listener.onError("Cannot update student's school level.");
             }
         });
     }

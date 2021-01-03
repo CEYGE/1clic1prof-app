@@ -38,12 +38,12 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
                 Bitmap bitmap = BitmapFactory.decodeStream(stream);
 
                 if(bitmap != null) listener.onSuccess(bitmap);
-                else listener.onFailure(null, "Cannot decode bitmap."); // TODO to review.
+                else listener.onError("Cannot decode bitmap."); // TODO to review.
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot retrieve user's profile picture.");
+                listener.onError("Cannot retrieve user's profile picture.");
             }
         });
     }
@@ -55,12 +55,14 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                listener.onSuccess(null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update user's first name.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot update user's first name.");
+                listener.onError("Cannot update user's first name.");
             }
         });
     }
@@ -72,12 +74,14 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                listener.onSuccess(null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update user's last name.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot update user's last name.");
+                listener.onError("Cannot update user's last name.");
             }
         });
     }
@@ -89,34 +93,38 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                listener.onSuccess(null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update user's password.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot update user's password.");
+                listener.onError("Cannot update user's password.");
             }
         });
     }
 
     @Override
-    public void updatePicture(Bitmap bitmap, DataListener<Void> listener) {
+    public void updatePicture(Bitmap bitmap, DataListener<Integer> listener) {
         // TODO
     }
 
     @Override
-    public void deleteProfilePicture(DataListener<Void> listener) {
+    public void deleteProfilePicture(DataListener<Boolean> listener) {
 
         this.getProfileController().deleteProfilePicture().enqueue(new Callback<Void>() {
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                listener.onSuccess(null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot delete user's profile picture.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot delete user's profile picture.");
+                listener.onError("Cannot delete user's profile picture.");
             }
         });
     }

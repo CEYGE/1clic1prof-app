@@ -27,12 +27,14 @@ public class TeacherProfileRepositoryImpl extends UserProfileRepository<TeacherP
 
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                listener.onSuccess(null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update teacher's studies.");
             }
 
             @Override
             public void onFailure(@NonNull Call<String> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot update teacher's studies.");
+                listener.onError("Cannot update teacher's studies.");
             }
         });
     }
@@ -44,12 +46,14 @@ public class TeacherProfileRepositoryImpl extends UserProfileRepository<TeacherP
 
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                listener.onSuccess(null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update teacher's description.");
             }
 
             @Override
             public void onFailure(@NonNull Call<String> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot update teacher's description.");
+                listener.onError("Cannot update teacher's description.");
             }
         });
     }
@@ -61,12 +65,14 @@ public class TeacherProfileRepositoryImpl extends UserProfileRepository<TeacherP
 
             @Override
             public void onResponse(@NonNull Call<SpecialityModifier> call, @NonNull Response<SpecialityModifier> response) {
-                listener.onSuccess(null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update teacher's specialities.");
             }
 
             @Override
             public void onFailure(@NonNull Call<SpecialityModifier> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot update teacher's specialities.");
+                listener.onError("Cannot update teacher's specialities.");
             }
         });
     }
@@ -78,12 +84,14 @@ public class TeacherProfileRepositoryImpl extends UserProfileRepository<TeacherP
 
             @Override
             public void onResponse(@NonNull Call<TeacherProfile> call, @NonNull Response<TeacherProfile> response) {
-                listener.onSuccess(response.body());
+
+                if(response.isSuccessful()) listener.onSuccess(response.body());
+                else listener.onError("Cannot retrieve teacher's profile.");
             }
 
             @Override
             public void onFailure(@NonNull Call<TeacherProfile> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot retrieve teacher's profile.");
+                listener.onError("Cannot retrieve teacher's profile.");
             }
         });
     }

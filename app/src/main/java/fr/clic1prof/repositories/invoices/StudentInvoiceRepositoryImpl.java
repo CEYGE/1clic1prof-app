@@ -41,7 +41,7 @@ public class StudentInvoiceRepositoryImpl implements StudentInvoiceRepository {
 
             @Override
             public void onFailure(@NonNull Call<List<Document>> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot retrieve student's invoices.");
+                listener.onError("Cannot retrieve student's invoices.");
             }
         });
     }
@@ -59,12 +59,12 @@ public class StudentInvoiceRepositoryImpl implements StudentInvoiceRepository {
                     InputStream stream = response.body().byteStream();
                     listener.onSuccess(stream);
 
-                } else listener.onFailure(null, "Cannot retrieve student's invoice with id " + invoiceId + ".");
+                } else listener.onError("Cannot retrieve student's invoice with id " + invoiceId + ".");
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable throwable) {
-                listener.onFailure(throwable, "Cannot retrieve student's invoice with id " + invoiceId + ".");
+                listener.onError("Cannot retrieve student's invoice with id " + invoiceId + ".");
             }
         });
     }

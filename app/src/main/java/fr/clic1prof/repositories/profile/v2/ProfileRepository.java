@@ -20,7 +20,7 @@ public interface ProfileRepository<T extends Profile> {
 
     void updatePassword(PasswordModifier modifier, DataListener<Void> listener);
 
-    void updatePicture(Bitmap bitmap, DataListener<Void> listener);
+    void updatePicture(Bitmap bitmap, DataListener<Integer> listener);
 
-    void deleteProfilePicture(DataListener<Void> listener);
+    void deleteProfilePicture(DataListener<Boolean> listener);
 }
