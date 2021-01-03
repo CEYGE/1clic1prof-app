@@ -1,9 +1,14 @@
 package fr.clic1prof.models.contacts;
 
+import android.graphics.Bitmap;
+
+import androidx.annotation.NonNull;
+
 public class Contact implements Comparable<Contact> {
     private final int id;
     private final String firstName, lastName;
     private final Bitmap picture;
+    private boolean header;
 
     public Contact(int id, String firstName, String lastName, Bitmap picture) {
         this.id = id;
@@ -29,6 +34,12 @@ public class Contact implements Comparable<Contact> {
     @NonNull
     public Bitmap getPicture() {
         return this.picture;
+    }
+
+    public boolean isHeader() { return this.header; }
+
+    public void setHeader(boolean header) {
+        this.header = header;
     }
 
     @Override

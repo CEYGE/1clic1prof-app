@@ -12,15 +12,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import fr.clic1prof.ContactsAdapter;
+import fr.clic1prof.contacts.ContactsAdapter;
 import fr.clic1prof.R;
+import fr.clic1prof.contacts.impl.TeacherContactsAdapter;
 import fr.clic1prof.models.contacts.Contact;
+import fr.clic1prof.models.contacts.HeaderContact;
 import fr.clic1prof.models.contacts.TeacherContact;
 import fr.clic1prof.viewmodels.ResultType;
 import fr.clic1prof.viewmodels.contacts.StudentContactActivityViewModel;
@@ -60,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //getSupportActionBar().hide(); //Hide title bar
+        //Hide title bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_main);
 
         this.viewModel = new ViewModelProvider(this).get(StudentContactActivityViewModel.class);
@@ -72,12 +76,27 @@ public class MainActivity extends AppCompatActivity {
 
         contacts = new ArrayList<>();
         for (int i = 0; i < 200; i++) {
-            contacts.add(new Contact(getAlphaNumericString(5), getAlphaNumericString(10), "Bac +2"));
+            contacts.add(new TeacherContact(i, getAlphaNumericString(5), getAlphaNumericString(10), null, "Bac +2"));
         }
         Collections.sort(contacts);
-        ContactsAdapter adapter = new ContactsAdapter(contacts);
+        contactSorter();
+
+        ContactsAdapter adapter = new TeacherContactsAdapter(contacts);
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void contactSorter() {
+        char letter = '#';
+        for (int i = 0; i < contacts.size(); i++) {
+            String contactName = contacts.get(i).getFirstName();
+            if (contactName.length() > 0 && contactName.charAt(0) != letter) {
+                letter = contactName.charAt(0);
+                HeaderContact contact = new HeaderContact(letter);
+                contact.setHeader(true);
+                contacts.add(i, contact);
+            }
+        }
     }
 
     private void setContactObserver() {
@@ -88,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             // If contact list is null, then there is an error.
             // Else, display contacts.
 
-            TextView view = findViewById(R.id.textView); // TODO To change.
+            TextView view;// = findViewById(R.id.textView); // TODO To change.
             String text;
 
             if(result.getType() == ResultType.SUCCESS) {
@@ -105,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                 text = "Chargement des contacts...";
             }
-            view.setText(text);
+            //view.setText(text);
         });
     }
 

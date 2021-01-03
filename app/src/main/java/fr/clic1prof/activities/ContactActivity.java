@@ -41,7 +41,7 @@ public class ContactActivity extends AppCompatActivity {
             // If contact list is null, then there is an error.
             // Else, display contacts.
 
-            TextView view = findViewById(R.id.textView); // TODO To change.
+            TextView view;// = findViewById(R.id.textView); // TODO To change.
             String text;
 
             if(result.getType() == ResultType.SUCCESS) {
@@ -58,7 +58,7 @@ public class ContactActivity extends AppCompatActivity {
 
                 text = "Chargement des contacts...";
             }
-            view.setText(text);
+            //view.setText(text);
         });
     }
 
