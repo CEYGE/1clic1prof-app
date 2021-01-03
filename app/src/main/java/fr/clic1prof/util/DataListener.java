@@ -6,5 +6,5 @@ public interface DataListener<T> {
 
     void onSuccess(@Nullable T value);
 
-    void onFailure(Throwable throwable, String message);
+    void onError(String message);
 }
