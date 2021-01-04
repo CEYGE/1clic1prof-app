@@ -1,4 +1,4 @@
-package fr.clic1prof.activities;
+package fr.clic1prof.Utilitary;
 
 import android.content.res.Resources;
 import android.view.View;

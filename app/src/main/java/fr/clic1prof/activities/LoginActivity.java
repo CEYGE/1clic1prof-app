@@ -11,13 +11,15 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.models.session.Credentials;
+import fr.clic1prof.Utilitary.ErrorEntrie;
+import fr.clic1prof.Utilitary.LoadingDialog;
+import fr.clic1prof.activities.Profile.ProfileStudentActivity;
+import fr.clic1prof.activities.Profile.ProfileTeacherActivity;
 import fr.clic1prof.models.session.SessionType;
 import fr.clic1prof.models.session.UserSessionModel;
 import fr.clic1prof.network.authentication.AuthenticationRequest;
@@ -123,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param view View where the visibility switch
      */
     public void visibilityPassword(View view){
-        EditText password = (EditText) findViewById(R.id.passwordText);
+        EditText password = findViewById(R.id.passwordText);
         boolean flag = password.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         if(flag){
             password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);

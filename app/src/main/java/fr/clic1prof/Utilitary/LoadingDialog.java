@@ -1,4 +1,4 @@
-package fr.clic1prof.activities;
+package fr.clic1prof.Utilitary;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,7 +12,7 @@ public class LoadingDialog {
     private final Activity activity;
     private AlertDialog dialog;
 
-    LoadingDialog(Activity activity){
+    public LoadingDialog(Activity activity){
         this.activity = activity;
     }
 

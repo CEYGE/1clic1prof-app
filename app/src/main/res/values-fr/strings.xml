@@ -2,4 +2,6 @@
 <resources>
     <string name="ImageModification">Changer la photo</string>
     <string name="Hint_description">Description</string>
+    <string name="versionModification">Modifier</string>
+    <string name="versionConfirmation">Valider</string>
 </resources>

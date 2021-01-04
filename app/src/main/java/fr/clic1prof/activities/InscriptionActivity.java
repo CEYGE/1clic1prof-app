@@ -13,6 +13,8 @@ import com.google.android.material.chip.ChipGroup;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
+import fr.clic1prof.Utilitary.ErrorEntrie;
+import fr.clic1prof.Utilitary.LoadingDialog;
 import fr.clic1prof.models.registration.Registration;
 import fr.clic1prof.models.registration.RegistrationType;
 import fr.clic1prof.viewmodels.InscriptionActivityViewModel;
@@ -102,7 +104,7 @@ public class InscriptionActivity extends AppCompatActivity {
      * @param view
      */
     public void visiblePassword(View view){
-        EditText password = (EditText) findViewById(R.id.InscriptionpasswordText);
+        EditText password =findViewById(R.id.InscriptionpasswordText);
         boolean flag = password.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         if(flag){
             password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);

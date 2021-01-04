@@ -2,4 +2,6 @@
 <resources>
     <string name="ImageModification">Switch photo</string>
     <string name="Hint_description">Description</string>
+    <string name="versionModification">Modify</string>
+    <string name="versionConfirmation">Confirm</string>
 </resources>

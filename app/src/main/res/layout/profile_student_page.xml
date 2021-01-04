@@ -56,7 +56,7 @@
             app:cardCornerRadius="250dp">
 
             <ImageView
-                android:id="@+id/profile_img"
+                android:id="@+id/profile_img01"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:contentDescription="@string/profile_image"
@@ -112,7 +112,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textFirstNameView"
+                android:id="@+id/textFirstNameView01"
                 style="@style/TitleText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -122,23 +122,24 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/switchFirstButton"
+                android:id="@+id/switchFirstButton01"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="0.35"
-                android:text="Modifier" />
+                android:layout_weight="0.4"
+                android:text="@string/versionModification"
+                android:onClick="switchFirstNameAndUpdate"/>
 
         </LinearLayout>
 
         <ViewSwitcher
-            android:id="@+id/switchFirstName"
+            android:id="@+id/switchFirstName01"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_weight="0.225">
 
             <TextView
-                android:id="@+id/viewFirstName"
+                android:id="@+id/viewFirstName01"
                 style="@style/EntryText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -146,7 +147,7 @@
                 android:text="@string/FirstName" />
 
             <EditText
-                android:id="@+id/editTextFirstName"
+                android:id="@+id/editTextFirstName01"
                 style="@style/EntryText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -156,65 +157,156 @@
         </ViewSwitcher>
 
 
-        <TextView
-            android:id="@+id/textLastNameView"
-            style="@style/TitleText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="6dp"
-            android:layout_weight="0.2"
-            android:text="@string/LastName" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/editTextLastName"
-            style="@style/EntryText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="0.225"
-            android:autofillHints="@string/LastName"
-            android:ems="10"
-            android:hint="@string/LastName" />
+            <TextView
+                android:id="@+id/textLastNameView01"
+                style="@style/TitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="0.9"
+                android:text="@string/LastName"
+                android:textSize="14sp" />
 
+            <Button
+                android:id="@+id/switchLastButton01"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.4"
+                android:text="@string/versionModification"
+                android:onClick="switchLastNameAndUpdate"/>
 
-        <TextView
-            android:id="@+id/textMailView"
-            style="@style/TitleText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="6dp"
-            android:layout_weight="0.2"
-            android:text="@string/Email_Text" />
+        </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/editTextMail"
-            style="@style/EntryText"
+        <ViewSwitcher
+            android:id="@+id/switchLastName01"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-            android:layout_weight="0.225"
-            android:autofillHints="@string/Email_Text"
-            android:hint="@string/Email_Text" />
+            android:layout_weight="0.225">
 
-        <TextView
-            android:id="@+id/textPasswordView"
-            style="@style/TitleText"
+            <TextView
+                android:id="@+id/viewLastName01"
+                style="@style/EntryText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:text="@string/LastName" />
+
+            <EditText
+                android:id="@+id/editTextLastName01"
+                style="@style/EntryText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="@string/LastName"
+                android:hint="@string/LastName"
+                android:inputType="text" />
+        </ViewSwitcher>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textMailView01"
+                style="@style/TitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="0.9"
+                android:text="@string/Email_Text"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/switchMailButton01"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.4"
+                android:text="@string/versionModification"
+                android:onClick="switchMailAndUpdate"/>
+
+        </LinearLayout>
+
+        <ViewSwitcher
+            android:id="@+id/switchMail01"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="6dp"
-            android:layout_weight="0.2"
-            android:text="@string/Password_Text" />
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0.225">
 
+            <TextView
+                android:id="@+id/viewMail01"
+                style="@style/EntryText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:text="@string/Email_Text" />
 
-        <TextView
-            android:id="@+id/editTextTextPassword"
-            style="@style/EntryText"
+            <EditText
+                android:id="@+id/editTextMail01"
+                style="@style/EntryText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="@string/Email_Text"
+                android:hint="@string/Email_Text"
+                android:inputType="text" />
+        </ViewSwitcher>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textPasswordView01"
+                style="@style/TitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="0.9"
+                android:text="@string/Password_Text"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/switchPasswordButton01"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.4"
+                android:text="@string/versionModification"
+                android:onClick="switchPasswordAndUpdate"/>
+
+        </LinearLayout>
+
+        <ViewSwitcher
+            android:id="@+id/switchPassword01"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"
-            android:autofillHints="@string/Hint_pwd"
-            android:hint="@string/Hint_pwd" />
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0.225">
+
+            <TextView
+                android:id="@+id/viewPassword01"
+                style="@style/EntryText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:text="@string/Password_Text" />
+
+            <EditText
+                android:id="@+id/editTextPassword01"
+                style="@style/EntryText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="@string/Password_Text"
+                android:hint="@string/Password_Text"
+                android:inputType="text" />
+        </ViewSwitcher>
 
 
         <LinearLayout
