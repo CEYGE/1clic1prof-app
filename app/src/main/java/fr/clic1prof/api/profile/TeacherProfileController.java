@@ -12,12 +12,12 @@ public interface TeacherProfileController extends ProfileController {
     @GET("teacher/profile")
     Call<TeacherProfile> getProfile();
 
-    @PUT("teacher/studies")
+    @PUT("teacher/profile/studies")
     Call<String> updateStudies(@Body String studies);
 
-    @PUT("teacher/description")
+    @PUT("teacher/profile/description")
     Call<String> updateDescription(@Body String description);
 
-    @PUT("teacher/speciality")
+    @PUT("teacher/profile/speciality")
     Call<SpecialityModifier> updateSpeciality(SpecialityModifier modifier);
 }

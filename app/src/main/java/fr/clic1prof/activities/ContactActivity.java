@@ -12,8 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.clic1prof.R;
-import fr.clic1prof.models.contacts.Contact;
-import fr.clic1prof.viewmodels.contacts.ContactActivityViewModel;
+import fr.clic1prof.models.contacts.TeacherContact;
 import fr.clic1prof.viewmodels.ResultType;
 import fr.clic1prof.viewmodels.contacts.StudentContactActivityViewModel;
 
@@ -46,9 +45,9 @@ public class ContactActivity extends AppCompatActivity {
             TextView view = findViewById(R.id.textView); // TODO To change.
             String text;
 
-            /*if(result.getType() == ResultType.SUCCESS) {
+            if(result.getType() == ResultType.SUCCESS) {
 
-                List<Contact> contacts = result.getData();
+                List<TeacherContact> contacts = result.getData();
 
                 text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
 
@@ -60,7 +59,7 @@ public class ContactActivity extends AppCompatActivity {
 
                 text = "Chargement des contacts...";
             }
-            view.setText(text);*/
+            view.setText(text);
         });
     }
 

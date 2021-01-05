@@ -1,11 +1,9 @@
 package fr.clic1prof.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -17,45 +15,31 @@ import java.util.List;
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.models.contacts.Contact;
-import fr.clic1prof.viewmodels.contacts.ContactActivityViewModel;
+import fr.clic1prof.models.contacts.TeacherContact;
 import fr.clic1prof.viewmodels.ResultType;
+import fr.clic1prof.viewmodels.contacts.StudentContactActivityViewModel;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
-    private ContactActivityViewModel viewModel;
+    private StudentContactActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button = findViewById(R.id.buttonLog);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendLog();
-            }
-        });
 
-
-
-        this.viewModel = new ViewModelProvider(this).get(ContactActivityViewModel.class);
+        this.viewModel = new ViewModelProvider(this).get(StudentContactActivityViewModel.class);
 
         this.setEditTextListener();
 
         // Setup contact observer.
-        /*
-        this.setContactObserver();*/
-    }
-
-    private void sendLog() {
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
+        this.setContactObserver();
     }
 
     private void setContactObserver() {
-        /*
+
         // Observe the list of contacts and make view update when necessary.
         this.viewModel.getContactLiveData().observe(this, result -> {
             // Update view here.
@@ -67,10 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
             if(result.getType() == ResultType.SUCCESS) {
 
-                List<Contact> contacts = result.getData();
+                List<TeacherContact> contacts = result.getData();
 
                 text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
-                sendLog();
 
             } else if(result.getType() == ResultType.ERROR) {
 
@@ -81,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 text = "Chargement des contacts...";
             }
             view.setText(text);
-        });*/
+        });
     }
 
     private void setEditTextListener() {
@@ -111,6 +94,4 @@ public class MainActivity extends AppCompatActivity {
     public void connect(View view) {
         this.viewModel.retrieveContacts();
     }
-
-
 }

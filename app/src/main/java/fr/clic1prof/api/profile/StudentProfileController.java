@@ -12,6 +12,6 @@ public interface StudentProfileController extends ProfileController {
     @GET("student/profile")
     Call<StudentProfile> getProfile();
 
-    @PUT("student/school-level")
+    @PUT("student/profile/school-level")
     Call<Void> updateSchoolLevel(@Body SchoolLevel level);
 }

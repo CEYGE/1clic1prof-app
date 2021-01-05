@@ -1,4 +1,3 @@
-
 package fr.clic1prof.api.contacts;
 
 import java.util.List;
