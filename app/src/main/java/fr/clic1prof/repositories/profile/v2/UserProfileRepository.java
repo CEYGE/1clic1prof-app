@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 
 import androidx.annotation.NonNull;
 
+import java.io.File;
 import java.io.InputStream;
 
 import fr.clic1prof.api.profile.ProfileController;
@@ -12,6 +13,9 @@ import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.models.profile.modifier.PasswordModifier;
 import fr.clic1prof.network.NetworkProvider;
 import fr.clic1prof.util.DataListener;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -106,8 +110,25 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
     }
 
     @Override
-    public void updatePicture(Bitmap bitmap, DataListener<Integer> listener) {
-        // TODO
+    public void updatePicture(File picture, DataListener<Integer> listener) {
+
+        RequestBody body = RequestBody.create(MediaType.get("image/img"), picture);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("picture", picture.getName(), body);
+
+        this.getProfileController().updateProfilePicture(part).enqueue(new Callback<Integer>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
+
+                if(response.isSuccessful()) listener.onSuccess(response.body());
+                else listener.onError("Cannot update user's profile picture.");
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Integer> call, @NonNull Throwable throwable) {
+                listener.onError("Cannot update user's profile picture.");
+            }
+        });
     }
 
     @Override

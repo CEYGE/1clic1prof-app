@@ -2,7 +2,7 @@ package fr.clic1prof.repositories.profile.v2;
 
 import android.graphics.Bitmap;
 
-import androidx.lifecycle.LiveData;
+import java.io.File;
 
 import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.models.profile.modifier.PasswordModifier;
@@ -20,7 +20,7 @@ public interface ProfileRepository<T extends Profile> {
 
     void updatePassword(PasswordModifier modifier, DataListener<Void> listener);
 
-    void updatePicture(Bitmap bitmap, DataListener<Integer> listener);
+    void updatePicture(File file, DataListener<Integer> listener);
 
     void deleteProfilePicture(DataListener<Boolean> listener);
 }
