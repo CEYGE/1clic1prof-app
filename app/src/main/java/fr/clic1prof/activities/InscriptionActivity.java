@@ -13,8 +13,8 @@ import com.google.android.material.chip.ChipGroup;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.Utilitary.ErrorEntrie;
-import fr.clic1prof.Utilitary.LoadingDialog;
+import fr.clic1prof.util.ErrorEntrie;
+import fr.clic1prof.util.LoadingDialog;
 import fr.clic1prof.models.registration.Registration;
 import fr.clic1prof.models.registration.RegistrationType;
 import fr.clic1prof.viewmodels.InscriptionActivityViewModel;

@@ -15,17 +15,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.regex.Pattern;
 
 import fr.clic1prof.R;
-import fr.clic1prof.Utilitary.Camera;
-import fr.clic1prof.Utilitary.ErrorEntrie;
 import fr.clic1prof.activities.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
-import fr.clic1prof.viewmodels.ResultType;
-import fr.clic1prof.viewmodels.profile.ProfileActivityViewModel;
+import fr.clic1prof.util.Camera;
+import fr.clic1prof.util.ErrorEntrie;
+import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 
 public abstract class ProfileActivity<T extends Profile> extends AppCompatActivity {
 
-    private ProfileActivityViewModel<T> viewModel;
-    private T profile;
+    private ProfileViewModel<T> viewModel;
     private ErrorEntrie error;
     private AlertDialog dialog;
     private ImageView selectedImage;
@@ -120,7 +118,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.camera = camera;
     }
 
-    public void setViewModel(ProfileActivityViewModel<T> viewModel) {
+    public void setViewModel(ProfileViewModel<T> viewModel) {
         this.viewModel = viewModel;
     }
 
@@ -144,7 +142,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         return camera;
     }
 
-    public ProfileActivityViewModel<T> getViewModel() {
+    public ProfileViewModel<T> getViewModel() {
         return viewModel;
     }
 
@@ -167,12 +165,20 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
      * PART OBSERVER
      */
 
-    protected void setObserver(){
-        this.viewModel.getLiveData().observe(this, result ->{
-            if(result.getType() == ResultType.SUCCESS){
-                profile = result.getData();
-                assignInformation(profile);
-            }
+
+    //Observer fixe sur model
+    protected void setObserverProfile(){
+        //Action en observant le profile
+        this.viewModel.getProfileLiveData().observe(this, this::assignInformation);
+    }
+
+    //Observe dynamic sur les errors.
+    protected void setObserverError(String message){
+        // Supp tous les observer sur le LiveDataError avant de l'observer
+        this.viewModel.getErrorLiveData().removeObservers(this);
+        this.viewModel.getErrorLiveData().observe(this, result -> {
+            //Action en observant une erreur
+            this.error.setText(message);
         });
     }
 
@@ -189,6 +195,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         }else {
             if(verifString(editFirstName.getText().toString())) {
                 //Update
+                setObserverError("Le prénom n'a pas pu s'update");
                 this.viewModel.updateFirstName(editFirstName.getText().toString());
                 switcherFirstName.showNext();
                 changeTextButton(buttonFirstName);
@@ -206,6 +213,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         }else {
             if(verifString(editLastName.getText().toString())) {
                 //Update
+                setObserverError("Le nom n'a pas pu s'update");
                 this.viewModel.updateLastName(editLastName.getText().toString());
                 switcherLastName.showNext();
                 changeTextButton(buttonLastName);

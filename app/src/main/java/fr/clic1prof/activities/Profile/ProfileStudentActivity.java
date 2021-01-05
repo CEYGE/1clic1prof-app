@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.Utilitary.ErrorEntrie;
+import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.models.profile.StudentProfile;
-import fr.clic1prof.viewmodels.profile.StudentProfileActivityViewModel;
+import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 
 @AndroidEntryPoint
 public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
@@ -29,9 +29,10 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         this.setSwitcher();
         this.setEditText();
 
-        setViewModel( new ViewModelProvider(this).get(StudentProfileActivityViewModel.class) );
+        setViewModel( new ViewModelProvider(this).get(StudentProfileViewModel.class) );
         setError( new ErrorEntrie( findViewById( R.id.errorInvisibleViewProfile01 ) ) );
-        this.setObserver();
+        this.setObserverError("Failure to retrieve profile");
+        this.setObserverProfile();
         this.setSpinnerObserver();
     }
 

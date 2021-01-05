@@ -1,4 +1,4 @@
-package fr.clic1prof.Utilitary;
+package fr.clic1prof.util;
 
 import android.app.Activity;
 import android.app.AlertDialog;

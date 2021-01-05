@@ -1,4 +1,4 @@
-package fr.clic1prof.Utilitary;
+package fr.clic1prof.util;
 
 import android.Manifest;
 import android.app.Activity;
@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;

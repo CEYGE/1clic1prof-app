@@ -16,8 +16,8 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.Utilitary.ErrorEntrie;
-import fr.clic1prof.Utilitary.LoadingDialog;
+import fr.clic1prof.util.ErrorEntrie;
+import fr.clic1prof.util.LoadingDialog;
 import fr.clic1prof.activities.Profile.ProfileStudentActivity;
 import fr.clic1prof.activities.Profile.ProfileTeacherActivity;
 import fr.clic1prof.models.session.SessionType;

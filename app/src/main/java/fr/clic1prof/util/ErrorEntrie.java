@@ -1,8 +1,6 @@
-package fr.clic1prof.Utilitary;
+package fr.clic1prof.util;
 
-import android.content.res.Resources;
 import android.view.View;
-import android.widget.EdgeEffect;
 import android.widget.TextView;
 
 import fr.clic1prof.R;

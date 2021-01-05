@@ -4,14 +4,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.Utilitary.ErrorEntrie;
+import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.models.profile.TeacherProfile;
-import fr.clic1prof.viewmodels.ResultType;
-import fr.clic1prof.viewmodels.profile.TeacherProfileActivityViewModel;
 
 @AndroidEntryPoint
 public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
@@ -27,9 +23,9 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         this.setSwitcher();
         this.setEditText();
 
-        this.setViewModel(new ViewModelProvider(this).get(TeacherProfileActivityViewModel.class));
+        //this.setViewModel(new ViewModelProvider(this).get(TeacherProfileActivityViewModel.class));
         this.setError(new ErrorEntrie(findViewById(R.id.errorInvisibleViewProfile02)));
-        this.setObserver();
+        //this.setObserver();
     }
 
     /*
@@ -60,7 +56,7 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         this.setEditPassword(R.id.editTextPassword02);
     }
 
-    @Override
+    /*@Override
     protected void setObserver(){
         this.getViewModel().getLiveData().observe(this, result ->{
             if(result.getType() == ResultType.SUCCESS){
@@ -68,7 +64,7 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
                 assignInformation(profile);
             }
         });
-    }
+    }*/
 
     @Override
     protected void assignInformation(TeacherProfile profile){
