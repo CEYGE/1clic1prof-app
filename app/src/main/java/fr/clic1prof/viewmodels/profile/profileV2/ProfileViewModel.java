@@ -92,6 +92,7 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
             public void onSuccess(@Nullable Integer value) {
                 T profile = ProfileViewModel.this.profileLiveData.getValue();
                 profile.setPicture(picture);
+                profile.setPictureId(value);
 
                 ProfileViewModel.this.profileLiveData.postValue(profile);
             }

@@ -1,7 +1,10 @@
 package fr.clic1prof.activities.Profile;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +13,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
 import java.util.regex.Pattern;
 
 import fr.clic1prof.R;
@@ -179,6 +184,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.viewModel.getErrorLiveData().observe(this, result -> {
             //Action en observant une erreur
             this.error.setText(message);
+            this.error.showError();
         });
     }
 
@@ -280,17 +286,49 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.dialog = builder.create();
         this.dialog.show();
         this.camera = new Camera(this);
-        dialog.setOnCancelListener(dialog -> ProfileActivity.this.viewModel.updatePicture(camera.getImage()));
+        //dialog.setOnCancelListener(dialog -> ProfileActivity.this.viewModel.updatePicture(camera.getImage()));
     }
 
     public void Camera(View view){
+        System.out.println("CAMERA ON");
         camera.askCameraPermission();
         dialog.dismiss();
+
     }
 
     public void Gallery(View view){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivity(intent);
         dialog.dismiss();
+    }
+
+    public void updatePicture(){
+        this.setSelectedImage(findViewById(R.id.profile_img01));
+        this.selectedImage.setImageURI(camera.getImage());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        assert data != null;
+        if (requestCode == 102) {
+            if(resultCode == Activity.RESULT_OK) {
+                File f = new File(camera.currentPhotoPath);
+                Uri contentUri = Uri.fromFile(f);
+                camera.setImage(contentUri);
+                updatePicture();
+
+
+
+            }
+        }else if( requestCode == 103){
+            if(resultCode == Activity.RESULT_OK){
+                //Uri contentUri = data.getData();
+                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                //String imageFileName = "JPEG" + timeStamp + "." + getFileExtension(contentUri);
+                //selectedImage.setImageUri(contentUri);
+
+            }
+        }
     }
 }

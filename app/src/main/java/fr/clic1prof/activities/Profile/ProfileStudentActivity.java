@@ -29,10 +29,11 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         this.setSwitcher();
         this.setEditText();
 
-        setViewModel( new ViewModelProvider(this).get(StudentProfileViewModel.class) );
-        setError( new ErrorEntrie( findViewById( R.id.errorInvisibleViewProfile01 ) ) );
+        this.setViewModel( new ViewModelProvider(this).get(StudentProfileViewModel.class) );
+        this.setError( new ErrorEntrie( findViewById( R.id.errorInvisibleViewProfile01 ) ) );
         this.setObserverError("Failure to retrieve profile");
         this.setObserverProfile();
+        this.getViewModel().getProfile();
         this.setSpinnerObserver();
     }
 

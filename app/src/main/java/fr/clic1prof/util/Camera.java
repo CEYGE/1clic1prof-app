@@ -30,8 +30,8 @@ public class Camera extends AppCompatActivity {
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 103;
-    private String currentPhotoPath;
-    private Bitmap image;
+    public String currentPhotoPath;
+    private Uri image;
 
     private final Activity activity;
 
@@ -45,6 +45,7 @@ public class Camera extends AppCompatActivity {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, GALLERY_REQUEST_CODE);
         }else {
+            System.out.println("GO TAKE PICTURE");
             dispatchTakePictureIntent();
         }
     }
@@ -73,15 +74,15 @@ public class Camera extends AppCompatActivity {
         String imageFileName = "JPEG_" + timeStamp + "_";
         //File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
+        File file = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        currentPhotoPath = image.getAbsolutePath();
-        return image;
+        currentPhotoPath = file.getAbsolutePath();
+        return file;
     }
 
     private void dispatchTakePictureIntent() {
@@ -101,6 +102,7 @@ public class Camera extends AppCompatActivity {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "fr.clic1prof.android.fileprovider",
                         photoFile);
+                System.out.println("\n\n PHOTOFILE ON");
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 activity.startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
             }
@@ -114,21 +116,33 @@ public class Camera extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST_CODE) {
             if(resultCode == Activity.RESULT_OK) {
                 File f = new File(currentPhotoPath);
+                //Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 Uri contentUri = Uri.fromFile(f);
-                /*Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                mediaScanIntent.setData(contentUri);
-                this.sendBroadcast(mediaScanIntent);*/
-                image =(Bitmap) data.getExtras().get("data");
+                System.out.println(f.toString());
+                System.out.println("\n\n\n" + contentUri.toString());
+                //selectedImage.setImageUri(contentUri);
+                //mediaScanIntent.setData(contentUri);
+                //this.sendBroadcast(mediaScanIntent);
+
+                image = contentUri;
+
             }
         }else if( requestCode == GALLERY_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK){
-                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm", Locale.FRANCE).format(new Date());
-                image =(Bitmap) data.getExtras().get("data");
+                //Uri contentUri = data.getData();
+                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                //String imageFileName = "JPEG" + timeStamp + "." + getFileExtension(contentUri);
+                //selectedImage.setImageUri(contentUri);
+
             }
         }
     }
 
-    public Bitmap getImage() {
+    public Uri getImage() {
         return this.image;
+    }
+
+    public void setImage(Uri image) {
+        this.image = image;
     }
 }

@@ -53,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
         this.viewModel.getTokenLiveData().observe(this, result ->{
 
-
             if(result.getType() == ResultType.SUCCESS) {
                 this.loadingDialog.dismissDialog();
                 if(model.getSessionType() == SessionType.STUDENT) sendToStudentProfile();
@@ -62,10 +61,6 @@ public class LoginActivity extends AppCompatActivity {
             } else if(result.getType() == ResultType.ERROR) {
                 this.loadingDialog.errorDialog(R.string.Dialog_error);
 
-            } else {
-                this.loadingDialog.launchLoadingDialog();
-                this.loadingDialog.startLoadingDialog();
-                this.loadingDialog.connectionText();
             }
         });
     }
@@ -78,6 +73,11 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordView.getText().toString();
 
         if( verifPwd(password) && verifMail(email)) {
+            //Dialog : connection loading
+            this.loadingDialog.launchLoadingDialog();
+            this.loadingDialog.startLoadingDialog();
+            this.loadingDialog.connectionText();
+
             AuthenticationRequest request = new AuthenticationRequest(email, password);
             this.viewModel.login(request);
         }else {

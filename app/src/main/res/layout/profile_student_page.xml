@@ -150,7 +150,7 @@
                 android:id="@+id/editTextFirstName01"
                 style="@style/EntryText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:autofillHints="@string/FirstName"
                 android:hint="@string/FirstName"
                 android:inputType="text" />

@@ -1,7 +1,9 @@
 package fr.clic1prof.viewmodels.login;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.ViewModel;
 
 import javax.inject.Inject;
 
@@ -11,12 +13,12 @@ import fr.clic1prof.network.authentication.AuthenticationRequest;
 import fr.clic1prof.repositories.user.UserRepository;
 import fr.clic1prof.viewmodels.Result;
 
-public class LoginActivityViewModel {
+public class LoginActivityViewModel extends ViewModel {
 
     private final UserRepository repository;
     private final MediatorLiveData<Result<?>> tokenLiveData = new MediatorLiveData<>();
 
-    @Inject
+    @ViewModelInject
     public LoginActivityViewModel(UserRepository repository) {
         this.repository = repository;
     }
@@ -32,5 +34,10 @@ public class LoginActivityViewModel {
             this.tokenLiveData.postValue(result);
             this.tokenLiveData.removeSource(data);
         });
+    }
+
+
+    public MediatorLiveData<Result<?>> getTokenLiveData() {
+        return tokenLiveData;
     }
 }
