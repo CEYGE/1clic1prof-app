@@ -28,7 +28,7 @@ public interface ProfileController {
 
     @Multipart
     @PUT("{role}/profile/picture")
-    Call<Void> updateProfilePicture(@Part("picture") MultipartBody.Part picture);
+    Call<Integer> updateProfilePicture(@Part("picture") MultipartBody.Part picture);
 
     @DELETE("{role}/profile/picture")
     Call<Void> deleteProfilePicture();
