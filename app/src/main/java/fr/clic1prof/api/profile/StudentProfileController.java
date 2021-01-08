@@ -1,7 +1,7 @@
 package fr.clic1prof.api.profile;
 
 import fr.clic1prof.models.profile.StudentProfile;
-import fr.clic1prof.models.user.SchoolLevel;
+import fr.clic1prof.models.other.SchoolLevel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -12,6 +12,6 @@ public interface StudentProfileController extends ProfileController {
     @GET("student/profile")
     Call<StudentProfile> getProfile();
 
-    @PUT("student/school-level")
+    @PUT("student/profile/school-level")
     Call<Void> updateSchoolLevel(@Body SchoolLevel level);
 }

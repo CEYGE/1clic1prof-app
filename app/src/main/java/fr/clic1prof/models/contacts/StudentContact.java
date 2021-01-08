@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 import javax.annotation.Nullable;
 
-import fr.clic1prof.models.user.SchoolLevel;
+import fr.clic1prof.models.other.SchoolLevel;
 
 public class StudentContact extends Contact {
 

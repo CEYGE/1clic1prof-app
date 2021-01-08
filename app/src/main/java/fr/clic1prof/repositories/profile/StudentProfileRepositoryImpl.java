@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 import fr.clic1prof.api.profile.StudentProfileController;
 import fr.clic1prof.models.profile.StudentProfile;
-import fr.clic1prof.models.user.SchoolLevel;
+import fr.clic1prof.models.other.SchoolLevel;
 import fr.clic1prof.network.NetworkProvider;
 import retrofit2.Call;
 import retrofit2.Callback;

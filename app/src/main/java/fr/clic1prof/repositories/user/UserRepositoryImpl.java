@@ -12,7 +12,7 @@ import fr.clic1prof.api.UserController;
 import fr.clic1prof.models.session.Credentials;
 import fr.clic1prof.models.session.Token;
 import fr.clic1prof.models.session.UserSessionModel;
-import fr.clic1prof.models.user.Registration;
+import fr.clic1prof.models.registration.Registration;
 import fr.clic1prof.network.NetworkProvider;
 import fr.clic1prof.network.authentication.AuthenticationRequest;
 import fr.clic1prof.network.authentication.AuthenticationResponse;
