@@ -1,11 +1,14 @@
 package fr.clic1prof.viewmodels.profile.profileV2;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import java.io.File;
 
 import javax.annotation.Nullable;
 
@@ -85,13 +88,14 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
         });
     }
 
-    public void updatePicture(Bitmap picture){
+    public void updatePicture(File picture){
 
         this.repository.updatePicture(picture, new DataListener<Integer>() {
             @Override
             public void onSuccess(@Nullable Integer value) {
                 T profile = ProfileViewModel.this.profileLiveData.getValue();
-                profile.setPicture(picture);
+                Bitmap image = BitmapFactory.decodeFile(picture.getAbsolutePath());
+                profile.setPicture(image);
                 profile.setPictureId(value);
 
                 ProfileViewModel.this.profileLiveData.postValue(profile);

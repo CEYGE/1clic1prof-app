@@ -1,17 +1,24 @@
 package fr.clic1prof.activities.Profile;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.models.profile.TeacherProfile;
+import fr.clic1prof.util.Camera;
+import fr.clic1prof.viewmodels.profile.profileV2.TeacherProfileViewModel;
 
 @AndroidEntryPoint
 public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
-
 
 
     @Override
@@ -23,9 +30,12 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         this.setSwitcher();
         this.setEditText();
 
-        //this.setViewModel(new ViewModelProvider(this).get(TeacherProfileActivityViewModel.class));
-        this.setError(new ErrorEntrie(findViewById(R.id.errorInvisibleViewProfile02)));
-        //this.setObserver();
+        this.setViewModel(new ViewModelProvider(this).get(TeacherProfileViewModel.class));
+        this.setError(Toast.makeText(this," ", Toast.LENGTH_SHORT));
+        this.setObserverError("Failure to retrive profile");
+        this.setObserverProfile();
+        this.getViewModel().getProfile();
+        this.setCamera(new Camera(this));
     }
 
     /*
@@ -56,15 +66,23 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         this.setEditPassword(R.id.editTextPassword02);
     }
 
-    /*@Override
-    protected void setObserver(){
-        this.getViewModel().getLiveData().observe(this, result ->{
-            if(result.getType() == ResultType.SUCCESS){
-                TeacherProfile profile = result.getData();
-                assignInformation(profile);
-            }
-        });
-    }*/
+    @Override
+    public TeacherProfileViewModel getViewModel() {
+        return (TeacherProfileViewModel)super.getViewModel();
+    }
+
+    public void switchDescriptionAndUpdate(View view){
+        EditText description = findViewById(R.id.editDescription02);
+        getViewModel().updateDescription(description.getText().toString());
+
+    }
+
+    public void switchStudiesAndUpdate(View view){
+        EditText studies = findViewById(R.id.editStudies02);
+        getViewModel().updateStudies(studies.getText().toString());
+    }
+
+
 
     @Override
     protected void assignInformation(TeacherProfile profile){
@@ -81,11 +99,18 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         TextView textMail = findViewById(R.id.viewMail02);
         textMail.setText(profile.getEmail());
 
-        /*//SchoolLevel profile
-        Spinner spinner = findViewById(R.id.spinnerSpeciality);
-        spinner.setSelection(profile.getStudies().getId());
+        //Description profile
+        EditText description = findViewById(R.id.editDescription02);
+        description.setText(profile.getDescription());
+
+        //Studies profile
+        EditText studies = findViewById(R.id.editStudies02);
+        studies.setText(profile.getStudies());
+
+        //SchoolLevel profile
+        //TODO
             
-        *///Image bitmap profile
+        //Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img);
         imgView.setImageBitmap(profile.getPicture());
     }

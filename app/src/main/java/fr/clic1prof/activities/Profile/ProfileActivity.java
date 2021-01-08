@@ -11,12 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import fr.clic1prof.R;
@@ -24,12 +27,13 @@ import fr.clic1prof.activities.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.util.Camera;
 import fr.clic1prof.util.ErrorEntrie;
+import fr.clic1prof.util.LoadingDialog;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 
 public abstract class ProfileActivity<T extends Profile> extends AppCompatActivity {
 
     private ProfileViewModel<T> viewModel;
-    private ErrorEntrie error;
+    private Toast error;
     private AlertDialog dialog;
     private ImageView selectedImage;
     private Camera camera;
@@ -53,6 +57,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     /*
      * PART SETTER
      */
+
 
     protected abstract void setButton();
     protected abstract void setSwitcher();
@@ -107,7 +112,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
 
-    public void setError(ErrorEntrie error) {
+    public void setError(Toast error) {
         this.error = error;
     }
 
@@ -131,8 +136,8 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
      * PART GETTER
      */
 
-    public ErrorEntrie getError() {
-        return error;
+    public Toast getError() {
+        return this.error;
     }
 
     public ImageView getSelectedImage() {
@@ -179,12 +184,17 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
 
     //Observe dynamic sur les errors.
     protected void setObserverError(String message){
+        if(error != null){
+            this.setError(new Toast(this));
+            this.error.setDuration(Toast.LENGTH_SHORT);
+        }
         // Supp tous les observer sur le LiveDataError avant de l'observer
         this.viewModel.getErrorLiveData().removeObservers(this);
         this.viewModel.getErrorLiveData().observe(this, result -> {
             //Action en observant une erreur
-            this.error.setText(message);
-            this.error.showError();
+            error.setText(message);
+            error.show();
+
         });
     }
 
@@ -207,7 +217,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 changeTextButton(buttonFirstName);
             }else {
                 error.setText("Le prénom ne répond pas aux critères.");
-                error.showError();
+                error.show();
             }
         }
     }
@@ -225,7 +235,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 changeTextButton(buttonLastName);
             }else {
                 error.setText("Le nom ne répond pas aux critères.");
-                error.showError();
+                error.show();
             }
         }
     }
@@ -241,7 +251,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 changeTextButton(buttonMail);
             }else {
                 error.setText("Le mail ne répond pas aux critères.");
-                error.showError();
+                error.show();
             }
         }
     }
@@ -257,7 +267,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 changeTextButton(buttonPassword);
             }else {
                 error.setText("Le mot de passe ne répond pas aux critères.");
-                error.showError();
+                error.show();
             }
         }
     }
@@ -283,10 +293,9 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         LayoutInflater inflater = this.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.dialog_change_picture,null));
         builder.setCancelable(true);
-        this.dialog = builder.create();
+        this.setDialog(builder.create());
         this.dialog.show();
-        this.camera = new Camera(this);
-        //dialog.setOnCancelListener(dialog -> ProfileActivity.this.viewModel.updatePicture(camera.getImage()));
+        this.setCamera(new Camera(this));
     }
 
     public void Camera(View view){
@@ -302,10 +311,6 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         dialog.dismiss();
     }
 
-    public void updatePicture(){
-        this.setSelectedImage(findViewById(R.id.profile_img01));
-        this.selectedImage.setImageURI(camera.getImage());
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -316,17 +321,16 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 File f = new File(camera.currentPhotoPath);
                 Uri contentUri = Uri.fromFile(f);
                 camera.setImage(contentUri);
-                updatePicture();
-
-
-
+                setObserverError("Erreur de la prise de photo");
+                this.viewModel.updatePicture(f);
             }
         }else if( requestCode == 103){
             if(resultCode == Activity.RESULT_OK){
-                //Uri contentUri = data.getData();
-                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                //String imageFileName = "JPEG" + timeStamp + "." + getFileExtension(contentUri);
-                //selectedImage.setImageUri(contentUri);
+                Uri contentUri = data.getData();
+                File f = new File(contentUri.getPath());
+                camera.setImage(contentUri);
+                setObserverError("Erreur d'envoi de la photo");
+                this.viewModel.updatePicture(f);
 
             }
         }

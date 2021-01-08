@@ -61,7 +61,7 @@ public class Camera extends AppCompatActivity {
         }
     }
 
-    private String getFileExtension(Uri contentUri) {
+    public String getFileExtension(Uri contentUri) {
         ContentResolver c = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(c.getType(contentUri));

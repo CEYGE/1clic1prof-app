@@ -56,4 +56,5 @@
     <string name="GalleryButton" translatable="false">GALLERY</string>
     <string name="versionModification">Modifier</string>
     <string name="versionConfirmation">Valider</string>
+    <string name="Studies" translatable="false">Études</string>
 </resources>

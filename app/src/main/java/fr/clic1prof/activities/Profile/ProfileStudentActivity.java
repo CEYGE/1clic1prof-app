@@ -6,19 +6,21 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.util.ErrorEntrie;
+import fr.clic1prof.models.other.SchoolLevel;
 import fr.clic1prof.models.profile.StudentProfile;
+import fr.clic1prof.util.Camera;
+import fr.clic1prof.util.ErrorEntrie;
+import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 
 @AndroidEntryPoint
 public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +32,11 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         this.setEditText();
 
         this.setViewModel( new ViewModelProvider(this).get(StudentProfileViewModel.class) );
-        this.setError( new ErrorEntrie( findViewById( R.id.errorInvisibleViewProfile01 ) ) );
+        this.setError(Toast.makeText(this," ",Toast.LENGTH_SHORT));
         this.setObserverError("Failure to retrieve profile");
         this.setObserverProfile();
         this.getViewModel().getProfile();
+        this.setCamera(new Camera(this));
         this.setSpinnerObserver();
     }
 
@@ -64,7 +67,11 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         this.setEditLastName(R.id.editTextLastName01);
         this.setEditMail(R.id.editTextMail01);
         this.setEditPassword(R.id.editTextPassword01);
+    }
 
+    @Override
+    public StudentProfileViewModel getViewModel() {
+        return (StudentProfileViewModel) super.getViewModel();
     }
 
     private void setSpinnerObserver(){
@@ -72,8 +79,10 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //SchoolLevel schoolLevel = new SchoolLevel(position,parent.getItemAtPosition(position).toString());
-                //getViewModel().updateSchoolLevel(schoolLevel);
+                SchoolLevel schoolLevel = new SchoolLevel(position,parent.getItemAtPosition(position).toString());
+                setObserverError("Le niveau d'élève n'arrive pas à se renouveler");
+                getViewModel().updateSchoolLevel(schoolLevel);
+
             }
 
             @Override
