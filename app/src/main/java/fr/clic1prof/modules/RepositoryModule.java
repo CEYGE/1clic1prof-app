@@ -11,9 +11,9 @@ import fr.clic1prof.models.profile.TeacherProfile;
 import fr.clic1prof.repositories.contacts.ContactRepository;
 import fr.clic1prof.repositories.contacts.StudentContactRepository;
 import fr.clic1prof.repositories.contacts.TeacherContactRepository;
-import fr.clic1prof.repositories.profile.v2.ProfileRepository;
-import fr.clic1prof.repositories.profile.v2.StudentProfileRepositoryImpl;
-import fr.clic1prof.repositories.profile.v2.TeacherProfileRepositoryImpl;
+import fr.clic1prof.repositories.profile.ProfileRepository;
+import fr.clic1prof.repositories.profile.StudentProfileRepositoryImpl;
+import fr.clic1prof.repositories.profile.TeacherProfileRepositoryImpl;
 import fr.clic1prof.repositories.user.UserRepository;
 import fr.clic1prof.repositories.user.UserRepositoryImpl;
 

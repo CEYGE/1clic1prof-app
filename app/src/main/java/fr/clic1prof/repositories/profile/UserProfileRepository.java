@@ -1,25 +1,29 @@
 package fr.clic1prof.repositories.profile;
 
 import android.graphics.Bitmap;
-import android.util.Log;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
-import javax.inject.Inject;
+import java.io.File;
+import java.io.InputStream;
 
 import fr.clic1prof.api.profile.ProfileController;
 import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.models.profile.modifier.PasswordModifier;
 import fr.clic1prof.network.NetworkProvider;
+import fr.clic1prof.util.DataListener;
+import fr.clic1prof.util.FileUtils;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public abstract class UserProfileRepository<T extends Profile> implements ProfileRepository<T> {
-
-    private static final String TAG = "UserProfileRepository";
 
     private final NetworkProvider provider;
 
@@ -27,80 +31,137 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
         this.provider = provider;
     }
 
-    public abstract ProfileController getProfileController();
+    @Override
+    public void getProfilePicture(DataListener<Bitmap> listener) {
+
+        this.getProfileController().getProfilePicture().enqueue(new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+
+                InputStream stream = response.body().byteStream();
+
+                Bitmap bitmap = BitmapFactory.decodeStream(stream);
+
+                if(bitmap != null) listener.onSuccess(bitmap);
+                else listener.onError("Cannot decode bitmap."); // TODO to review.
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable throwable) {
+                listener.onError("Cannot retrieve user's profile picture.");
+            }
+        });
+    }
 
     @Override
-    public LiveData<String> updateFirstName(final String firstName) {
+    public void updateFirstName(String firstName, DataListener<Void> listener) {
 
-        MutableLiveData<String> data = new MutableLiveData<>();
-
-        ProfileController controller = this.getProfileController();
-
-        controller.updateFirstName(firstName).enqueue(new Callback<Void>() {
+        this.getProfileController().updateFirstName(firstName).enqueue(new Callback<Void>() {
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                data.postValue(response.isSuccessful() ? firstName : null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update user's first name.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                data.postValue(null);
-                Log.e(TAG, "Cannot update user first name.", throwable);
+                listener.onError("Cannot update user's first name.");
             }
         });
-        return data;
     }
 
     @Override
-    public LiveData<String> updateLastName(final String lastName) {
+    public void updateLastName(String lastName, DataListener<Void> listener) {
 
-        MutableLiveData<String> data = new MutableLiveData<>();
-
-        ProfileController controller = this.getProfileController();
-
-        controller.updateFirstName(lastName).enqueue(new Callback<Void>() {
+        this.getProfileController().updateFirstName(lastName).enqueue(new Callback<Void>() {
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                data.postValue(response.isSuccessful() ? lastName : null);
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update user's last name.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                data.postValue(null);
-                Log.e(TAG, "Cannot update user last name.", throwable);
+                listener.onError("Cannot update user's last name.");
             }
         });
-        return data;
     }
 
     @Override
-    public LiveData<Boolean> updatePassword(PasswordModifier modifier) {
+    public void updatePassword(PasswordModifier modifier, DataListener<Void> listener) {
 
-        MutableLiveData<Boolean> data = new MutableLiveData<>();
-
-        ProfileController controller = this.getProfileController();
-
-        controller.updatePassword(modifier).enqueue(new Callback<Void>() {
+        this.getProfileController().updatePassword(modifier).enqueue(new Callback<Void>() {
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                data.postValue(response.isSuccessful());
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot update user's password.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
-                data.postValue(null);
-                Log.e(TAG, "Cannot update user first name.", throwable);
+                listener.onError("Cannot update user's password.");
             }
         });
-        return data;
     }
 
     @Override
-    public LiveData<Bitmap> updatePicture(Bitmap bitmap) {
-        return null;
+    public void updatePicture(File picture, DataListener<Integer> listener) {
+
+        String mediaType = FileUtils.getMimeType(Uri.fromFile(picture));
+
+        // MediaType cannot be found.
+        if(mediaType == null) {
+            listener.onError("MediaType not found.");
+            return;
+        }
+
+        RequestBody body = RequestBody.create(MediaType.get(mediaType), picture);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("picture", picture.getName(), body);
+
+        this.getProfileController().updateProfilePicture(part).enqueue(new Callback<Integer>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
+
+                if(response.isSuccessful()) listener.onSuccess(response.body());
+                else listener.onError("Cannot update user's profile picture.");
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Integer> call, @NonNull Throwable throwable) {
+                listener.onError("Cannot update user's profile picture.");
+            }
+        });
+    }
+
+    @Override
+    public void deleteProfilePicture(DataListener<Boolean> listener) {
+
+        this.getProfileController().deleteProfilePicture().enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+
+                if(response.isSuccessful()) listener.onSuccess(null);
+                else listener.onError("Cannot delete user's profile picture.");
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable throwable) {
+                listener.onError("Cannot delete user's profile picture.");
+            }
+        });
+    }
+
+    public ProfileController getProfileController() {
+        return this.provider.getService(ProfileController.class);
     }
 
     public NetworkProvider getNetworkProvider() {

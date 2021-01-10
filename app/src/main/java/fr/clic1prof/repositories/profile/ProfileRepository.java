@@ -2,20 +2,25 @@ package fr.clic1prof.repositories.profile;
 
 import android.graphics.Bitmap;
 
-import androidx.lifecycle.LiveData;
+import java.io.File;
 
 import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.models.profile.modifier.PasswordModifier;
+import fr.clic1prof.util.DataListener;
 
 public interface ProfileRepository<T extends Profile> {
 
-    LiveData<T> getProfile();
+    void getProfile(DataListener<T> listener);
 
-    LiveData<String> updateFirstName(String firstName);
+    void getProfilePicture(DataListener<Bitmap> listener);
 
-    LiveData<String> updateLastName(String lastName);
+    void updateFirstName(String firstName, DataListener<Void> listener);
 
-    LiveData<Boolean> updatePassword(PasswordModifier modifier);
+    void updateLastName(String lastName, DataListener<Void> listener);
 
-    LiveData<Bitmap> updatePicture(Bitmap bitmap);
+    void updatePassword(PasswordModifier modifier, DataListener<Void> listener);
+
+    void updatePicture(File file, DataListener<Integer> listener);
+
+    void deleteProfilePicture(DataListener<Boolean> listener);
 }
