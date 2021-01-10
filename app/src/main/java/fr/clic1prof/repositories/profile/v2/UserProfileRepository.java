@@ -2,6 +2,7 @@ package fr.clic1prof.repositories.profile.v2;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
@@ -13,6 +14,7 @@ import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.models.profile.modifier.PasswordModifier;
 import fr.clic1prof.network.NetworkProvider;
 import fr.clic1prof.util.DataListener;
+import fr.clic1prof.util.FileUtils;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -112,7 +114,15 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
     @Override
     public void updatePicture(File picture, DataListener<Integer> listener) {
 
-        RequestBody body = RequestBody.create(MediaType.get("image/img"), picture);
+        String mediaType = FileUtils.getMimeType(Uri.fromFile(picture));
+
+        // MediaType cannot be found.
+        if(mediaType == null) {
+            listener.onError("MediaType not found.");
+            return;
+        }
+
+        RequestBody body = RequestBody.create(MediaType.get(mediaType), picture);
         MultipartBody.Part part = MultipartBody.Part.createFormData("picture", picture.getName(), body);
 
         this.getProfileController().updateProfilePicture(part).enqueue(new Callback<Integer>() {
