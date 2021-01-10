@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,7 +91,6 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         TextView view = findViewById(R.id.textReturnView);
         String fullName = profile.getFirstName() + profile.getLastName();
         view.setText(fullName);
-
         //TextView profile
         TextView textFirst = findViewById(R.id.viewFirstName02);
         textFirst.setText(profile.getFirstName());
@@ -98,18 +98,15 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         textLast.setText(profile.getLastName());
         TextView textMail = findViewById(R.id.viewMail02);
         textMail.setText(profile.getEmail());
-
         //Description profile
         EditText description = findViewById(R.id.editDescription02);
         description.setText(profile.getDescription());
-
         //Studies profile
         EditText studies = findViewById(R.id.editStudies02);
         studies.setText(profile.getStudies());
-
-        //SchoolLevel profile
-        //TODO
-            
+        //Speciality profile
+        Spinner spinner = findViewById(R.id.spinnerSpeciality);
+        spinner.setSelection(profile.getSpecialities().get(1).getId());
         //Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img);
         imgView.setImageBitmap(profile.getPicture());

@@ -246,7 +246,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
             changeTextButton(buttonMail);
         }else {
             if(verifString(editMail.getText().toString())) {
-                //TODO: Updata MAIL
+                //TODO: Update MAIL
                 switcherMail.showNext();
                 changeTextButton(buttonMail);
             }else {

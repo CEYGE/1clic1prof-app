@@ -360,6 +360,7 @@
                 android:text="@string/versionModification"
                 android:onClick="switchStudiesAndUpdate"/>
 
+            <!--Need to modify to a custom spinner to show multiple selection-->
             <Spinner
                 android:id="@+id/spinnerSpeciality"
                 style="@style/EntryText"
