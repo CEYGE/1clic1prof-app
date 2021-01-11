@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/dashboard_return"
+                android:background="@drawable/arrow_right"
                 android:contentDescription="ReturnDashboard"
                 android:layout_marginEnd="4dp"/>
 
@@ -325,8 +325,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top|start"
-                android:hint="@string/Hint_description"
-                android:autofillHints="@string/Hint_description"
+                android:hint="@string/Description"
+                android:autofillHints="@string/Description"
                 android:inputType="text|textMultiLine"
                 android:maxLines="5"
                 android:maxLength="300"

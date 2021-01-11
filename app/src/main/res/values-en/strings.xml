@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="ImageModification">Switch photo</string>
-    <string name="Hint_description">Description</string>
-    <string name="versionModification">Modify</string>
-    <string name="versionConfirmation">Confirm</string>
-</resources>

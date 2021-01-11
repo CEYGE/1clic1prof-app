@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/accueil"
+        android:title="@string/Dashboard" />
+
+    <item
+        android:id="@+id/nav_agenda"
+        android:icon="@drawable/calendrier"
+        android:title="@string/agenda"/>
+
+
+    <item
+        android:id="@+id/nav_teacher"
+        android:icon="@drawable/contact"
+        android:title="@string/my_contacts"/>
+
+    <item
+        android:id="@+id/nav_invoice"
+        android:icon="@drawable/facture"
+        android:title="@string/payslip"/>
+
+    <item
+        android:id="@+id/nav_disconnection"
+        android:icon="@drawable/deconnexion"
+        android:title="@string/disconnection"/>
+
+</menu>

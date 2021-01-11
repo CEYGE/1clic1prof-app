@@ -38,7 +38,16 @@
         <item name="chipBackgroundColor">@color/mtrl_choice_chip_background_color</item>
         <item name="rippleColor">@color/cyan</item>
         <item name="strokeColor">@color/cyan</item>
-
     </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background" >@android:color/transparent</item>
+    </style>
+
+
 
 </resources>
