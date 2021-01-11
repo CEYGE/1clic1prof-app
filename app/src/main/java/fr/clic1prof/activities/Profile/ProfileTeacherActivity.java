@@ -12,8 +12,14 @@ import android.widget.Toast;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+
+import java.util.Arrays;
+
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
+import fr.clic1prof.models.other.Speciality;
 import fr.clic1prof.models.profile.TeacherProfile;
 import fr.clic1prof.util.Camera;
 import fr.clic1prof.viewmodels.profile.profileV2.TeacherProfileViewModel;
@@ -83,6 +89,16 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         getViewModel().updateStudies(studies.getText().toString());
     }
 
+    public void specialityListener(){
+        ChipGroup chipGroup = findViewById(R.id.Speciality);
+        for(int i=0; i<chipGroup.getChildCount();i++){
+            chipGroup.getChildAt(i).setOnClickListener(v -> {
+                //TODO : update Speciality
+            });
+        }
+
+    }
+
 
 
     @Override
@@ -105,8 +121,15 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         EditText studies = findViewById(R.id.editStudies02);
         studies.setText(profile.getStudies());
         //Speciality profile
-        Spinner spinner = findViewById(R.id.spinnerSpeciality);
-        spinner.setSelection(profile.getSpecialities().get(1).getId());
+        ChipGroup chipGroup = findViewById(R.id.Speciality);
+        for (Speciality speciality : profile.getSpecialities()){
+            for (int i=0; i<chipGroup.getChildCount();i++){
+                Chip chip = (Chip)chipGroup.getChildAt(i);
+                if(speciality.getId() == (i+1)) {
+                    chip.setChecked(true);
+                }
+            }
+        }
         //Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img);
         imgView.setImageBitmap(profile.getPicture());

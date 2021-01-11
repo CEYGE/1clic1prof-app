@@ -360,16 +360,80 @@
                 android:text="@string/versionModification"
                 android:onClick="switchStudiesAndUpdate"/>
 
-            <!--Need to modify to a custom spinner to show multiple selection-->
-            <Spinner
-                android:id="@+id/spinnerSpeciality"
-                style="@style/EntryText"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/Speciality"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="12dp"
-                android:layout_weight="0.2"
-                android:entries="@array/Speciality"
-                android:spinnerMode="dropdown" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:chipSpacingHorizontal="12dp"
+                app:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Mathematique"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/mathematiques"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Physique"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/physique"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Chimie"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chimie"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Svt"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/svt"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Histoire"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/histoire"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Francais"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/francais"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Anglais"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anglais"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+
+            </com.google.android.material.chip.ChipGroup>
 
 
 
