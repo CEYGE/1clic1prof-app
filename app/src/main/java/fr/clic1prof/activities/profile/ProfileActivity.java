@@ -161,10 +161,8 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         startActivity(intent);
     }
 
-    public void sendHomePage(View view){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
+
+    public abstract void sendHomePage(View view);
 
     /*
      * PART OBSERVER

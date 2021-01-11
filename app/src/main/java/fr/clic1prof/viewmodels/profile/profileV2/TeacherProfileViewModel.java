@@ -8,8 +8,8 @@ import javax.annotation.Nullable;
 
 import fr.clic1prof.models.profile.TeacherProfile;
 import fr.clic1prof.models.profile.modifier.SpecialityModifier;
-import fr.clic1prof.repositories.profile.v2.ProfileRepository;
-import fr.clic1prof.repositories.profile.v2.TeacherProfileRepository;
+import fr.clic1prof.repositories.profile.ProfileRepository;
+import fr.clic1prof.repositories.profile.TeacherProfileRepository;
 import fr.clic1prof.util.DataListener;
 
 public class TeacherProfileViewModel extends ProfileViewModel<TeacherProfile>{

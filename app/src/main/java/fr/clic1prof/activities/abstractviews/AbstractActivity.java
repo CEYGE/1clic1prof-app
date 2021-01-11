@@ -20,7 +20,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements Navi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide(); // TODO Change the way to hide
     }
 
     /**

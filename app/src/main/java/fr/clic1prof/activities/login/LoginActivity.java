@@ -17,6 +17,8 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.RequestPasswordActivity;
+import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
+import fr.clic1prof.activities.dashboard.teacher.MainTeacherActivity;
 import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.util.LoadingDialog;
 import fr.clic1prof.activities.profile.ProfileStudentActivity;
@@ -56,8 +58,8 @@ public class LoginActivity extends AppCompatActivity {
 
             if(result.getType() == ResultType.SUCCESS) {
                 this.loadingDialog.dismissDialog();
-                if(model.getSessionType() == SessionType.STUDENT) sendToStudentProfile();
-                else sendToTeacherProfile();
+                if(model.getSessionType() == SessionType.STUDENT) sendToStudentHome();
+                else sendToTeacherHome();
 
             } else if(result.getType() == ResultType.ERROR) {
                 this.loadingDialog.errorDialog(R.string.Dialog_error);
@@ -90,16 +92,16 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Send user to the student profile
      */
-    private void sendToStudentProfile(){
-        Intent intent = new Intent(this, ProfileStudentActivity.class);
+    private void sendToStudentHome(){
+        Intent intent = new Intent(this, MainStudentActivity.class);
         startActivity(intent);
     }
 
     /**
      * Send user to the teacher profile
      */
-    private void sendToTeacherProfile(){
-        Intent intent = new Intent(this, ProfileTeacherActivity.class);
+    private void sendToTeacherHome(){
+        Intent intent = new Intent(this, MainTeacherActivity.class);
         startActivity(intent);
     }
 

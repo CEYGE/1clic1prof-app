@@ -1,5 +1,6 @@
 package fr.clic1prof.activities.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
+import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
 import fr.clic1prof.models.other.SchoolLevel;
 import fr.clic1prof.models.profile.StudentProfile;
 import fr.clic1prof.util.Camera;
@@ -111,4 +113,9 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         imgView.setImageBitmap(profile.getPicture());
     }
 
+    @Override
+    public void sendHomePage(View view) {
+        Intent intent = new Intent(this, MainStudentActivity.class);
+        startActivity(intent);
+    }
 }

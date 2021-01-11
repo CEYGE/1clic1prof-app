@@ -33,7 +33,6 @@ public class CreationEventActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creation_event);
 
