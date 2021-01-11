@@ -13,7 +13,7 @@ import java.io.File;
 import javax.annotation.Nullable;
 
 import fr.clic1prof.models.profile.Profile;
-import fr.clic1prof.repositories.profile.v2.ProfileRepository;
+import fr.clic1prof.repositories.profile.ProfileRepository;
 import fr.clic1prof.util.DataListener;
 
 public class ProfileViewModel<T extends Profile> extends ViewModel {

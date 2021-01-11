@@ -4,8 +4,8 @@ import androidx.hilt.lifecycle.ViewModelInject;
 
 import fr.clic1prof.models.other.SchoolLevel;
 import fr.clic1prof.models.profile.StudentProfile;
-import fr.clic1prof.repositories.profile.v2.ProfileRepository;
-import fr.clic1prof.repositories.profile.v2.StudentProfileRepository;
+import fr.clic1prof.repositories.profile.ProfileRepository;
+import fr.clic1prof.repositories.profile.StudentProfileRepository;
 import fr.clic1prof.util.DataListener;
 
 public class StudentProfileViewModel extends ProfileViewModel<StudentProfile> {
