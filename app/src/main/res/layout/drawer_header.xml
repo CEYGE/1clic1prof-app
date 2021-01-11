@@ -13,6 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profil_img1"
+        android:onClick="sendToProfile"
         android:contentDescription="@string/profile_image" />
 
     <TextView

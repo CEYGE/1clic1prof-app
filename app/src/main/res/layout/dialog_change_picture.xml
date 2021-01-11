@@ -38,7 +38,7 @@
             android:layout_marginBottom="16dp"
             android:layout_weight="0.5"
             android:background="@drawable/rectangle"
-            android:onClick="Camera"
+            android:onClick="camera"
             android:text="@string/CameraButton" />
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:background="@drawable/rectangle"
-            android:onClick="Gallery"
+            android:onClick="gallery"
             android:text="@string/GalleryButton" />
     </LinearLayout>
 

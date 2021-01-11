@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -28,6 +29,11 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
     }
 
     public void getProfile() {
+
+        if(isProfileLoaded()){
+            this.profileLiveData.postValue(this.profileLiveData.getValue());
+            return;
+        }
 
         this.repository.getProfile(new DataListener<T>() {
 
@@ -107,6 +113,10 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
                 Log.e("Failure_Picture",message);
             }
         });
+    }
+
+    public boolean isProfileLoaded(){
+        return this.profileLiveData.getValue() != null;
     }
 
     public LiveData<T> getProfileLiveData() {

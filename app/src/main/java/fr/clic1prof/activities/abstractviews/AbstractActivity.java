@@ -8,18 +8,26 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.navigation.NavigationView;
 
 import fr.clic1prof.R;
+import fr.clic1prof.models.profile.Profile;
+import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 
-public abstract class AbstractActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public abstract class AbstractActivity<T extends Profile> extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ProfileViewModel<T> viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.viewModel = new ViewModelProvider(this).get(this.getProfileViewModelClass());
+        this.setProfileObserver();
+
     }
 
     /**
@@ -70,6 +78,15 @@ public abstract class AbstractActivity extends AppCompatActivity implements Navi
         return true;
     }
 
+    public abstract void sendToProfile(View view);
+
+    protected abstract Class<? extends ProfileViewModel<T>> getProfileViewModelClass();
+
+    protected abstract void setProfileObserver();
+
+    public ProfileViewModel<T> getViewModel() {
+        return viewModel;
+    }
 }
 
 

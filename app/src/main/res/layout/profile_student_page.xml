@@ -375,7 +375,7 @@
 
         <ImageView
             android:id="@+id/deconnexion_View"
-            android:onClick="Disconnect"
+            android:onClick="disconnect"
             android:contentDescription="DeconnexionImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

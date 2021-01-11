@@ -17,6 +17,7 @@ import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
 import fr.clic1prof.models.other.SchoolLevel;
 import fr.clic1prof.models.profile.StudentProfile;
 import fr.clic1prof.util.Camera;
+import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 
 @AndroidEntryPoint
@@ -26,18 +27,6 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_student_page);
-
-        this.setButton();
-        this.setSwitcher();
-        this.setEditText();
-
-        this.setViewModel( new ViewModelProvider(this).get(StudentProfileViewModel.class) );
-        this.setError(Toast.makeText(this," ",Toast.LENGTH_SHORT));
-        this.setObserverError("Failure to retrieve profile");
-        this.setObserverProfile();
-        this.getViewModel().getProfile();
-        this.setCamera(new Camera(this));
-        this.setSpinnerObserver();
     }
 
 
@@ -69,11 +58,6 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         this.setEditPassword(R.id.editTextPassword01);
     }
 
-    @Override
-    public StudentProfileViewModel getViewModel() {
-        return (StudentProfileViewModel) super.getViewModel();
-    }
-
     private void setSpinnerObserver(){
         Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,6 +75,23 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
             }
         });
     }
+
+    /*
+     * PART GETTER
+     */
+    @Override
+    public StudentProfileViewModel getViewModel() {
+        return (StudentProfileViewModel) super.getViewModel();
+    }
+
+    @Override
+    protected Class<? extends ProfileViewModel<StudentProfile>> getProfileViewModelClass() {
+        return StudentProfileViewModel.class;
+    }
+
+    /*
+     * PART FUNCTION
+     */
 
     @Override
     protected void assignInformation(StudentProfile profile){

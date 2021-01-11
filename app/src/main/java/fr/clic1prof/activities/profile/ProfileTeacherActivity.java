@@ -20,6 +20,7 @@ import fr.clic1prof.activities.dashboard.teacher.MainTeacherActivity;
 import fr.clic1prof.models.other.Speciality;
 import fr.clic1prof.models.profile.TeacherProfile;
 import fr.clic1prof.util.Camera;
+import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.TeacherProfileViewModel;
 
 @AndroidEntryPoint
@@ -30,17 +31,6 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_teacher_page);
-
-        this.setButton();
-        this.setSwitcher();
-        this.setEditText();
-
-        this.setViewModel(new ViewModelProvider(this).get(TeacherProfileViewModel.class));
-        this.setError(Toast.makeText(this," ", Toast.LENGTH_SHORT));
-        this.setObserverError("Failure to retrive profile");
-        this.setObserverProfile();
-        this.getViewModel().getProfile();
-        this.setCamera(new Camera(this));
     }
 
     /*
@@ -71,10 +61,32 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         this.setEditPassword(R.id.editTextPassword02);
     }
 
+    public void setSpecialityListener(){
+        ChipGroup chipGroup = findViewById(R.id.Speciality);
+        for(int i=0; i<chipGroup.getChildCount();i++){
+            chipGroup.getChildAt(i).setOnClickListener(v -> {
+                //TODO : update Speciality
+            });
+        }
+
+    }
+
+    /*
+     * PART GETTER
+     */
     @Override
     public TeacherProfileViewModel getViewModel() {
         return (TeacherProfileViewModel)super.getViewModel();
     }
+
+    @Override
+    protected Class<? extends ProfileViewModel<TeacherProfile>> getProfileViewModelClass() {
+        return TeacherProfileViewModel.class;
+    }
+
+    /*
+     * FUNCTION
+     */
 
     public void switchDescriptionAndUpdate(View view){
         EditText description = findViewById(R.id.editDescription02);
@@ -87,15 +99,7 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         getViewModel().updateStudies(studies.getText().toString());
     }
 
-    public void specialityListener(){
-        ChipGroup chipGroup = findViewById(R.id.Speciality);
-        for(int i=0; i<chipGroup.getChildCount();i++){
-            chipGroup.getChildAt(i).setOnClickListener(v -> {
-                //TODO : update Speciality
-            });
-        }
 
-    }
 
 
 

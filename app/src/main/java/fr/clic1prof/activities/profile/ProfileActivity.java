@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.ViewSwitcher;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.io.File;
 import java.util.regex.Pattern;
@@ -49,153 +52,66 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     private EditText editMail;
     private EditText editPassword;
 
-    /*
-     * PART SETTER
-     */
-
-
     protected abstract void setButton();
+
     protected abstract void setSwitcher();
+
     protected abstract void setEditText();
 
-    public void setButtonFirstName(int buttonFirstName) {
-        this.buttonFirstName = findViewById(buttonFirstName);
+    protected abstract Class<? extends ProfileViewModel<T>> getProfileViewModelClass();
+
+    public abstract void sendHomePage(View view);
+
+    protected abstract void assignInformation(T profile);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        this.setButton();
+        this.setSwitcher();
+        this.setEditText();
+
+        this.setError(Toast.makeText(this," ", Toast.LENGTH_SHORT));
+        this.setCamera(new Camera(this));
+
+        this.viewModel = new ViewModelProvider(this).get(getProfileViewModelClass());
+        this.setObserverError("Failure to retrieve profile");
+        this.setObserverProfile();
+        this.viewModel.getProfile();
+
     }
 
-    public void setButtonLastName(int buttonLastName) {
-        this.buttonLastName = findViewById(buttonLastName);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        assert data != null;
+        if (requestCode == 102) {
+            if(resultCode == Activity.RESULT_OK) {
+                File f = new File(camera.currentPhotoPath);
+                Uri contentUri = Uri.fromFile(f);
+                camera.setImage(contentUri);
+                setObserverError("Erreur de la prise de photo");
+                this.viewModel.updatePicture(f);
+            }
+        }else if( requestCode == 103){
+            if(resultCode == Activity.RESULT_OK){
+                Uri contentUri = data.getData();
+                File f = new File(contentUri.getPath());
+                camera.setImage(contentUri);
+                setObserverError("Erreur d'envoi de la photo");
+                this.viewModel.updatePicture(f);
+
+            }
+        }
     }
 
-    public void setButtonMail(int buttonMail) {
-        this.buttonMail = findViewById(buttonMail);
-    }
-
-    public void setButtonPassword(int buttonPassword) {
-        this.buttonPassword = findViewById(buttonPassword);
-    }
-
-    public void setSwitcherFirstName(int switcherFirstName) {
-        this.switcherFirstName = findViewById(switcherFirstName);
-    }
-
-    public void setSwitcherLastName(int switcherLastName) {
-        this.switcherLastName = findViewById(switcherLastName);
-    }
-
-    public void setSwitcherMail(int switcherMail) {
-        this.switcherMail = findViewById(switcherMail);
-    }
-
-    public void setSwitcherPassword(int switcherPassword) {
-        this.switcherPassword = findViewById(switcherPassword);
-    }
-
-    public void setEditFirstName(int editFirstName) {
-        this.editFirstName = findViewById(editFirstName);
-    }
-
-    public void setEditLastName(int editLastName) {
-        this.editLastName = findViewById(editLastName);
-    }
-
-    public void setEditMail(int editMail) {
-        this.editMail = findViewById(editMail);
-    }
-
-    public void setEditPassword(int editPassword) {
-        this.editPassword = findViewById(editPassword);
-    }
-
-
-    public void setError(Toast error) {
-        this.error = error;
-    }
-
-    public void setSelectedImage(ImageView selectedImage) {
-        this.selectedImage = selectedImage;
-    }
-
-    public void setDialog(AlertDialog dialog) {
-        this.dialog = dialog;
-    }
-
-    public void setCamera(Camera camera) {
-        this.camera = camera;
-    }
-
-    public void setViewModel(ProfileViewModel<T> viewModel) {
-        this.viewModel = viewModel;
-    }
-
-    /*
-     * PART GETTER
-     */
-
-    public Toast getError() {
-        return this.error;
-    }
-
-    public ImageView getSelectedImage() {
-        return selectedImage;
-    }
-
-    public AlertDialog getDialog() {
-        return dialog;
-    }
-
-    public Camera getCamera() {
-        return camera;
-    }
-
-    public ProfileViewModel<T> getViewModel() {
-        return viewModel;
-    }
-
-    /*
-     * PART MOVE BETWEEN ACTIVITY
-     */
-
-
-    public void Disconnect(View view){
+    public void disconnect(View view){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
 
-    public abstract void sendHomePage(View view);
-
-    /*
-     * PART OBSERVER
-     */
-
-
-    //Observer fixe sur model
-    protected void setObserverProfile(){
-        //Action en observant le profile
-        this.viewModel.getProfileLiveData().observe(this, this::assignInformation);
-    }
-
-    //Observe dynamic sur les errors.
-    protected void setObserverError(String message){
-        if(error != null){
-            this.setError(new Toast(this));
-            this.error.setDuration(Toast.LENGTH_SHORT);
-        }
-        // Supp tous les observer sur le LiveDataError avant de l'observer
-        this.viewModel.getErrorLiveData().removeObservers(this);
-        this.viewModel.getErrorLiveData().observe(this, result -> {
-            //Action en observant une erreur
-            error.setText(message);
-            error.show();
-
-        });
-    }
-
-    protected abstract void assignInformation(T profile);
-
-    /*
-     * PART UPDATE INFORMATIONS
-     */
 
     public void switchFirstNameAndUpdate(View view){
         if(buttonFirstName.getText().toString().equals("Modifier")) {
@@ -265,22 +181,6 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         }
     }
 
-    /*
-     * PART FUNCTION UTILITY
-     */
-
-    private void changeTextButton(Button button){
-        button.setText( button.getText().toString().equals("Valider") ? "Modifier" : "Valider");
-    }
-
-    private boolean verifString(String value){
-        return !Pattern.matches("^\\w$",value);
-    }
-
-    /*
-     * PART PICTURE
-     */
-
     public void modifyImage(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
@@ -291,41 +191,135 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.setCamera(new Camera(this));
     }
 
-    public void Camera(View view){
-        System.out.println("CAMERA ON");
+    public void camera(View view){
         camera.askCameraPermission();
         dialog.dismiss();
 
     }
 
-    public void Gallery(View view){
+    public void gallery(View view){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivity(intent);
         dialog.dismiss();
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        assert data != null;
-        if (requestCode == 102) {
-            if(resultCode == Activity.RESULT_OK) {
-                File f = new File(camera.currentPhotoPath);
-                Uri contentUri = Uri.fromFile(f);
-                camera.setImage(contentUri);
-                setObserverError("Erreur de la prise de photo");
-                this.viewModel.updatePicture(f);
-            }
-        }else if( requestCode == 103){
-            if(resultCode == Activity.RESULT_OK){
-                Uri contentUri = data.getData();
-                File f = new File(contentUri.getPath());
-                camera.setImage(contentUri);
-                setObserverError("Erreur d'envoi de la photo");
-                this.viewModel.updatePicture(f);
-
-            }
-        }
+    private void changeTextButton(Button button){
+        button.setText( button.getText().toString().equals("Valider") ? "Modifier" : "Valider");
     }
+
+    private boolean verifString(String value){
+        return !Pattern.matches("^\\w$",value);
+    }
+
+    //Observer fixe sur model
+    private void setObserverProfile(){
+        //Action en observant le profile
+        this.viewModel.getProfileLiveData().observe(this, this::assignInformation);
+    }
+
+    //Observer dynamic sur les errors.
+    protected void setObserverError(String message){
+        if(error != null){
+            this.setError(new Toast(this));
+            this.error.setDuration(Toast.LENGTH_SHORT);
+        }
+        // Supp tous les observer sur le LiveDataError avant de l'observer
+        this.viewModel.getErrorLiveData().removeObservers(this);
+        this.viewModel.getErrorLiveData().observe(this, result -> {
+            //Action en observant une erreur
+            error.setText(message);
+            error.show();
+
+        });
+    }
+
+
+    public void setButtonFirstName(int buttonFirstName) {
+        this.buttonFirstName = findViewById(buttonFirstName);
+    }
+
+    public void setButtonLastName(int buttonLastName) {
+        this.buttonLastName = findViewById(buttonLastName);
+    }
+
+    public void setButtonMail(int buttonMail) {
+        this.buttonMail = findViewById(buttonMail);
+    }
+
+    public void setButtonPassword(int buttonPassword) {
+        this.buttonPassword = findViewById(buttonPassword);
+    }
+
+    public void setSwitcherFirstName(int switcherFirstName) {
+        this.switcherFirstName = findViewById(switcherFirstName);
+    }
+
+    public void setSwitcherLastName(int switcherLastName) {
+        this.switcherLastName = findViewById(switcherLastName);
+    }
+
+    public void setSwitcherMail(int switcherMail) {
+        this.switcherMail = findViewById(switcherMail);
+    }
+
+    public void setSwitcherPassword(int switcherPassword) {
+        this.switcherPassword = findViewById(switcherPassword);
+    }
+
+    public void setEditFirstName(int editFirstName) {
+        this.editFirstName = findViewById(editFirstName);
+    }
+
+    public void setEditLastName(int editLastName) {
+        this.editLastName = findViewById(editLastName);
+    }
+
+    public void setEditMail(int editMail) {
+        this.editMail = findViewById(editMail);
+    }
+
+    public void setEditPassword(int editPassword) {
+        this.editPassword = findViewById(editPassword);
+    }
+
+    public void setError(Toast error) {
+        this.error = error;
+    }
+
+    public void setSelectedImage(ImageView selectedImage) {
+        this.selectedImage = selectedImage;
+    }
+
+    public void setDialog(AlertDialog dialog) {
+        this.dialog = dialog;
+    }
+
+    public void setCamera(Camera camera) {
+        this.camera = camera;
+    }
+
+    public void setViewModel(ProfileViewModel<T> viewModel) {
+        this.viewModel = viewModel;
+    }
+
+    public Toast getError() {
+        return this.error;
+    }
+
+    public ImageView getSelectedImage() {
+        return selectedImage;
+    }
+
+    public AlertDialog getDialog() {
+        return dialog;
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public ProfileViewModel<T> getViewModel() {
+        return viewModel;
+    }
+
 }
