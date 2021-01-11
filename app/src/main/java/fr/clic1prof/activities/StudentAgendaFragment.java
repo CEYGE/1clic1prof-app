@@ -19,7 +19,9 @@ public class StudentAgendaFragment extends AgendaFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflateFragment(R.layout.student_agenda, inflater, container);
+        View view = inflateFragment(R.layout.student_agenda, inflater, container);
+        setListenerCourse(R.layout.bottom_sheet_student,view);
+        return view;
     }
 
 }

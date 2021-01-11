@@ -19,28 +19,6 @@ public abstract class NotebookFragment extends AbstractFragment {
     }
 
     //TODO add specific method for Notebook here
-    /**
-     * Creating listener for showing the bottom sheet dialog about course.
-     * Layout ID in paremeter
-     * @param R_layout_bottom_sheet
-     */
-    public void setListenerNotebook(int R_layout_bottom_sheet){
-        //TODO Match notebook id with notebook_resume
-        LinearLayout notebookResume = getActivity().findViewById(R.id.notebook_resume);
-        notebookResume.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(),R.style.BottomSheetDialogTheme);
-                View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
-                        .inflate(
-                                R_layout_bottom_sheet,
-                                (LinearLayout)getActivity().findViewById(R.id.bottomSheetContainer)
-                        );
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
-            }
-        });
-    }
 
 }

@@ -118,7 +118,7 @@
         android:layout_gravity="start"
         android:visibility="visible"
         app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu_student" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

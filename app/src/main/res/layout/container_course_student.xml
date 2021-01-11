@@ -8,7 +8,6 @@
     android:layout_marginBottom="15sp">
 
     <LinearLayout
-        android:id="@+id/notebook_resume"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -26,8 +25,8 @@
                 android:layout_width="10sp"
                 android:layout_height="10sp"
                 android:layout_marginEnd="15sp"
-                android:src="@drawable/blue_dot"
-                android:contentDescription="@string/blue_dot" />
+                android:contentDescription="@string/blue_dot"
+                android:src="@drawable/blue_dot" />
 
             <TextView
                 android:id="@+id/textview_course_date"

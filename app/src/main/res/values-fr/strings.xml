@@ -48,7 +48,7 @@
     <string name="add_reminder">Ajouter un rappel</string>
     <string name="define_frequency">Définir la fréquence de répétition</string>
     <string name="add_description">Ajouter une description</string>
-    <string name="creer">Créer</string>
+    <string name="create">Créer</string>
     <string name="image_profil">Image profil</string>
     <string name="scholar_level">Niveau d\'étude</string>
     <string name="firstName_lastName">Prénom Nom</string>
@@ -76,10 +76,12 @@
     <string name="add_event_button">Bouton ajout évènement</string>
     <string name="my_student">Mon Élève</string>
     <string name="student_image">Image étudiant</string>
-    <string name="offer_job_intership">Offres d\'emplois et stages</string>
+    <string name="offer_job_internship">Offres d\'emplois et stages</string>
     <string name="add_document_button">Bouton ajout document</string>
     <string name="Add_new_note">Ajouter une nouvelle note</string>
     <string name="associate_document">Tu pourras aussi y associer des documents</string>
     <string name="pending_validation">En attente de validation</string>
     <string name="notebook">Carnet</string>
+    <string name="payslip">Fiches de paie</string>
+    <string name="my_contacts">Mes contacts</string>
 </resources>

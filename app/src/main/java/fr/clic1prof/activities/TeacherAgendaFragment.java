@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -17,12 +18,13 @@ import fr.clic1prof.abstractviews.AgendaFragment;
 public class TeacherAgendaFragment extends AgendaFragment {
 
     public static TeacherAgendaFragment newInstance() { return new TeacherAgendaFragment(); }
-    View view;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflateFragment(R.layout.teacher_agenda, inflater, container);
+        View view = inflateFragment(R.layout.teacher_agenda, inflater, container);
+        setListenerCourse(R.layout.bottom_sheet_teacher,view);
+        return view;
     }
 
     @Override
@@ -32,8 +34,7 @@ public class TeacherAgendaFragment extends AgendaFragment {
         buttonAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), CreationEventActivity.class);
-                startActivity(i);
+                Navigation.findNavController(v).navigate(R.id.action_teacher_agenda_to_creationEventActivity);
             }
         });
     }

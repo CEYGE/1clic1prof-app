@@ -123,7 +123,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15sp"
-                            android:text="@string/offer_job_intership"
+                            android:text="@string/offer_job_internship"
                             android:textColor="#333333"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -135,16 +135,17 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ScrollView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="20sp">
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                tools:listitem="@layout/container_job"/>
-                        </ScrollView>
+                            <include layout="@layout/container_job" />
+
+                            <include layout="@layout/container_job" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -182,12 +183,8 @@
                         android:background="#FAFAFA"
                         android:orientation="vertical">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="#FAFAFA"
-                            android:orientation="vertical"
-                            tools:listitem="@layout/container_article"/>
+                        <include layout="@layout/container_article"/>
+                        <include layout="@layout/container_article"/>
 
                     </LinearLayout>
 

@@ -34,6 +34,12 @@
         android:label="CreationEventActivity"
         tools:layout="@layout/creation_event"
         />
+    <fragment
+        android:id="@+id/payslipFragment"
+        android:name="fr.clic1prof.activities.PayslipFragment"
+        android:label="payslip_fragment"
+        tools:layout="@layout/payslip_fragment" />
+    <action android:id="@+id/action_global_payslipFragment" app:destination="@id/payslipFragment" />
 
 
 </navigation>

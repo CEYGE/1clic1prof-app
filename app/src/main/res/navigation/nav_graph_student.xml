@@ -25,7 +25,11 @@
         android:label="fragment_notebook"
         tools:layout="@layout/student_notebook" />
     <action android:id="@+id/action_global_agendaFragment" app:destination="@id/student_agenda"/>
-
+    <fragment
+        android:id="@+id/payslipFragment"
+        android:name="fr.clic1prof.activities.PayslipFragment"
+        android:label="payslip_fragment"
+        tools:layout="@layout/payslip_fragment" /><action android:id="@+id/action_global_payslipFragment" app:destination="@id/payslipFragment"/>
 
 
 </navigation>

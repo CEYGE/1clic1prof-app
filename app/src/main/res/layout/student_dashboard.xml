@@ -203,12 +203,8 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#FAFAFA"
-                        android:orientation="vertical"
-                        tools:listitem="@layout/container_article"/>
+                    <include layout="@layout/container_article"/>
+                    <include layout="@layout/container_article"/>
 
                 </LinearLayout>
 

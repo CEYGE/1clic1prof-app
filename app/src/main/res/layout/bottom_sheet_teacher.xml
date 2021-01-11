@@ -70,7 +70,7 @@
             android:id="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Subject"
+            android:text="Mathématiques"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -258,6 +258,7 @@
                                 android:id="@+id/textView25"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10sp"
                                 android:layout_weight="1"
                                 android:text="NomDuDocument.pdf" />
                         </LinearLayout>

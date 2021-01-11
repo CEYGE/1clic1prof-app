@@ -51,23 +51,22 @@
                     android:contentDescription="@string/grey_line" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textViewDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20sp"
                     android:text="@string/today"
                     android:textColor="#333333"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_courses"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    tools:listitem="@layout/container_course">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                <include
+                    android:id="@+id/notebook_resume"
+                    layout="@layout/container_course_teacher" />
+                <include layout="@layout/container_course_teacher"/>
+                <include layout="@layout/container_course_teacher"/>
+                <include layout="@layout/container_course_teacher"/>
 
             </LinearLayout>
 

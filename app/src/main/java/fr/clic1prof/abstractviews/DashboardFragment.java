@@ -2,6 +2,8 @@ package fr.clic1prof.abstractviews;
 
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import fr.clic1prof.R;
 
 public abstract class DashboardFragment extends AbstractFragment {

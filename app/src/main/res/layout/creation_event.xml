@@ -413,8 +413,8 @@
             android:id="@+id/buttonCreate"
             android:layout_width="match_parent"
             android:layout_height="55sp"
-            android:text="@string/creer"
-            app:cornerRadius="30sp" />
+            android:text="@string/create"
+            android:cornerRadius="30sp" />
 
     </LinearLayout>
 

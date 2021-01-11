@@ -20,12 +20,10 @@ public class TeacherNotebookFragment extends NotebookFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflateFragment(R.layout.teacher_notebook, inflater, container);
+        View view =inflateFragment(R.layout.teacher_notebook, inflater, container);
+        setListenerCourse(R.layout.bottom_sheet_teacher, view);
+        return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        //setListenerNotebook(R.layout.bottom_sheet_teacher);
-    }
+
 }

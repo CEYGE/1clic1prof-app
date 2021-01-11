@@ -214,14 +214,13 @@
                     android:textColor="#333333"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_courses"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    tools:listitem="@layout/container_course">
-
-                </androidx.recyclerview.widget.RecyclerView>
+                <include
+                    android:id="@+id/notebook_resume"
+                    layout="@layout/container_course_teacher" />
+                <include layout="@layout/container_course_teacher"/>
+                <include layout="@layout/container_course_teacher"/>
+                <include layout="@layout/container_course_teacher"/>
+                <include layout="@layout/container_course_teacher"/>
 
             </LinearLayout>
 

@@ -43,6 +43,7 @@ public abstract class AbstractActivity extends AppCompatActivity implements Navi
 
     }
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -60,6 +61,9 @@ public abstract class AbstractActivity extends AppCompatActivity implements Navi
                 break;
             case R.id.nav_notebook :
                 navController.navigate(R.id.action_global_notebookFragment);
+                break;
+            case R.id.nav_invoice :
+                navController.navigate(R.id.action_global_payslipFragment);
                 break;
             default :
                 break;
