@@ -22,7 +22,6 @@ public abstract class ContactActivityViewModel<T extends Contact> extends ViewMo
     }
 
     public void retrieveContacts() {
-
         this.contactsLiveData.postValue(Result.loading());
 
         LiveData<List<T>> data = this.repository.getContacts();

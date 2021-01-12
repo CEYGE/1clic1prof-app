@@ -8,63 +8,45 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.contacts.ContactsAdapter;
 import fr.clic1prof.R;
+import fr.clic1prof.contacts.impl.StudentContactsAdapter;
 import fr.clic1prof.contacts.impl.TeacherContactsAdapter;
 import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.models.contacts.HeaderContact;
 import fr.clic1prof.models.contacts.TeacherContact;
+import fr.clic1prof.network.authentication.AuthenticationRequest;
 import fr.clic1prof.viewmodels.ResultType;
 import fr.clic1prof.viewmodels.contacts.StudentContactActivityViewModel;
+import fr.clic1prof.viewmodels.login.LoginActivityViewModel;
 
 @AndroidEntryPoint
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Fragment {
     private List<Contact> contacts;
     private StudentContactActivityViewModel viewModel;
-
-    static String getAlphaNumericString(int n)
-    {
-
-        // chose a Character random from this String
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                + "abcdefghijklmnopqrstuvxyz";
-
-        // create StringBuffer size of AlphaNumericString
-        StringBuilder sb = new StringBuilder(n);
-
-        for (int i = 0; i < n; i++) {
-
-            // generate a random number between
-            // 0 to AlphaNumericString variable length
-            int index
-                    = (int)(AlphaNumericString.length()
-                    * Math.random());
-
-            // add Character one by one in end of sb
-            sb.append(AlphaNumericString
-                    .charAt(index));
-        }
-
-        return sb.toString();
-    }
+    private ContactsAdapter adapter;
+    private RecyclerView rvContacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         //Hide title bar
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        AuthenticationRequest request = new AuthenticationRequest("test1.student@test.com", "UnRenard60**");
+        LoginActivityViewModel lavm = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+        lavm.login(request);
+
         setContentView(R.layout.activity_main);
 
         this.viewModel = new ViewModelProvider(this).get(StudentContactActivityViewModel.class);
@@ -72,16 +54,24 @@ public class MainActivity extends AppCompatActivity {
         this.setEditTextListener();
         this.setContactObserver();
 
-        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        createList(new ArrayList<>()); //Empty
 
+        rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        adapter = new TeacherContactsAdapter(contacts);
+        rvContacts.setAdapter(adapter);
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+
+        this.viewModel.retrieveContacts();
+    }
+
+    private void createList(List<TeacherContact> toAdd) {
         contacts = new ArrayList<>();
-        for (int i = 0; i < 200; i++) {
-            contacts.add(new TeacherContact(i, getAlphaNumericString(5), getAlphaNumericString(10), null, "Bac +2"));
-        }
+        contacts.addAll(toAdd);
         Collections.sort(contacts);
         contactSorter();
 
-        ContactsAdapter adapter = new TeacherContactsAdapter(contacts);
+        rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        adapter = new TeacherContactsAdapter(contacts);
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -110,16 +100,15 @@ public class MainActivity extends AppCompatActivity {
             TextView view;// = findViewById(R.id.textView); // TODO To change.
             String text;
 
-            if(result.getType() == ResultType.SUCCESS) {
-
-                List<TeacherContact> contacts = result.getData();
-
-                text = contacts.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
+            if (result.getType() == ResultType.SUCCESS) {
+                List<TeacherContact> teachers = result.getData();
+                createList(teachers);
+                text = teachers.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
 
             } else if(result.getType() == ResultType.ERROR) {
 
                 text = "Une erreur est survenue";
-
+                System.out.println(text);
             } else {
 
                 text = "Chargement des contacts...";
@@ -147,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String prefix = s.toString();
-                MainActivity.this.viewModel.searchContacts(prefix);
+                viewModel.searchContacts(prefix);
             }
         });
     }
