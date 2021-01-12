@@ -1,4 +1,4 @@
-package fr.clic1prof.contacts.viewholders;
+package fr.clic1prof.adapter.contacts.viewholders;
 
 import android.view.View;
 import android.widget.TextView;

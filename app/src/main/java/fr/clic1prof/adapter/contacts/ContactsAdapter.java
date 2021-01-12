@@ -1,11 +1,8 @@
-package fr.clic1prof.contacts;
+package fr.clic1prof.adapter.contacts;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.SectionIndexer;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,11 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.clic1prof.R;
-import fr.clic1prof.contacts.viewholders.ContactViewHolder;
-import fr.clic1prof.contacts.viewholders.HeaderViewHolder;
+import fr.clic1prof.adapter.contacts.viewholders.ContactViewHolder;
+import fr.clic1prof.adapter.contacts.viewholders.HeaderViewHolder;
 import fr.clic1prof.models.contacts.Contact;
-import fr.clic1prof.models.contacts.HeaderContact;
-import fr.clic1prof.models.contacts.TeacherContact;
 
 public abstract class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements SectionIndexer {
     public static final int HEADER_VIEW = 0;

@@ -1,53 +1,41 @@
-package fr.clic1prof.activities;
+package fr.clic1prof.activities.contacts;
 
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import dagger.hilt.android.AndroidEntryPoint;
-import fr.clic1prof.contacts.ContactsAdapter;
 import fr.clic1prof.R;
-import fr.clic1prof.contacts.impl.StudentContactsAdapter;
-import fr.clic1prof.contacts.impl.TeacherContactsAdapter;
+import fr.clic1prof.activities.abstractviews.AbstractFragment;
+import fr.clic1prof.adapter.contacts.ContactsAdapter;
 import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.models.contacts.HeaderContact;
 import fr.clic1prof.models.contacts.TeacherContact;
-import fr.clic1prof.network.authentication.AuthenticationRequest;
 import fr.clic1prof.viewmodels.ResultType;
 import fr.clic1prof.viewmodels.contacts.StudentContactActivityViewModel;
-import fr.clic1prof.viewmodels.login.LoginActivityViewModel;
 
-@AndroidEntryPoint
-public class MainActivity extends Fragment {
-    private List<Contact> contacts;
+public abstract class ContactActivity extends AbstractFragment {
+    protected List<Contact> contacts;
     private StudentContactActivityViewModel viewModel;
-    private ContactsAdapter adapter;
-    private RecyclerView rvContacts;
+    protected ContactsAdapter adapter;
+    protected RecyclerView rvContacts;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        //Hide title bar
-        AuthenticationRequest request = new AuthenticationRequest("test1.student@test.com", "UnRenard60**");
-        LoginActivityViewModel lavm = new ViewModelProvider(this).get(LoginActivityViewModel.class);
-        lavm.login(request);
-
-        setContentView(R.layout.activity_main);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
         this.viewModel = new ViewModelProvider(this).get(StudentContactActivityViewModel.class);
 
@@ -56,24 +44,19 @@ public class MainActivity extends Fragment {
 
         createList(new ArrayList<>()); //Empty
 
-        rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
-        adapter = new TeacherContactsAdapter(contacts);
-        rvContacts.setAdapter(adapter);
-        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+        createAdapter();
 
         this.viewModel.retrieveContacts();
     }
+
+    protected abstract void createAdapter();
 
     private void createList(List<TeacherContact> toAdd) {
         contacts = new ArrayList<>();
         contacts.addAll(toAdd);
         Collections.sort(contacts);
         contactSorter();
-
-        rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
-        adapter = new TeacherContactsAdapter(contacts);
-        rvContacts.setAdapter(adapter);
-        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+        createAdapter();
     }
 
     private void contactSorter() {
@@ -92,7 +75,7 @@ public class MainActivity extends Fragment {
     private void setContactObserver() {
 
         // Observe the list of contacts and make view update when necessary.
-        this.viewModel.getContactLiveData().observe(this, result -> {
+        this.viewModel.getContactLiveData().observe(getActivity(), result -> {
             // Update view here.
             // If contact list is null, then there is an error.
             // Else, display contacts.
@@ -119,7 +102,7 @@ public class MainActivity extends Fragment {
 
     private void setEditTextListener() {
 
-        EditText text = super.findViewById(R.id.editTextTextPersonName);
+        EditText text = getActivity().findViewById(R.id.editTextTextPersonName);
 
         text.addTextChangedListener(new TextWatcher() {
 
@@ -143,5 +126,10 @@ public class MainActivity extends Fragment {
 
     public void connect(View view) {
         this.viewModel.retrieveContacts();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_contact, container, false);
     }
 }
