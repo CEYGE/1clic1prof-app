@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.login.InscriptionActivity">
+
+
+    <TextView
+        android:id="@+id/connexionRef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
+        android:onClick="sendToLogIn"
+        android:focusable="true"
+        android:text="@string/Button_Connection"
+        style="@style/BigTitleClick"/>
+
+    <ImageView
+        android:id="@+id/iconImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="28dp"
+        android:contentDescription="@string/Icon_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connexionRef"
+        app:srcCompat="@drawable/icon" />
+
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iconImage"
+        app:layout_constraintTop_toBottomOf="@+id/iconImage"
+        app:layout_constraintVertical_bias="0.0"
+        android:text="@string/Welcome_Message"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:textColor="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/linearInformationLayout"
+        android:layout_width="319dp"
+        android:layout_height="284dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iconImage"
+        app:layout_constraintTop_toBottomOf="@id/welcomeMessage"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/linearViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lastNameView"
+                style="@style/TitleText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/LastName"
+                tools:ignore="NestedWeights"
+                android:padding="3dp"/>
+
+            <TextView
+                android:id="@+id/firstNameView"
+                style="@style/TitleText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="@string/FirstName"
+                android:padding="3dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/InscriptionlastNameText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:ems="10"
+                android:hint="@string/LastName"
+                android:autofillHints="@string/LastName"
+                android:inputType="textPersonName"
+                style="@style/EntryText" />
+
+            <EditText
+                android:id="@+id/InscriptionfirstNameText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:ems="10"
+                android:hint="@string/FirstName"
+                android:autofillHints="@string/FirstName"
+                android:inputType="textPersonName"
+                style="@style/EntryText" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mailView"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Email_Text"
+            android:padding="3dp"/>
+
+        <EditText
+            android:id="@+id/InscriptionmailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/Email_Text"
+            android:autofillHints="@string/Email_Text"
+            android:inputType="textPersonName"
+            style="@style/EntryText" />
+
+        <TextView
+            android:id="@+id/pwdView"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/Password_Text"
+            android:padding="3dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/InscriptionpasswordText"
+                style="@style/EntryText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:autofillHints="@string/Hint_pwd"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:hint="@string/Hint_pwd"
+                android:inputType="textPassword" />
+
+            <ImageView
+                android:id="@+id/visiblePwdView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:contentDescription="@string/Description_visibility"
+                android:focusable="true"
+                android:onClick="visiblePassword"
+                android:src="@drawable/eye" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/statutView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/statutIs"
+            style="@style/EntryText" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/ChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipEtudiant"
+                style="@style/ChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/Students"
+                android:theme="@style/Theme.MaterialComponents.Light" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipProfesseur"
+                style="@style/ChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/Teacher"
+                android:textSize="14sp"
+                android:theme="@style/Theme.MaterialComponents.Light" />
+        </com.google.android.material.chip.ChipGroup>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/errorInvisibleViewInscription"
+        style="@style/BigTitleClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearInformationLayout" />
+
+    <Button
+        android:id="@+id/inscriptionButton"
+        style="@style/TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorInvisibleViewInscription"
+        android:background="@drawable/rectangle"
+        android:text="@string/Inscription"
+        android:onClick="inscription"/>
+
+    <ImageView
+        android:id="@+id/imageIllustrationView"
+        android:layout_width="229dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/Icon_name"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inscriptionButton"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/illustration_work" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

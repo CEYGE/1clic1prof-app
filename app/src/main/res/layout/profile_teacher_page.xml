@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:paddingTop="3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearReturnLayout"
+            android:layout_width="82dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="sendHomePage">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/arrow_right"
+                android:contentDescription="ReturnDashboard"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:id="@+id/textReturnView"
+                style="@style/EntryText"
+                android:layout_width="59dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/FirstName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearImageLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearReturnLayout">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="250dp">
+
+                <ImageView
+                    android:id="@+id/profile_img"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:contentDescription="@string/profile_image"
+                    app:srcCompat="@drawable/ic_launcher_background"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/EntryText"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:gravity="center_horizontal"
+                android:text="@string/ImageModification"
+                android:textColor="@color/cyan"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/errorInvisibleViewProfile02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toTopOf="@id/linearInformationLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearImageLayout"
+            android:text="@string/error_Entries"
+            android:visibility="invisible"
+            android:textColor="@color/red"/>
+
+
+        <LinearLayout
+            android:id="@+id/linearInformationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="32dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/deconnexion_View"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/errorInvisibleViewProfile02"
+            app:layout_constraintVertical_bias="0.52">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textFirstNameView02"
+                    style="@style/TitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="0.9"
+                    android:text="@string/FirstName"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/switchFirstButton02"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.4"
+                    android:text="@string/versionModification"
+                    android:onClick="switchFirstNameAndUpdate"/>
+
+            </LinearLayout>
+
+            <ViewSwitcher
+                android:id="@+id/switchFirstName02"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="0.3"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/viewFirstName02"
+                    style="@style/EntryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:text="@string/FirstName"/>
+
+                <EditText
+                    android:id="@+id/editTextFirstName02"
+                    style="@style/EntryText"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/FirstName"
+                    android:hint="@string/FirstName"
+                    android:inputType="text"/>
+            </ViewSwitcher>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textLastNameView02"
+                    style="@style/TitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="0.9"
+                    android:text="@string/LastName"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/switchLastButton02"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.4"
+                    android:text="@string/versionModification"
+                    android:onClick="switchLastNameAndUpdate"/>
+
+            </LinearLayout>
+
+            <ViewSwitcher
+                android:id="@+id/switchLastName02"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="0.3">
+
+                <TextView
+                    android:id="@+id/viewLastName02"
+                    style="@style/EntryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:text="@string/LastName" />
+
+                <EditText
+                    android:id="@+id/editTextLastName02"
+                    style="@style/EntryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/LastName"
+                    android:hint="@string/LastName"
+                    android:inputType="text" />
+            </ViewSwitcher>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textMailView02"
+                    style="@style/TitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="0.9"
+                    android:text="@string/FirstName"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/switchMailButton02"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.4"
+                    android:text="@string/versionModification"
+                    android:onClick="switchMailAndUpdate"/>
+
+            </LinearLayout>
+
+            <ViewSwitcher
+                android:id="@+id/switchMail02"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="0.225">
+
+                <TextView
+                    android:id="@+id/viewMail02"
+                    style="@style/EntryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:text="@string/Email_Text" />
+
+                <EditText
+                    android:id="@+id/editTextMail02"
+                    style="@style/EntryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="@string/Email_Text"
+                    android:hint="@string/Email_Text"
+                    android:inputType="text" />
+            </ViewSwitcher>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textPasswordView02"
+                    style="@style/TitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="0.9"
+                    android:text="@string/Password_Text"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/switchPasswordButton02"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.4"
+                    android:text="@string/versionModification"
+                    android:onClick="switchPasswordAndUpdate"/>
+
+            </LinearLayout>
+
+            <ViewSwitcher
+                android:id="@+id/switchPassword02"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="0.225">
+
+                <TextView
+                    android:id="@+id/viewPassword02"
+                    style="@style/EntryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:text="@string/Password_Text" />
+
+                <EditText
+                    android:id="@+id/editTextPassword02"
+                    style="@style/EntryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="@string/Password_Text"
+                    android:hint="@string/Password_Text"
+                    android:inputType="text" />
+            </ViewSwitcher>
+
+            <EditText
+                android:id="@+id/editDescription02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:hint="@string/Description"
+                android:autofillHints="@string/Description"
+                android:inputType="text|textMultiLine"
+                android:maxLines="5"
+                android:maxLength="300"
+                android:layout_marginBottom="8dp"/>
+            <Button
+                android:id="@+id/switchdDescriptionButton02"
+                style="@style/TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:text="@string/versionModification"
+                android:onClick="switchDescriptionAndUpdate"/>
+
+            <EditText
+                android:id="@+id/editStudies02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:hint="@string/Studies"
+                android:autofillHints="@string/Studies"
+                android:inputType="text|textMultiLine"
+                android:minLines="1"
+                android:maxLength="30"
+                android:layout_marginBottom="8dp"/>
+            <Button
+                android:id="@+id/switchStudiesButton02"
+                style="@style/TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:text="@string/versionModification"
+                android:onClick="switchStudiesAndUpdate"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/Speciality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:chipSpacingHorizontal="12dp"
+                app:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Mathematique"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/mathematiques"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Physique"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/physique"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Chimie"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chimie"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Svt"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/svt"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Histoire"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/histoire"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Francais"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/francais"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/Anglais"
+                    style="@style/ChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anglais"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:checkedIconVisible="true"/>
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+
+            <LinearLayout
+                android:id="@+id/linearCBLayout02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textCBView02"
+                    style="@style/EntryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.15"
+                    android:gravity="center_vertical"
+                    android:text="@string/IBAN_Text"
+                    android:textSize="14sp"
+                    tools:ignore="NestedWeights" />
+
+                <EditText
+                    android:id="@+id/editCB02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="@string/CB_Text"
+                    android:ems="10"
+                    android:hint="@string/CB_Text"
+                    android:inputType="textPersonName"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+
+            <Switch
+                android:id="@+id/switchNotification02"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="0.2"
+                android:text="@string/Notification"
+                android:textSize="14sp"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/deconnexion_View"
+            android:onClick="disconnect"
+            android:contentDescription="DeconnexionImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/linearInformationLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/deconnexion_view"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

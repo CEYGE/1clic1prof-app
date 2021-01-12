@@ -9,7 +9,8 @@ public class UserSession implements UserSessionModel {
     private Token token;
 
     @Inject
-    public UserSession() {}
+    public UserSession() {
+    }
 
     @Override
     public void open(SessionType type, Credentials credentials, Token token) {

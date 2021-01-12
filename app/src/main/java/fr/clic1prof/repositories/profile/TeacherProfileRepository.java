@@ -1,15 +1,14 @@
 package fr.clic1prof.repositories.profile;
 
-import androidx.lifecycle.LiveData;
-
 import fr.clic1prof.models.profile.TeacherProfile;
 import fr.clic1prof.models.profile.modifier.SpecialityModifier;
+import fr.clic1prof.util.DataListener;
 
 public interface TeacherProfileRepository extends ProfileRepository<TeacherProfile> {
 
-    LiveData<String> updateStudies(String studies);
+    void updateStudies(String studies, DataListener<Void> listener);
 
-    LiveData<String> updateDescription(String description);
+    void updateDescription(String description, DataListener<Void> listener);
 
-    LiveData<SpecialityModifier> updateSpeciality(SpecialityModifier modifier);
+    void updateSpeciality(SpecialityModifier modifier, DataListener<Void> listener);
 }

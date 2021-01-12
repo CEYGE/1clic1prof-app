@@ -13,4 +13,11 @@
         android:text="Button"
         tools:layout_editor_absoluteX="153dp"
         tools:layout_editor_absoluteY="307dp" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="sendToLogin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

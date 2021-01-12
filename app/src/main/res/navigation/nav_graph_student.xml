@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/student_dashboard">
+
+    <fragment
+        android:id="@+id/student_dashboard"
+        android:name="fr.clic1prof.activities.dashboard.student.StudentDashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/student_dashboard" />
+    <action android:id="@+id/action_global_dashboardFragment" app:destination="@id/student_dashboard"/>
+
+    <fragment
+        android:id="@+id/student_agenda"
+        android:name="fr.clic1prof.activities.dashboard.student.StudentAgendaFragment"
+        android:label="fragment_agenda"
+        tools:layout="@layout/student_agenda" />
+    <action android:id="@+id/action_global_notebookFragment" app:destination="@id/student_notebook" />
+
+    <fragment
+        android:id="@+id/student_notebook"
+        android:name="fr.clic1prof.activities.dashboard.student.StudentNotebookFragment"
+        android:label="fragment_notebook"
+        tools:layout="@layout/student_notebook" />
+    <action android:id="@+id/action_global_agendaFragment" app:destination="@id/student_agenda"/>
+    <fragment
+        android:id="@+id/payslipFragment"
+        android:name="fr.clic1prof.activities.dashboard.PayslipFragment"
+        android:label="payslip_fragment"
+        tools:layout="@layout/payslip_fragment" /><action android:id="@+id/action_global_payslipFragment" app:destination="@id/payslipFragment"/>
+
+
+</navigation>
