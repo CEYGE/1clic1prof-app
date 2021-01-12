@@ -38,6 +38,8 @@
         <item>3ème</item>
         <item>2nd</item>
         <item>1ère</item>
+        <item>Terminale</item>
+        <item>Supérieur</item>
     </string-array>
 
     <!--Speciality-->

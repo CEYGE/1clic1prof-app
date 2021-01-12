@@ -27,6 +27,7 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_student_page);
+        this.setSpinnerObserver();
     }
 
 
