@@ -43,7 +43,7 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
     }
 
     @Override
-    protected Class<? extends ProfileViewModel<StudentProfile> > getProfileViewModelClass() {
+    protected Class<? extends ProfileViewModel<StudentProfile>> getProfileViewModelClass() {
         return StudentProfileViewModel.class;
     }
 
