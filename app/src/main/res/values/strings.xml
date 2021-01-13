@@ -54,8 +54,6 @@
     <string name="error_Entries" translatable="false">L\'adresse mail ou le mot de passe est erroné</string>
     <string name="CameraButton" translatable="false">CAMERA</string>
     <string name="GalleryButton" translatable="false">GALLERY</string>
-    <string name="versionModification">Modifier</string>
-    <string name="versionConfirmation">Valider</string>
     <string name="Studies" translatable="false">Études</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="grey_line">Grey Line</string>
@@ -139,4 +137,7 @@
     <string name="notebook">Notebook</string>
     <string name="payslip">Payslips</string>
     <string name="my_contacts">My contacts</string>
+    <string name="ReturnName" translatable="false">retour</string>
+    <string name="returndashboard" translatable="false">ReturnDashboard</string>
+    <string name="deconnexionimage" translatable="false">DeconnexionImage</string>
 </resources>

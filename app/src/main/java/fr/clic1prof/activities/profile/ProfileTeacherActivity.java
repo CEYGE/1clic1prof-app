@@ -6,20 +6,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
-import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
 import fr.clic1prof.activities.dashboard.teacher.MainTeacherActivity;
 import fr.clic1prof.models.other.Speciality;
 import fr.clic1prof.models.profile.TeacherProfile;
-import fr.clic1prof.util.Camera;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.TeacherProfileViewModel;
 
@@ -38,11 +33,11 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
      */
 
     @Override
-    protected void setButton() {
-        this.setButtonFirstName(R.id.switchFirstButton02);
-        this.setButtonLastName(R.id.switchLastButton02);
-        this.setButtonMail(R.id.switchMailButton02);
-        this.setButtonPassword(R.id.switchPasswordButton02);
+    protected void setImage() {
+        this.setImageFirstName(R.id.switchFirstButton02);
+        this.setImageLastName(R.id.switchLastButton02);
+        this.setImageMail(R.id.switchMailButton02);
+        this.setImagePassword(R.id.switchPasswordButton02);
     }
 
     @Override

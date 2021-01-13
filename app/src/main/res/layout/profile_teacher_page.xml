@@ -130,15 +130,17 @@
                     android:layout_marginBottom="6dp"
                     android:layout_weight="0.9"
                     android:text="@string/FirstName"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
 
-                <Button
+                <ImageView
                     android:id="@+id/switchFirstButton02"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
-                    android:onClick="switchFirstNameAndUpdate"/>
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/write_icon"
+                    android:contentDescription="@string/profile_image"
+                    android:onClick="switchFirstNameAndUpdate"
+                    android:scaleType="centerInside" />
 
             </LinearLayout>
 
@@ -183,14 +185,14 @@
                     android:layout_marginBottom="6dp"
                     android:layout_weight="0.9"
                     android:text="@string/LastName"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
 
-                <Button
+                <ImageView
+                    android:contentDescription="@string/profile_image"
                     android:id="@+id/switchLastButton02"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
                     android:onClick="switchLastNameAndUpdate"/>
 
             </LinearLayout>
@@ -236,12 +238,12 @@
                     android:text="@string/FirstName"
                     android:textSize="14sp" />
 
-                <Button
+                <ImageView
+                    android:contentDescription="@string/profile_image"
                     android:id="@+id/switchMailButton02"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
                     android:onClick="switchMailAndUpdate"/>
 
             </LinearLayout>
@@ -286,12 +288,12 @@
                     android:text="@string/Password_Text"
                     android:textSize="14sp" />
 
-                <Button
+                <ImageView
+                    android:contentDescription="@string/profile_image"
                     android:id="@+id/switchPasswordButton02"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
                     android:onClick="switchPasswordAndUpdate"/>
 
             </LinearLayout>
@@ -321,6 +323,30 @@
                     android:inputType="text" />
             </ViewSwitcher>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textDescriptionView02"
+                    style="@style/TitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="0.9"
+                    android:text="@string/Description"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:contentDescription="@string/profile_image"
+                    android:id="@+id/switchDescriptionButton02"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
+                    android:onClick="switchDescriptionAndUpdate"/>
+            </LinearLayout>
+
             <EditText
                 android:id="@+id/editDescription02"
                 android:layout_width="match_parent"
@@ -330,16 +356,32 @@
                 android:autofillHints="@string/Description"
                 android:inputType="text|textMultiLine"
                 android:maxLines="5"
-                android:maxLength="300"
+                android:maxLength="250"
                 android:layout_marginBottom="8dp"/>
-            <Button
-                android:id="@+id/switchdDescriptionButton02"
-                style="@style/TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:text="@string/versionModification"
-                android:onClick="switchDescriptionAndUpdate"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textStudiesView02"
+                    style="@style/TitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="0.9"
+                    android:text="@string/Studies"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:contentDescription="@string/profile_image"
+                    android:id="@+id/switchStudiesButton02"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
+                    android:onClick="switchStudiesAndUpdate"/>
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/editStudies02"
@@ -352,14 +394,6 @@
                 android:minLines="1"
                 android:maxLength="30"
                 android:layout_marginBottom="8dp"/>
-            <Button
-                android:id="@+id/switchStudiesButton02"
-                style="@style/TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:text="@string/versionModification"
-                android:onClick="switchStudiesAndUpdate"/>
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/Speciality"
