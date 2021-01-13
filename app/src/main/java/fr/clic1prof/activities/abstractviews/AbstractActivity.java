@@ -69,7 +69,7 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
                 navController.navigate(R.id.action_global_notebookFragment);
                 break;
             case R.id.nav_invoice :
-                navController.navigate(R.id.action_global_payslipFragment);
+                navController.navigate(R.id.action_global_payslipInvoiceFragment);
                 break;
             case R.id.nav_teacher :
                 navController.navigate(R.id.action_global_contactActivity);

@@ -3,4 +3,5 @@
     <string name="ImageModification">Modify picture</string>
     <string name="versionModification">Modify</string>
     <string name="versionConfirmation">Confirm</string>
+    <string name="invoice">Invoices</string>
 </resources>

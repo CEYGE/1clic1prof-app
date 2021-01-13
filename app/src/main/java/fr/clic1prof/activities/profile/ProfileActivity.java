@@ -3,6 +3,7 @@ package fr.clic1prof.activities.profile;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,6 +17,7 @@ import android.widget.ViewSwitcher;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -37,10 +39,10 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     private Camera camera;
 
     //Button to update information
-    private Button buttonFirstName;
-    private Button buttonLastName;
-    private Button buttonMail;
-    private Button buttonPassword;
+    private ImageView imageFirstName;
+    private ImageView imageLastName;
+    private ImageView imageMail;
+    private ImageView imagePassword;
     //Switcher between View and EditText
     private ViewSwitcher switcherFirstName;
     private ViewSwitcher switcherLastName;
@@ -52,7 +54,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     private EditText editMail;
     private EditText editPassword;
 
-    protected abstract void setButton();
+    protected abstract void setImage();
 
     protected abstract void setSwitcher();
 
@@ -68,7 +70,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.setButton();
+        this.setImage();
         this.setSwitcher();
         this.setEditText();
 
@@ -114,16 +116,16 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
 
 
     public void switchFirstNameAndUpdate(View view){
-        if(buttonFirstName.getText().toString().equals("Modifier")) {
+        if(imageFirstName.getBackground() == getDrawable(R.drawable.write_icon)) {
             switcherFirstName.showNext();
-            changeTextButton(buttonFirstName);
+            changeImageButton(imageFirstName);
         }else {
             if(verifString(editFirstName.getText().toString())) {
                 //Update
                 setObserverError("Le prénom n'a pas pu s'update");
                 this.viewModel.updateFirstName(editFirstName.getText().toString());
                 switcherFirstName.showNext();
-                changeTextButton(buttonFirstName);
+                changeImageButton(imageFirstName);
             }else {
                 error.setText("Le prénom ne répond pas aux critères.");
                 error.show();
@@ -132,16 +134,16 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
     public void switchLastNameAndUpdate(View view){
-        if(buttonLastName.getText().toString().equals("Modifier")) {
+        if(imageLastName.getBackground() == getDrawable(R.drawable.write_icon)) {
             switcherLastName.showNext();
-            changeTextButton(buttonLastName);
+            changeImageButton(imageLastName);
         }else {
             if(verifString(editLastName.getText().toString())) {
                 //Update
                 setObserverError("Le nom n'a pas pu s'update");
                 this.viewModel.updateLastName(editLastName.getText().toString());
                 switcherLastName.showNext();
-                changeTextButton(buttonLastName);
+                changeImageButton(imageLastName);
             }else {
                 error.setText("Le nom ne répond pas aux critères.");
                 error.show();
@@ -150,14 +152,14 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
     public void switchMailAndUpdate(View view){
-        if(buttonMail.getText().toString().equals("Modifier")) {
+        if(imageMail.getBackground() == getDrawable(R.drawable.write_icon)) {
             switcherMail.showNext();
-            changeTextButton(buttonMail);
+            changeImageButton(imageMail);
         }else {
             if(verifString(editMail.getText().toString())) {
                 //TODO: Update MAIL
                 switcherMail.showNext();
-                changeTextButton(buttonMail);
+                changeImageButton(imageMail);
             }else {
                 error.setText("Le mail ne répond pas aux critères.");
                 error.show();
@@ -166,14 +168,14 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
     public void switchPasswordAndUpdate(View view){
-        if(buttonPassword.getText().toString().equals("Modifier")) {
+        if(imagePassword.getBackground() == getDrawable(R.drawable.write_icon)) {
             switcherPassword.showNext();
-            changeTextButton(buttonPassword);
+            changeImageButton(imagePassword);
         }else {
             if(verifString(editPassword.getText().toString())) {
                 //TODO: Update MDP
                 switcherPassword.showNext();
-                changeTextButton(buttonPassword);
+                changeImageButton(imagePassword);
             }else {
                 error.setText("Le mot de passe ne répond pas aux critères.");
                 error.show();
@@ -203,8 +205,9 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         dialog.dismiss();
     }
 
-    private void changeTextButton(Button button){
-        button.setText( button.getText().toString().equals("Valider") ? "Modifier" : "Valider");
+    private void changeImageButton(ImageView image){
+        image.setBackground( image.getDrawable()== getDrawable(R.drawable.write_icon) ? getDrawable(R.drawable.write_icon) : getDrawable(R.drawable.check_icon));
+
     }
 
     private boolean verifString(String value){
@@ -234,20 +237,20 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
 
-    public void setButtonFirstName(int buttonFirstName) {
-        this.buttonFirstName = findViewById(buttonFirstName);
+    public void setImageFirstName(int imageFirstName) {
+        this.imageFirstName = findViewById(imageFirstName);
     }
 
-    public void setButtonLastName(int buttonLastName) {
-        this.buttonLastName = findViewById(buttonLastName);
+    public void setImageLastName(int imageLastName) {
+        this.imageLastName = findViewById(imageLastName);
     }
 
-    public void setButtonMail(int buttonMail) {
-        this.buttonMail = findViewById(buttonMail);
+    public void setImageMail(int imageMail) {
+        this.imageMail = findViewById(imageMail);
     }
 
-    public void setButtonPassword(int buttonPassword) {
-        this.buttonPassword = findViewById(buttonPassword);
+    public void setImagePassword(int imagePassword) {
+        this.imagePassword = findViewById(imagePassword);
     }
 
     public void setSwitcherFirstName(int switcherFirstName) {
