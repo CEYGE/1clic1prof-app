@@ -43,7 +43,6 @@ public class TokenAuthenticator implements Authenticator {
         if(this.countRetries(response) >= MAX_RETRY) return null;
 
         UserController controller = this.provider.getService(UserController.class);
-
         Credentials credentials = this.session.getCredentials();
 
         AuthenticationRequest request = new AuthenticationRequest(credentials.getEmail(), credentials.getPassword());
@@ -54,10 +53,10 @@ public class TokenAuthenticator implements Authenticator {
         retrofit2.Response<AuthenticationResponse> authentication = call.execute();
 
         // Cannot authenticate.
-        if(!authentication.isSuccessful()) return null;
+        if(!authentication.isSuccessful() || authentication.body() == null) return null;
 
         AuthenticationResponse authResponse = authentication.body();
-        Token token = new Token(authentication.body().getToken());
+        Token token = new Token(authResponse.getToken());
 
         this.session.refresh(token);
 
