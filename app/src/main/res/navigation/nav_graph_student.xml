@@ -32,5 +32,12 @@
         android:label="StudentInvoiceFragment"
         tools:layout="@layout/payslip_invoice"/><action android:id="@+id/action_global_payslipInvoiceFragment" app:destination="@id/studentInvoiceFragment"/>
 
+    <fragment
+        android:id="@+id/studentContactActivity"
+        android:name="fr.clic1prof.activities.contacts.impl.StudentContactActivity"
+        tools:layout="@layout/activity_contact"
+        android:label="StudentContactActivity" />
+    <action android:id="@+id/action_global_contactActivity" app:destination="@id/studentContactActivity" />
+
 
 </navigation>

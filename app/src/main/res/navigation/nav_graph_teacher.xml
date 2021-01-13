@@ -41,6 +41,13 @@
         android:label="TeacherPayslipFragment" />
     <action android:id="@+id/action_global_payslipInvoiceFragment" app:destination="@id/teacherPayslipFragment" />
 
+    <fragment
+        android:id="@+id/teacherContactActivity"
+        android:name="fr.clic1prof.activities.contacts.impl.TeacherContactActivity"
+        tools:layout="@layout/activity_contact"
+        android:label="TeacherContactActivity" />
+    <action android:id="@+id/action_global_contactActivity" app:destination="@id/teacherContactActivity" />
+
 
 </navigation>
 

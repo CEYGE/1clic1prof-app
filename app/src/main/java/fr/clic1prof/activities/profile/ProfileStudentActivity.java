@@ -7,16 +7,12 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.lifecycle.ViewModelProvider;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
 import fr.clic1prof.models.other.SchoolLevel;
 import fr.clic1prof.models.profile.StudentProfile;
-import fr.clic1prof.util.Camera;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 
@@ -36,11 +32,11 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
      */
 
     @Override
-    protected void setButton() {
-        this.setButtonFirstName(R.id.switchFirstButton01);
-        this.setButtonLastName(R.id.switchLastButton01);
-        this.setButtonMail(R.id.switchMailButton01);
-        this.setButtonPassword(R.id.switchPasswordButton01);
+    protected void setImage() {
+        this.setImageFirstName(R.id.switchFirstButton01);
+        this.setImageLastName(R.id.switchLastButton01);
+        this.setImageMail(R.id.switchMailButton01);
+        this.setImagePassword(R.id.switchPasswordButton01);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class StudentContactRepository extends UserContactRepository<TeacherConta
 
             @Override
             public void onResponse(@NonNull Call<List<TeacherContact>> call, @NonNull Response<List<TeacherContact>> response) {
-
+                System.out.println(response.code());
                 if(response.isSuccessful()) {
 
                     List<TeacherContact> contacts = response.body();

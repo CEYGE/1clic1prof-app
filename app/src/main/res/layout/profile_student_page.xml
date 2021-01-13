@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/arrow_right"
-            android:contentDescription="ReturnDashboard"
+            android:contentDescription="@string/returndashboard"
             android:layout_marginEnd="4dp"/>
 
             <TextView
@@ -43,7 +43,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="@string/FirstName" />
+            android:text="@string/ReturnName" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,12 +131,12 @@
                     android:text="@string/FirstName"
                     android:textSize="14sp" />
 
-                <Button
+                <ImageView
+                    android:contentDescription="@string/profile_image"
                     android:id="@+id/switchFirstButton01"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
                     android:onClick="switchFirstNameAndUpdate"/>
 
             </LinearLayout>
@@ -182,12 +182,12 @@
                     android:text="@string/LastName"
                     android:textSize="14sp" />
 
-                <Button
+                <ImageView
+                    android:contentDescription="@string/profile_image"
                     android:id="@+id/switchLastButton01"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
                     android:onClick="switchLastNameAndUpdate"/>
 
             </LinearLayout>
@@ -233,14 +233,13 @@
                     android:text="@string/Email_Text"
                     android:textSize="14sp" />
 
-                <Button
+                <ImageView
+                    android:contentDescription="@string/profile_image"
                     android:id="@+id/switchMailButton01"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
                     android:onClick="switchMailAndUpdate"/>
-
             </LinearLayout>
 
             <ViewSwitcher
@@ -283,14 +282,13 @@
                     android:text="@string/Password_Text"
                     android:textSize="14sp" />
 
-                <Button
+                <ImageView
+                    android:contentDescription="@string/profile_image"
                     android:id="@+id/switchPasswordButton01"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.4"
-                    android:text="@string/versionModification"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/write_icon"
                     android:onClick="switchPasswordAndUpdate"/>
-
             </LinearLayout>
 
             <ViewSwitcher
@@ -349,7 +347,13 @@
                     android:inputType="textPersonName" />
             </LinearLayout>
 
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Studies"
+                style="@style/TitleText"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="6dp"/>
             <Spinner
                 android:id="@+id/spinnerSchoolLevel"
                 style="@style/EntryText"
@@ -376,7 +380,7 @@
         <ImageView
             android:id="@+id/deconnexion_View"
             android:onClick="disconnect"
-            android:contentDescription="DeconnexionImage"
+            android:contentDescription="@string/deconnexionimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/linearInformationLayout"

@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -25,8 +24,8 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.viewModel = new ViewModelProvider(this).get(this.getProfileViewModelClass());
-        this.setProfileObserver();
+        //this.viewModel = new ViewModelProvider(this).get(this.getProfileViewModelClass());
+        //this.setProfileObserver();
 
     }
 
@@ -71,6 +70,9 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
                 break;
             case R.id.nav_invoice :
                 navController.navigate(R.id.action_global_payslipInvoiceFragment);
+                break;
+            case R.id.nav_teacher :
+                navController.navigate(R.id.action_global_contactActivity);
                 break;
             default :
                 break;
