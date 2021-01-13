@@ -44,7 +44,7 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
             TextView drawerStudies = findViewById(R.id.textView_studies);
             ImageView profileImage = findViewById(R.id.profile_image);
 
-            drawerName.setText(profile.getFirstName()+" "+ profile.getLastName());
+            drawerName.setText(profile.getFirstName()+" "+ profile.getLastName()); // TODO Set it as string resource with placeholders.
             drawerStudies.setText( profile.getLevel().getLabel());
             profileImage.setImageBitmap(profile.getPicture());
         });

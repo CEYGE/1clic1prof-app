@@ -63,8 +63,6 @@ public class TeacherPayslipFragment extends AbstractInvoicePayslip {
 
     }
 
-
-
     private void setOnClickListener() {
         clickListener = (v, document_id, document_name) -> viewModel.fetchInvoiceContent(document_id, document_name, getActivity());
     }

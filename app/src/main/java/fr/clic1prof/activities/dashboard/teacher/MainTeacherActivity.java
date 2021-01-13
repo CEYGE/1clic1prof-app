@@ -45,11 +45,14 @@ public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
 
     @Override
     protected void setProfileObserver() {
-        TextView drawer_name = findViewById(R.id.textView_docName);
-        TextView drawer_studies = findViewById(R.id.textView_studies);
-        ImageView profileImage = findViewById(R.id.profile_image);
-        getViewModel().getProfileLiveData().observe(this, profile->{
-            drawer_name.setText(profile.getFirstName()+" "+ profile.getLastName());
+
+        getViewModel().getProfileLiveData().observe(this, profile -> {
+
+            TextView drawer_name = findViewById(R.id.textView_docName);
+            TextView drawer_studies = findViewById(R.id.textView_studies);
+            ImageView profileImage = findViewById(R.id.profile_image);
+
+            drawer_name.setText(profile.getFirstName()+" "+ profile.getLastName()); // TODO Set it as string resource with placeholders.
             drawer_studies.setText(profile.getStudies());
             profileImage.setImageBitmap(profile.getPicture());
         });

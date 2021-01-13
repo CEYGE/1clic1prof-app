@@ -9,6 +9,7 @@ import fr.clic1prof.R;
 import fr.clic1prof.models.document.Document;
 
 public class InvoicePayslipAdapter extends AbstractAdapter<Document, InvoicePayslipViewHolder> {
+
     private final RecyclerViewClickListener clickListener;
 
     public InvoicePayslipAdapter(Context context, RecyclerViewClickListener clickListener) {
@@ -21,6 +22,4 @@ public class InvoicePayslipAdapter extends AbstractAdapter<Document, InvoicePays
     public InvoicePayslipViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new InvoicePayslipViewHolder(inflate(R.layout.container_payslip_bill, parent) , clickListener);
     }
-
-
 }

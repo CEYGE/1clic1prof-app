@@ -25,6 +25,7 @@ import fr.clic1prof.models.document.Document;
 import fr.clic1prof.viewmodels.invoice.StudentInvoiceViewModel;
 
 public class StudentInvoiceFragment extends AbstractInvoicePayslip {
+
     protected StudentInvoiceViewModel viewModel;
 
     public static StudentDashboardFragment newInstance() {

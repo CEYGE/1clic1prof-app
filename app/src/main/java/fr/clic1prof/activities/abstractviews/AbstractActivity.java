@@ -24,6 +24,12 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
 
     private ProfileViewModel<T> viewModel;
 
+    public abstract void sendToProfile(View view);
+
+    protected abstract void setProfileObserver();
+
+    protected abstract Class<? extends ProfileViewModel<T>> getProfileViewModelClass();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +52,7 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
             drawerLayout.openDrawer(GravityCompat.START);
             this.getViewModel().getProfile();
         });
-
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -59,19 +63,19 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
 
         drawerLayout.closeDrawer(GravityCompat.START);
         switch (id){
-            case R.id.nav_dashboard :
+            case R.id.nav_dashboard:
                 navController.navigate(R.id.action_global_dashboardFragment);
                 break;
-            case R.id.nav_agenda :
+            case R.id.nav_agenda:
                 navController.navigate(R.id.action_global_agendaFragment);
                 break;
-            case R.id.nav_notebook :
+            case R.id.nav_notebook:
                 navController.navigate(R.id.action_global_notebookFragment);
                 break;
-            case R.id.nav_invoice :
+            case R.id.nav_invoice:
                 navController.navigate(R.id.action_global_payslipInvoiceFragment);
                 break;
-            case R.id.nav_teacher :
+            case R.id.nav_teacher:
                 navController.navigate(R.id.action_global_contactActivity);
                 break;
             case R.id.nav_disconnection:
@@ -83,12 +87,6 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
         }
         return true;
     }
-
-    public abstract void sendToProfile(View view);
-
-    protected abstract Class<? extends ProfileViewModel<T>> getProfileViewModelClass();
-
-    protected abstract void setProfileObserver();
 
     public ProfileViewModel<T> getViewModel() {
         return viewModel;

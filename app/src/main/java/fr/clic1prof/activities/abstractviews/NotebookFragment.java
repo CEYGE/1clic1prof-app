@@ -12,8 +12,4 @@ public abstract class NotebookFragment extends AbstractFragment {
         TextView title = getActivity().findViewById(R.id.titleFragment);
         title.setText(this.getString(R.string.notebook));
     }
-
-    //TODO add specific method for Notebook here
-
-
 }
