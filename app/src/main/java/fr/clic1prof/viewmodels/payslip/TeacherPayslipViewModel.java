@@ -2,6 +2,7 @@ package fr.clic1prof.viewmodels.payslip;
 
 import android.content.Context;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -22,6 +23,7 @@ public class TeacherPayslipViewModel extends ViewModel {
     protected MutableLiveData<List<Document>> errorLiveData = new MutableLiveData<>();
     private final TeacherPayslipRepositoryImpl repository;
 
+    @ViewModelInject
     public TeacherPayslipViewModel(TeacherPayslipRepositoryImpl repository) {
         this.repository = repository;
     }

@@ -1,5 +1,6 @@
 package fr.clic1prof.activities.abstractviews;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.navigation.Navigation;
 import com.google.android.material.navigation.NavigationView;
 
 import fr.clic1prof.R;
+import fr.clic1prof.activities.login.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 
@@ -72,6 +74,10 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
             case R.id.nav_teacher :
                 navController.navigate(R.id.action_global_contactActivity);
                 break;
+            case R.id.nav_disconnection:
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             default :
                 break;
         }
