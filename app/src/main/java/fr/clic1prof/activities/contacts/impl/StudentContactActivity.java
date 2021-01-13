@@ -19,7 +19,7 @@ public class StudentContactActivity extends ContactActivity {
 
     @Override
     protected void createAdapter() {
-        rvContacts = (RecyclerView) getActivity().findViewById(R.id.rvContacts);
+        rvContacts = getActivity().findViewById(R.id.rvContacts);
         adapter = new StudentContactsAdapter(contacts);
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(getActivity()));

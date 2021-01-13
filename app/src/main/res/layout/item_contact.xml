@@ -35,7 +35,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/rounded_bg"
+        android:src="@mipmap/default_profile_picture_round"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_border_color="#333333"
