@@ -2,12 +2,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.dashboard.PayslipFragment">
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_invoicePayslip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/container_payslip_bill"
-        />
+        tools:listitem="@layout/container_payslip_bill" />
 </FrameLayout>

@@ -35,11 +35,11 @@
         tools:layout="@layout/creation_event"
         />
     <fragment
-        android:id="@+id/payslipFragment"
-        android:name="fr.clic1prof.activities.dashboard.PayslipFragment"
-        android:label="payslip_fragment"
-        tools:layout="@layout/payslip_fragment" />
-    <action android:id="@+id/action_global_payslipFragment" app:destination="@id/payslipFragment" />
+        android:id="@+id/teacherPayslipFragment"
+        android:name="fr.clic1prof.activities.dashboard.teacher.TeacherPayslipFragment"
+        tools:layout="@layout/payslip_invoice"
+        android:label="TeacherPayslipFragment" />
+    <action android:id="@+id/action_global_payslipInvoiceFragment" app:destination="@id/teacherPayslipFragment" />
 
 
 </navigation>

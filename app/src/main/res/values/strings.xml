@@ -139,4 +139,5 @@
     <string name="notebook">Notebook</string>
     <string name="payslip">Payslips</string>
     <string name="my_contacts">My contacts</string>
+    <string name="invoice">Factures</string>
 </resources>

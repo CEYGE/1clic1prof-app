@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profile_image"
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_marginStart="50dp"
@@ -17,16 +17,16 @@
         android:contentDescription="@string/profile_image" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView_studies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="@string/scholar_level"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/drawer_name" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/drawer_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -36,7 +36,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -45,7 +45,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView_studies"
         app:srcCompat="@drawable/line_header"
         android:contentDescription="@string/grey_line" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,15 +12,15 @@ import fr.clic1prof.R;
 
 public abstract class AgendaFragment extends AbstractFragment {
     Long date;
-    //TODO add specific method for agenda here
 
 
     @Override
     public void onResume() {
         super.onResume();
         TextView title = getActivity().findViewById(R.id.titleFragment);
-        setCalendarListener();
         title.setText(this.getString(R.string.agenda));
+        setCalendarListener();
+
     }
 
 
