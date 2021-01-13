@@ -140,4 +140,6 @@
     <string name="payslip">Payslips</string>
     <string name="my_contacts">My contacts</string>
     <string name="invoice">Factures</string>
+    <string name="returndashboard">retourner</string>
+    <string name="ReturnName">retournernom</string>
 </resources>

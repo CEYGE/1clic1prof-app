@@ -16,10 +16,9 @@ import java.util.List;
 
 import fr.clic1prof.R;
 import fr.clic1prof.activities.abstractviews.AbstractInvoicePayslip;
-import fr.clic1prof.activities.dashboard.student.StudentDashboardFragment;
+import fr.clic1prof.adapter.AbstractAdapter;
 import fr.clic1prof.adapter.InvoicePayslipAdapter;
 import fr.clic1prof.models.document.Document;
-import fr.clic1prof.viewmodels.invoice.StudentInvoiceViewModel;
 import fr.clic1prof.viewmodels.payslip.TeacherPayslipViewModel;
 
 public class TeacherPayslipFragment extends AbstractInvoicePayslip {
@@ -47,8 +46,8 @@ public class TeacherPayslipFragment extends AbstractInvoicePayslip {
         super.onResume();
         TextView title = getActivity().findViewById(R.id.titleFragment);
         title.setText(this.getString(R.string.payslip));
-
         viewModel.fetchInvoices();
+
         viewModel.getdocumentsLiveData().observe(this, new Observer<List<Document>>() {
             @Override
             public void onChanged(List<Document> invoices) {
@@ -56,7 +55,7 @@ public class TeacherPayslipFragment extends AbstractInvoicePayslip {
                     setOnClickListener();
                     adapter = new InvoicePayslipAdapter(getActivity().getApplicationContext(), clickListener);
                     recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 4));
+                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 3));
                     adapter.setItems(invoices);
                 }
             }
@@ -64,7 +63,9 @@ public class TeacherPayslipFragment extends AbstractInvoicePayslip {
 
     }
 
+
+
     private void setOnClickListener() {
-        clickListener = (v, document_id,name) -> viewModel.fetchInvoiceContent(document_id, name, getActivity());
+        clickListener = (v, document_id, document_name) -> viewModel.fetchInvoiceContent(document_id, document_name, getActivity());
     }
 }

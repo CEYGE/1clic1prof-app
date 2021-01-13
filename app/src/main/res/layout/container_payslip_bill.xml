@@ -19,7 +19,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:contentDescription="@string/associate_document"
-            app:srcCompat="@drawable/pay_doc" />
+            android:src="@drawable/pay_doc" />
 
         <TextView
             android:id="@+id/textView_docName"

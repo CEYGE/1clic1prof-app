@@ -29,8 +29,8 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_main_activity);
-        this.setListenerMenu();
-        setProfileObserver();
+        this.setListenerMenu(); // Showing the drawer menu
+        //setProfileObserver();
     }
 
     @Override

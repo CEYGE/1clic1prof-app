@@ -34,7 +34,7 @@ public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_main_activity);
         this.setListenerMenu();
-        setProfileObserver();
+        //setProfileObserver();
     }
 
     @Override

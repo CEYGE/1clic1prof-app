@@ -12,12 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import fr.clic1prof.R;
 import fr.clic1prof.activities.abstractviews.AbstractInvoicePayslip;
+import fr.clic1prof.adapter.AbstractAdapter;
 import fr.clic1prof.adapter.InvoicePayslipAdapter;
 import fr.clic1prof.models.document.Document;
 import fr.clic1prof.viewmodels.invoice.StudentInvoiceViewModel;
@@ -47,8 +49,8 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
         super.onResume();
         TextView title = getActivity().findViewById(R.id.titleFragment);
         title.setText(this.getString(R.string.invoice));
-
         viewModel.fetchInvoices();
+
         viewModel.getdocumentsLiveData().observe(this, new Observer<List<Document>>() {
             @Override
             public void onChanged(List<Document> invoices) {
@@ -56,7 +58,7 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
                     setOnClickListener();
                     adapter = new InvoicePayslipAdapter(getActivity().getApplicationContext(), clickListener);
                     recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 4));
+                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 3));
                     adapter.setItems(invoices);
                 }
             }
@@ -65,6 +67,6 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
     }
 
     private void setOnClickListener() {
-        clickListener = (v, document_id,name) -> viewModel.fetchInvoiceContent(document_id, name, getActivity());
+        clickListener = (v, document_id, document_name) -> viewModel.fetchInvoiceContent(document_id, document_name, getActivity());
     }
 }
