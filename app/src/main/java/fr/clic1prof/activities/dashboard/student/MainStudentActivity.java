@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.abstractviews.AbstractActivity;
@@ -24,13 +22,11 @@ import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 @AndroidEntryPoint
 public class MainStudentActivity extends AbstractActivity<StudentProfile> {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_main_activity);
         this.setListenerMenu();
-        setProfileObserver();
     }
 
     @Override
@@ -41,12 +37,15 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
 
     @Override
     protected void setProfileObserver() {
-        TextView drawer_name = findViewById(R.id.textView_docName);
-        TextView drawer_studies = findViewById(R.id.textView_studies);
-        ImageView profileImage = findViewById(R.id.profile_image);
-        getViewModel().getProfileLiveData().observe(this, profile->{
-            drawer_name.setText(profile.getFirstName()+" "+ profile.getLastName());
-            drawer_studies.setText( profile.getLevel().getLabel());
+
+        getViewModel().getProfileLiveData().observe(this, profile -> {
+
+            TextView drawerName = findViewById(R.id.drawer_name);
+            TextView drawerStudies = findViewById(R.id.textView_studies);
+            ImageView profileImage = findViewById(R.id.profile_image);
+
+            drawerName.setText(profile.getFirstName()+" "+ profile.getLastName());
+            drawerStudies.setText( profile.getLevel().getLabel());
             profileImage.setImageBitmap(profile.getPicture());
         });
     }

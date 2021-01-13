@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -24,9 +25,8 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //this.viewModel = new ViewModelProvider(this).get(this.getProfileViewModelClass());
-        //this.setProfileObserver();
-
+        this.viewModel = new ViewModelProvider(this).get(this.getProfileViewModelClass());
+        this.setProfileObserver();
     }
 
     /**
@@ -40,11 +40,9 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
         navigationView.setNavigationItemSelectedListener(this);
 
         // To display menu navigation
-        super.findViewById(R.id.imgMenu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
+        super.findViewById(R.id.imgMenu).setOnClickListener(v -> {
+            drawerLayout.openDrawer(GravityCompat.START);
+            this.getViewModel().getProfile();
         });
 
     }
