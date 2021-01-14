@@ -39,6 +39,7 @@
         <activity android:name=".activities.dashboard.CreationEventActivity" />
         <activity android:name=".activities.dashboard.student.MainStudentActivity" />
         <activity android:name=".activities.dashboard.teacher.MainTeacherActivity" />
+        <activity android:name=".activities.RequestPasswordActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ImageModification">Changer la photo</string>
+    <string name="invoice">Factures</string>
+    <string name="versionConfirmation">Confirmer</string>
+    <string name="versionModification">Modifier</string>
 </resources>

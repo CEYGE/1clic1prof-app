@@ -81,7 +81,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/profile_image"
                         android:layout_width="40sp"
                         android:layout_height="40sp"
                         app:srcCompat="@drawable/profil_img1"

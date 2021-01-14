@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -18,7 +19,6 @@ import fr.clic1prof.R;
  * Contain method permitting to create a fragment with the corresponding layout
  */
 public abstract class AbstractFragment extends Fragment {
-
 
     @Override
     public abstract View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -39,23 +39,25 @@ public abstract class AbstractFragment extends Fragment {
      * Layout ID in paremeter
      * @param R_layout_bottom_sheet
      */
-    public void setListenerCourse(int R_layout_bottom_sheet,View view){
+    public void setListenerCourse(int R_layout_bottom_sheet,View view) {
+
         //TODO Match notebook id with notebook_resume
         View notebookResume = view.findViewById(R.id.notebook_resume);
-        notebookResume.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(),R.style.BottomSheetDialogTheme);
-                View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
-                        .inflate(
-                                R_layout_bottom_sheet,
-                                (LinearLayout)getActivity().findViewById(R.id.bottomSheetContainer)
-                        );
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
-            }
+        notebookResume.setOnClickListener(clickedView -> {
+
+            FragmentActivity fragment = getActivity();
+
+            if(fragment == null)
+                throw new NullPointerException("Fragment cannot be null.");
+
+            final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(fragment, R.style.BottomSheetDialogTheme);
+
+            View bottomSheetView = LayoutInflater.from(fragment.getApplicationContext())
+                    .inflate(R_layout_bottom_sheet, fragment.findViewById(R.id.bottomSheetContainer));
+
+            bottomSheetDialog.setContentView(bottomSheetView);
+            bottomSheetDialog.show();
         });
     }
-
 }

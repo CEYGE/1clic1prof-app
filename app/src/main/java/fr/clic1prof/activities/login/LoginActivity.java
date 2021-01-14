@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.RequestPasswordActivity;
 import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
+import fr.clic1prof.activities.dashboard.student.StudentAgendaFragment;
 import fr.clic1prof.activities.dashboard.teacher.MainTeacherActivity;
 import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.util.LoadingDialog;

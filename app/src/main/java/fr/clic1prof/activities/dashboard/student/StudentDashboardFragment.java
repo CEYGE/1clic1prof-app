@@ -22,7 +22,5 @@ public class StudentDashboardFragment extends DashboardFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflateFragment(R.layout.student_dashboard, inflater, container);
-
     }
-
 }

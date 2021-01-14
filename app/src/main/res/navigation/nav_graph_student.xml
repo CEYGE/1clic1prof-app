@@ -25,11 +25,13 @@
         android:label="fragment_notebook"
         tools:layout="@layout/student_notebook" />
     <action android:id="@+id/action_global_agendaFragment" app:destination="@id/student_agenda"/>
+
     <fragment
-        android:id="@+id/payslipFragment"
-        android:name="fr.clic1prof.activities.dashboard.PayslipFragment"
-        android:label="payslip_fragment"
-        tools:layout="@layout/payslip_fragment" /><action android:id="@+id/action_global_payslipFragment" app:destination="@id/payslipFragment"/>
+        android:id="@+id/studentInvoiceFragment"
+        android:name="fr.clic1prof.activities.dashboard.student.StudentInvoiceFragment"
+        android:label="StudentInvoiceFragment"
+        tools:layout="@layout/payslip_invoice"/><action android:id="@+id/action_global_payslipInvoiceFragment" app:destination="@id/studentInvoiceFragment"/>
+
     <fragment
         android:id="@+id/studentContactActivity"
         android:name="fr.clic1prof.activities.contacts.impl.StudentContactActivity"
