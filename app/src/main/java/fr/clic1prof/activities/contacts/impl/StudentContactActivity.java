@@ -5,10 +5,12 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.contacts.ContactActivity;
 import fr.clic1prof.adapter.contacts.impl.StudentContactsAdapter;
 
+@AndroidEntryPoint
 public class StudentContactActivity extends ContactActivity {
     @Override
     public void onResume() {

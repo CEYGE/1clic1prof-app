@@ -30,7 +30,7 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_main_activity);
         this.setListenerMenu();
-        setProfileObserver();
+        //setProfileObserver();
     }
 
     @Override

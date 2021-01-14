@@ -23,8 +23,9 @@ import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.TeacherProfileViewModel;
 // This annotation has been added after 1 hour of debug.
 // So, if one day, you have a "no zero argument constructor" with ViewModel
-// using Hilt, think about it and increase the number of hours spent to debug it.
-// hours spent : 2
+// using Hilt, think about it and increase the number of times the error occured.
+// times : 5
+
 @AndroidEntryPoint
 public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
 
@@ -34,7 +35,7 @@ public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_main_activity);
         this.setListenerMenu();
-        setProfileObserver();
+        //setProfileObserver();
     }
 
     @Override
