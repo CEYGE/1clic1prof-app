@@ -1,11 +1,7 @@
 package fr.clic1prof.adapter;
 
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-
-import org.jetbrains.annotations.NotNull;
 
 import fr.clic1prof.R;
 import fr.clic1prof.models.document.Document;

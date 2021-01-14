@@ -16,7 +16,7 @@ import java.util.List;
 
 public abstract class AbstractAdapter<T, VH extends AbstractViewHolder<T>> extends RecyclerView.Adapter<VH>  {
     private List<T> items;
-    private LayoutInflater layoutInflater;
+    private final LayoutInflater layoutInflater;
 
     public AbstractAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);

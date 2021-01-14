@@ -11,13 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import fr.clic1prof.R;
 import fr.clic1prof.activities.abstractviews.AbstractInvoicePayslip;
-import fr.clic1prof.adapter.AbstractAdapter;
 import fr.clic1prof.adapter.InvoicePayslipAdapter;
 import fr.clic1prof.models.document.Document;
 import fr.clic1prof.viewmodels.payslip.TeacherPayslipViewModel;

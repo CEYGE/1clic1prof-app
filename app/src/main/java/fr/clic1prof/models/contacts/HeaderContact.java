@@ -1,9 +1,5 @@
 package fr.clic1prof.models.contacts;
 
-import android.graphics.Bitmap;
-
-import javax.annotation.Nullable;
-
 public class HeaderContact extends Contact {
     private final char header;
 

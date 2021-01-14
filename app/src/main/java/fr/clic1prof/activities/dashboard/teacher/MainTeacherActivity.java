@@ -2,24 +2,18 @@ package fr.clic1prof.activities.dashboard.teacher;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import androidx.lifecycle.ViewModelProvider;
-
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.abstractviews.AbstractActivity;
-import fr.clic1prof.activities.profile.ProfileStudentActivity;
 import fr.clic1prof.activities.profile.ProfileTeacherActivity;
-import fr.clic1prof.models.profile.StudentProfile;
 import fr.clic1prof.models.profile.TeacherProfile;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
-import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.TeacherProfileViewModel;
 // This annotation has been added after 1 hour of debug.
 // So, if one day, you have a "no zero argument constructor" with ViewModel

@@ -1,7 +1,5 @@
 package fr.clic1prof.models.profile;
 
-import android.graphics.Bitmap;
-
 import java.util.List;
 
 import fr.clic1prof.models.other.Speciality;
