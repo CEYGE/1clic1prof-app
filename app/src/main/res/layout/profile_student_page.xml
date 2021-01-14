@@ -43,7 +43,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="@string/ReturnName"
+            android:text="@string/returndashboard"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"/>
         </LinearLayout>
@@ -134,7 +134,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:contentDescription="@string/profile_image"
+                    android:contentDescription="@string/versionModification"
                     android:id="@+id/switchFirstButton01"
                     android:layout_width="20dp"
                     android:layout_height="20dp"

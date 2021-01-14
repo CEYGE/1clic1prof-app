@@ -23,13 +23,66 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_student_page);
+        this.setImage();
+        this.setSwitcher();
+        this.setEditText();
         this.setSpinnerObserver();
     }
 
+    @Override
+    protected void assignInformation(StudentProfile profile){
+        //View to return to dashboard
+        TextView view = findViewById(R.id.textReturnView);
+        String fullName = profile.getFirstName() + profile.getLastName();
+        view.setText(fullName);
 
-    /*
-     * PART SETTER
-     */
+        //TextView profile
+        TextView textFirst = findViewById(R.id.viewFirstName01);
+        if(profile.getFirstName() == null) textFirst.setText(getResources().getText(R.string.FirstName));
+        else textFirst.setText(profile.getFirstName());
+
+        TextView textLast = findViewById(R.id.viewLastName01);
+        if(profile.getLastName() == null) textLast.setText(getResources().getText(R.string.LastName));
+        else textLast.setText(profile.getLastName());
+
+        TextView textMail = findViewById(R.id.viewMail01);
+        if (profile.getEmail() == null) textMail.setText(getResources().getText(R.string.Email_Text));
+        else textMail.setText(profile.getEmail());
+
+        //SchoolLevel profile
+        Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
+        spinner.setSelection(profile.getLevel().getId());
+
+        //Image bitmap profile
+        ImageView imgView = findViewById(R.id.profile_img01);
+        //TODO: default pic
+        if (profile.getPicture() == null) imgView.setImageBitmap(null);
+        else imgView.setImageBitmap(profile.getPicture());
+    }
+
+    @Override
+    public void sendHomePage(View view) {
+        Intent intent = new Intent(this, MainStudentActivity.class);
+        startActivity(intent);
+    }
+
+    private void setSpinnerObserver(){
+        Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SchoolLevel schoolLevel = new SchoolLevel(position,parent.getItemAtPosition(position).toString());
+                setObserverError("Le niveau d'élève n'arrive pas à se renouveler");
+                getViewModel().updateSchoolLevel(schoolLevel);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //Nothing to do if no selection
+            }
+        });
+    }
 
     @Override
     protected void setImage() {
@@ -55,27 +108,6 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         this.setEditPassword(R.id.editTextPassword01);
     }
 
-    private void setSpinnerObserver(){
-        Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SchoolLevel schoolLevel = new SchoolLevel(position,parent.getItemAtPosition(position).toString());
-                setObserverError("Le niveau d'élève n'arrive pas à se renouveler");
-                getViewModel().updateSchoolLevel(schoolLevel);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                //Nothing to do if no selection
-            }
-        });
-    }
-
-    /*
-     * PART GETTER
-     */
     @Override
     public StudentProfileViewModel getViewModel() {
         return (StudentProfileViewModel) super.getViewModel();
@@ -86,34 +118,6 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         return StudentProfileViewModel.class;
     }
 
-    /*
-     * PART FUNCTION
-     */
 
-    @Override
-    protected void assignInformation(StudentProfile profile){
-        //View to return to dashboard
-        TextView view = findViewById(R.id.textReturnView);
-        String fullName = profile.getFirstName() + profile.getLastName();
-        view.setText(fullName);
-        //TextView profile
-        TextView textFirst = findViewById(R.id.viewFirstName01);
-        textFirst.setText(profile.getFirstName());
-        TextView textLast = findViewById(R.id.viewLastName01);
-        textLast.setText(profile.getLastName());
-        TextView textMail = findViewById(R.id.viewMail01);
-        textMail.setText(profile.getEmail());
-        //SchoolLevel profile
-        Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
-        spinner.setSelection(profile.getLevel().getId());
-        //Image bitmap profile
-        ImageView imgView = findViewById(R.id.profile_img01);
-        imgView.setImageBitmap(profile.getPicture());
-    }
 
-    @Override
-    public void sendHomePage(View view) {
-        Intent intent = new Intent(this, MainStudentActivity.class);
-        startActivity(intent);
-    }
 }

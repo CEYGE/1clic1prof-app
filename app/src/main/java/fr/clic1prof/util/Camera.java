@@ -45,7 +45,6 @@ public class Camera extends AppCompatActivity {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, GALLERY_REQUEST_CODE);
         }else {
-            System.out.println("GO TAKE PICTURE");
             dispatchTakePictureIntent();
         }
     }
@@ -102,7 +101,6 @@ public class Camera extends AppCompatActivity {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "fr.clic1prof.android.fileprovider",
                         photoFile);
-                System.out.println("\n\n PHOTOFILE ON");
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 activity.startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
             }
@@ -117,18 +115,16 @@ public class Camera extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK) {
                 File f = new File(currentPhotoPath);
                 //Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                Uri contentUri = Uri.fromFile(f);
-                System.out.println(f.toString());
-                System.out.println("\n\n\n" + contentUri.toString());
                 //selectedImage.setImageUri(contentUri);
                 //mediaScanIntent.setData(contentUri);
                 //this.sendBroadcast(mediaScanIntent);
 
-                image = contentUri;
+                image = Uri.fromFile(f);
 
             }
         }else if( requestCode == GALLERY_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK){
+                //TODO: repair
                 //Uri contentUri = data.getData();
                 //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 //String imageFileName = "JPEG" + timeStamp + "." + getFileExtension(contentUri);

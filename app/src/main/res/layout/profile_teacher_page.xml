@@ -32,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/arrow_right"
-                android:contentDescription="ReturnDashboard"
+                android:contentDescription="@string/returndashboard"
                 android:layout_marginEnd="4dp"/>
 
             <TextView
@@ -519,7 +519,7 @@
         <ImageView
             android:id="@+id/deconnexion_View"
             android:onClick="disconnect"
-            android:contentDescription="DeconnexionImage"
+            android:contentDescription="@string/deconnexionimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/linearInformationLayout"

@@ -13,7 +13,6 @@ import retrofit2.http.Part;
 
 public interface ProfileController {
 
-    @Multipart
     @GET("{role}/profile/picture")
     Call<ResponseBody> getProfilePicture();
 

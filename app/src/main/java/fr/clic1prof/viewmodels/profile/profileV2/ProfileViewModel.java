@@ -32,6 +32,7 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
         if(isProfileLoaded()){
             this.profileLiveData.postValue(this.profileLiveData.getValue());
+            this.getProfilePicture();
             return;
         }
 
@@ -40,11 +41,28 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
             @Override
             public void onSuccess(T value) {
                 ProfileViewModel.this.profileLiveData.postValue(value);
+                ProfileViewModel.this.getProfilePicture();
             }
 
             @Override
             public void onError(String message) {
                 // Or, post a String with a custom error message.
+                ProfileViewModel.this.errorLiveData.postValue(null);
+            }
+        });
+    }
+
+    public void getProfilePicture(){
+        this.repository.getProfilePicture(new DataListener<Bitmap>() {
+
+            @Override
+            public void onSuccess(@Nullable Bitmap value) {
+                ProfileViewModel.this.profileLiveData.getValue().setPicture(value);
+            }
+
+            @Override
+            public void onError(String message) {
+                Log.e("Failure_Picture",message);
                 ProfileViewModel.this.errorLiveData.postValue(null);
             }
         });

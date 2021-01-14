@@ -3,10 +3,12 @@ package fr.clic1prof.activities.profile;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,7 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.io.File;
+import java.security.spec.ECField;
 import java.util.regex.Pattern;
 
 import fr.clic1prof.R;
@@ -71,8 +74,6 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         super.onCreate(savedInstanceState);
 
         this.setImage();
-        this.setSwitcher();
-        this.setEditText();
 
         this.setError(Toast.makeText(this," ", Toast.LENGTH_SHORT));
         this.setCamera(new Camera(this));
@@ -113,19 +114,15 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         startActivity(intent);
     }
 
-
-
     public void switchFirstNameAndUpdate(View view){
-        if(imageFirstName.getBackground() == getDrawable(R.drawable.write_icon)) {
-            switcherFirstName.showNext();
-            changeImageButton(imageFirstName);
+        if(imageFirstName.getContentDescription() == getResources().getText(R.string.versionModification)) {
+            this.alternate(imageFirstName, R.string.versionConfirmation, switcherFirstName);
         }else {
             if(verifString(editFirstName.getText().toString())) {
                 //Update
                 setObserverError("Le prénom n'a pas pu s'update");
                 this.viewModel.updateFirstName(editFirstName.getText().toString());
-                switcherFirstName.showNext();
-                changeImageButton(imageFirstName);
+                this.alternate(imageFirstName, R.string.versionModification, switcherFirstName);
             }else {
                 error.setText("Le prénom ne répond pas aux critères.");
                 error.show();
@@ -134,16 +131,14 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
     public void switchLastNameAndUpdate(View view){
-        if(imageLastName.getBackground() == getDrawable(R.drawable.write_icon)) {
-            switcherLastName.showNext();
-            changeImageButton(imageLastName);
+        if(imageLastName.getContentDescription() == getResources().getText(R.string.versionModification)) {
+            this.alternate(imageLastName, R.string.versionConfirmation, switcherLastName);
         }else {
             if(verifString(editLastName.getText().toString())) {
                 //Update
                 setObserverError("Le nom n'a pas pu s'update");
                 this.viewModel.updateLastName(editLastName.getText().toString());
-                switcherLastName.showNext();
-                changeImageButton(imageLastName);
+                this.alternate(imageLastName, R.string.versionModification, switcherLastName);
             }else {
                 error.setText("Le nom ne répond pas aux critères.");
                 error.show();
@@ -152,14 +147,12 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
     public void switchMailAndUpdate(View view){
-        if(imageMail.getBackground() == getDrawable(R.drawable.write_icon)) {
-            switcherMail.showNext();
-            changeImageButton(imageMail);
+        if(imageMail.getContentDescription() == getResources().getText(R.string.versionModification)) {
+            this.alternate(imageMail, R.string.versionConfirmation, switcherMail);
         }else {
             if(verifString(editMail.getText().toString())) {
                 //TODO: Update MAIL
-                switcherMail.showNext();
-                changeImageButton(imageMail);
+                this.alternate(imageMail, R.string.versionModification, switcherMail);
             }else {
                 error.setText("Le mail ne répond pas aux critères.");
                 error.show();
@@ -168,14 +161,12 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     }
 
     public void switchPasswordAndUpdate(View view){
-        if(imagePassword.getBackground() == getDrawable(R.drawable.write_icon)) {
-            switcherPassword.showNext();
-            changeImageButton(imagePassword);
+        if(imagePassword.getContentDescription() == getResources().getText(R.string.versionModification)) {
+            this.alternate(imagePassword, R.string.versionConfirmation, switcherPassword);
         }else {
             if(verifString(editPassword.getText().toString())) {
                 //TODO: Update MDP
-                switcherPassword.showNext();
-                changeImageButton(imagePassword);
+                this.alternate(imagePassword, R.string.versionModification, switcherPassword);
             }else {
                 error.setText("Le mot de passe ne répond pas aux critères.");
                 error.show();
@@ -190,7 +181,6 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         builder.setCancelable(true);
         this.setDialog(builder.create());
         this.dialog.show();
-        this.setCamera(new Camera(this));
     }
 
     public void camera(View view){
@@ -205,8 +195,13 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         dialog.dismiss();
     }
 
-    private void changeImageButton(ImageView image){
-        image.setBackground( image.getDrawable()== getDrawable(R.drawable.write_icon) ? getDrawable(R.drawable.write_icon) : getDrawable(R.drawable.check_icon));
+    private void alternate(View image,int value, ViewSwitcher switcher){
+        switcher.showNext();
+        image.setMinimumHeight(20);
+        image.setMinimumWidth(20);
+
+        image.setBackground( image.getContentDescription() == getResources().getText(R.string.versionConfirmation) ? ContextCompat.getDrawable(this, R.drawable.write_icon) :ContextCompat.getDrawable(this, R.drawable.check_icon));
+        image.setContentDescription(getResources().getText(value));
 
     }
 

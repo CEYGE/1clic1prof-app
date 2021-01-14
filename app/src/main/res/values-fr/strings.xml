@@ -4,4 +4,7 @@
     <string name="invoice">Factures</string>
     <string name="versionConfirmation">Confirmer</string>
     <string name="versionModification">Modifier</string>
+    <string name="deconnexionimage">Deconnexion</string>
+    <string name="returndashboard">retour</string>
+    <string name="ReturnName">retourNom</string>
 </resources>

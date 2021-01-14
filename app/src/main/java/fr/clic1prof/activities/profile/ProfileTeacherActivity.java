@@ -28,76 +28,6 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         setContentView(R.layout.profile_teacher_page);
     }
 
-    /*
-     * PART SETTER
-     */
-
-    @Override
-    protected void setImage() {
-        this.setImageFirstName(R.id.switchFirstButton02);
-        this.setImageLastName(R.id.switchLastButton02);
-        this.setImageMail(R.id.switchMailButton02);
-        this.setImagePassword(R.id.switchPasswordButton02);
-    }
-
-    @Override
-    protected void setSwitcher() {
-        this.setSwitcherFirstName(R.id.switchFirstName02);
-        this.setSwitcherLastName(R.id.switchLastName02);
-        this.setSwitcherMail(R.id.switchMail02);
-        this.setSwitcherPassword(R.id.switchPassword02);
-    }
-
-    @Override
-    protected void setEditText() {
-        this.setEditFirstName(R.id.editTextFirstName02);
-        this.setEditLastName(R.id.editTextLastName02);
-        this.setEditMail(R.id.editTextMail02);
-        this.setEditPassword(R.id.editTextPassword02);
-    }
-
-    public void setSpecialityListener(){
-        ChipGroup chipGroup = findViewById(R.id.Speciality);
-        for(int i=0; i<chipGroup.getChildCount();i++){
-            chipGroup.getChildAt(i).setOnClickListener(v -> {
-                //TODO : update Speciality
-            });
-        }
-
-    }
-
-    /*
-     * PART GETTER
-     */
-    @Override
-    public TeacherProfileViewModel getViewModel() {
-        return (TeacherProfileViewModel)super.getViewModel();
-    }
-
-    @Override
-    protected Class<? extends ProfileViewModel<TeacherProfile>> getProfileViewModelClass() {
-        return TeacherProfileViewModel.class;
-    }
-
-    /*
-     * FUNCTION
-     */
-
-    public void switchDescriptionAndUpdate(View view){
-        EditText description = findViewById(R.id.editDescription02);
-        getViewModel().updateDescription(description.getText().toString());
-
-    }
-
-    public void switchStudiesAndUpdate(View view){
-        EditText studies = findViewById(R.id.editStudies02);
-        getViewModel().updateStudies(studies.getText().toString());
-    }
-
-
-
-
-
     @Override
     protected void assignInformation(TeacherProfile profile){
         //View to return to dashboard
@@ -137,4 +67,62 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         Intent intent = new Intent(this, MainTeacherActivity.class);
         startActivity(intent);
     }
+
+
+    public void switchDescriptionAndUpdate(View view){
+        EditText description = findViewById(R.id.editDescription02);
+        getViewModel().updateDescription(description.getText().toString());
+
+    }
+
+    public void switchStudiesAndUpdate(View view){
+        EditText studies = findViewById(R.id.editStudies02);
+        getViewModel().updateStudies(studies.getText().toString());
+    }
+
+    public void setSpecialityListener(){
+        ChipGroup chipGroup = findViewById(R.id.Speciality);
+        for(int i=0; i<chipGroup.getChildCount();i++){
+            chipGroup.getChildAt(i).setOnClickListener(v -> {
+                //TODO : update Speciality
+            });
+        }
+
+    }
+
+    @Override
+    protected void setImage() {
+        this.setImageFirstName(R.id.switchFirstButton02);
+        this.setImageLastName(R.id.switchLastButton02);
+        this.setImageMail(R.id.switchMailButton02);
+        this.setImagePassword(R.id.switchPasswordButton02);
+    }
+
+    @Override
+    protected void setSwitcher() {
+        this.setSwitcherFirstName(R.id.switchFirstName02);
+        this.setSwitcherLastName(R.id.switchLastName02);
+        this.setSwitcherMail(R.id.switchMail02);
+        this.setSwitcherPassword(R.id.switchPassword02);
+    }
+
+    @Override
+    protected void setEditText() {
+        this.setEditFirstName(R.id.editTextFirstName02);
+        this.setEditLastName(R.id.editTextLastName02);
+        this.setEditMail(R.id.editTextMail02);
+        this.setEditPassword(R.id.editTextPassword02);
+    }
+
+    @Override
+    public TeacherProfileViewModel getViewModel() {
+        return (TeacherProfileViewModel)super.getViewModel();
+    }
+
+    @Override
+    protected Class<? extends ProfileViewModel<TeacherProfile>> getProfileViewModelClass() {
+        return TeacherProfileViewModel.class;
+    }
+
+
 }
