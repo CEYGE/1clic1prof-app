@@ -13,7 +13,7 @@ public class InvoicePayslipAdapter extends AbstractAdapter<Document, InvoicePays
     private final RecyclerViewClickListener clickListener;
 
     public InvoicePayslipAdapter(Context context, RecyclerViewClickListener clickListener) {
-        super(context,clickListener);
+        super(context);
         this.clickListener = clickListener;
     }
 

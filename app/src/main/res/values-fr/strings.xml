@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ImageModification">Changer la photo</string>
-    <string name="invoice">Factures</string>
-    <string name="versionConfirmation">Confirmer</string>
-    <string name="versionModification">Modifier</string>
-    <string name="deconnexionimage">Deconnexion</string>
+    <string name="invoice">Facture</string>
     <string name="returndashboard">retour</string>
-    <string name="ReturnName">retourNom</string>
+    <string name="ReturnName">Retouner Nom</string>
+    <string name="deconnexionimage">Deconnexion</string>
+    <string name="versionConfirmation">Valider</string>
+    <string name="versionModification">Modifier</string>
+    <string name="ImageModification">Changer la photo</string>
 </resources>

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 import fr.clic1prof.models.document.Document;
 import fr.clic1prof.repositories.payslips.TeacherPayslipRepositoryImpl;
 import fr.clic1prof.util.DataListener;
-import fr.clic1prof.viewmodels.invoice.fileCreation;
+import fr.clic1prof.viewmodels.invoice.FileCreation;
 
 public class TeacherPayslipViewModel extends ViewModel {
 
@@ -46,7 +46,7 @@ public class TeacherPayslipViewModel extends ViewModel {
         this.getRepository().getPayslip(id, new DataListener<InputStream>() {
             @Override
             public void onSuccess(@Nullable InputStream value) {
-                fileCreation fc = new fileCreation(context, value, name);
+                FileCreation fc = new FileCreation(context, value, name);
                 fc.askPermissionAndWriteFile();
             }
 

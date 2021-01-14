@@ -17,19 +17,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
-
 import static android.content.Context.DOWNLOAD_SERVICE;
 import static androidx.core.app.ActivityCompat.requestPermissions;
 
-public class fileCreation {
+public class FileCreation {
     private static final int REQUEST_ID_WRITE_PERMISSION = 200;
     private static final String LOG_TAG = "1clic1prof";
-    private Context context;
-    private InputStream data;
-    private String name;
+    private final Context context;
+    private final InputStream data;
+    private final String name;
 
-    public fileCreation(Context context, InputStream data, String name) {
+    public FileCreation(Context context, InputStream data, String name) {
         this.context = context;
         this.data = data;
         this.name = name;
@@ -39,8 +37,8 @@ public class fileCreation {
     // With Android Level >= 23, you have to ask the user
     // for permission with device (For example read/write data on the device).
     public void askPermissionAndWriteFile() {
-        boolean canWrite = this.askPermission(REQUEST_ID_WRITE_PERMISSION,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        boolean canWrite = this.askPermission(
+        );
         if (!canWrite) {
             Toast.makeText(context,
                     "You do not allow this app to write files.", Toast.LENGTH_SHORT).show();
@@ -91,14 +89,14 @@ public class fileCreation {
     }
 
 
-    private boolean askPermission(int requestId, String permissionName) {
-        Log.i(LOG_TAG, "Ask for Permission: " + permissionName);
+    private boolean askPermission() {
+        Log.i(LOG_TAG, "Ask for Permission: " + Manifest.permission.WRITE_EXTERNAL_STORAGE);
         Log.i(LOG_TAG, "Build.VERSION.SDK_INT: " + Build.VERSION.SDK_INT);
 
         if (Build.VERSION.SDK_INT >= 23) {
 
             // Check if we have permission
-            int permission = ActivityCompat.checkSelfPermission(context, permissionName);
+            int permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
             Log.i(LOG_TAG, "permission: " + permission);
             Log.i(LOG_TAG, "PackageManager.PERMISSION_GRANTED: " + PackageManager.PERMISSION_GRANTED);
@@ -106,8 +104,8 @@ public class fileCreation {
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 // If don't have permission so prompt the user.
                 requestPermissions((Activity) context,
-                        new String[]{permissionName},
-                        requestId
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        FileCreation.REQUEST_ID_WRITE_PERMISSION
                 );
                 return false;
             }

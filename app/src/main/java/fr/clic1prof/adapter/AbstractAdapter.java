@@ -10,13 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public abstract class AbstractAdapter<T, VH extends AbstractViewHolder<T>> extends RecyclerView.Adapter<VH>  {
     private List<T> items;
     private LayoutInflater layoutInflater;
 
-    public AbstractAdapter(Context context, RecyclerViewClickListener clickListener) {
+    public AbstractAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
     }
 
@@ -26,8 +28,9 @@ public abstract class AbstractAdapter<T, VH extends AbstractViewHolder<T>> exten
      * @param viewType
      * @return
      */
+    @NotNull
     @Override
-    public abstract VH onCreateViewHolder(ViewGroup parent, int viewType);
+    public abstract VH onCreateViewHolder(@NotNull ViewGroup parent, int viewType);
 
     /**
      * Method called by the recyclerView to set data for the position.

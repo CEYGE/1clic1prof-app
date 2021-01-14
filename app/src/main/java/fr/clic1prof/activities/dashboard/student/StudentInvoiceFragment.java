@@ -25,7 +25,6 @@ import fr.clic1prof.models.document.Document;
 import fr.clic1prof.viewmodels.invoice.StudentInvoiceViewModel;
 
 public class StudentInvoiceFragment extends AbstractInvoicePayslip {
-
     protected StudentInvoiceViewModel viewModel;
 
     public static StudentDashboardFragment newInstance() {
@@ -41,7 +40,7 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.recycler_invoicePayslip);
+        setRecyclerView(getActivity().findViewById(R.id.recycler_invoicePayslip));
         viewModel = new ViewModelProvider(requireActivity()).get(StudentInvoiceViewModel.class);
     }
 
@@ -57,10 +56,10 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
             public void onChanged(List<Document> invoices) {
                 if (invoices != null){
                     setOnClickListener();
-                    adapter = new InvoicePayslipAdapter(getActivity().getApplicationContext(), clickListener);
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 3));
-                    adapter.setItems(invoices);
+                    setAdapter(new InvoicePayslipAdapter(getActivity().getApplicationContext(), getClickListener()));
+                    getRecyclerView().setAdapter(getAdapter());
+                    getRecyclerView().setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 3));
+                    getAdapter().setItems(invoices);
                 }
             }
         });
@@ -68,6 +67,9 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
     }
 
     private void setOnClickListener() {
-        clickListener = (v, document_id, document_name) -> viewModel.fetchInvoiceContent(document_id, document_name, getActivity());
+        setClickListener((v, document_id, document_name) -> viewModel.fetchInvoiceContent(document_id, document_name, getActivity()));
     }
+
+
+
 }
