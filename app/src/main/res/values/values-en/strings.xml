@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FirstTest</string>
+    <string name="app_name">1clic1prof</string>
     <string name="Connection_Message">Welcome back !</string>
     <string name="Inscription">Register</string>
     <string name="Button_Connection">Log in</string>
