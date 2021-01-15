@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.Nullable;
@@ -101,6 +100,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 Uri contentUri = Uri.fromFile(f);
                 camera.setImage(contentUri);
                 setObserverError("Erreur de la prise de photo");
+                selectedImage.setImageURI(camera.getImage());
                 this.viewModel.updatePicture(f);
             }
         }else if( requestCode == 103){
@@ -108,9 +108,9 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 Uri contentUri = data.getData();
                 File f = new File(contentUri.getPath());
                 camera.setImage(contentUri);
+                selectedImage.setImageURI(camera.getImage());
                 setObserverError("Erreur d'envoi de la photo");
-                this.viewModel.updatePicture(f);
-
+                viewModel.updatePicture(f);
             }
         }
     }
@@ -118,7 +118,6 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     public void disconnect(View view){
         Intent intent = new Intent(this, LoginActivity.class);
         model.close();
-        System.out.println("Fermeture: "+model.isOpened());
         startActivity(intent);
     }
 
@@ -207,7 +206,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     private void alternate(View image,int value, ViewSwitcher switcher){
         switcher.showNext();
         image.setBackground( image.getContentDescription() == getResources().getText(R.string.versionConfirmation) ? ContextCompat.getDrawable(this, R.drawable.write_icon)
-                :ContextCompat.getDrawable(this, R.drawable.default_profile_picture));
+                :ContextCompat.getDrawable(this, R.drawable.check_icon));
         image.setContentDescription(getResources().getText(value));
 
     }
@@ -228,7 +227,6 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.viewModel.getErrorLiveData().removeObservers(this);
         this.viewModel.getErrorLiveData().observe(this, result -> {
             //Action en observant une erreur
-            System.out.println(viewModel.getErrorLiveData());
             this.error.setText(message);
             this.error.showError();
         });

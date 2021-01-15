@@ -114,7 +114,7 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
     public void updatePicture(File picture, DataListener<Integer> listener) {
 
         String mediaType = FileUtils.getMimeType(Uri.fromFile(picture));
-
+        System.out.println(mediaType);
         // MediaType cannot be found.
         if(mediaType == null) {
             listener.onError("MediaType not found.");
@@ -128,13 +128,14 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
 
             @Override
             public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
-
+                System.out.println(response.code());
                 if(response.isSuccessful()) listener.onSuccess(response.body());
                 else listener.onError("Cannot update user's profile picture.");
             }
 
             @Override
             public void onFailure(@NonNull Call<Integer> call, @NonNull Throwable throwable) {
+                System.out.println("Error");
                 listener.onError("Cannot update user's profile picture.");
             }
         });
