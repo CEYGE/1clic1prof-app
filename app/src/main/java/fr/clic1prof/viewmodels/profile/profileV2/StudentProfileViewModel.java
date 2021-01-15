@@ -30,6 +30,7 @@ public class StudentProfileViewModel extends ProfileViewModel<StudentProfile> {
 
             @Override
             public void onError(String message) {
+                System.out.println("ErrorUpdateSchoolLevel");
                 // Or, post a String with a custom error message.
                 StudentProfileViewModel.super.errorLiveData.postValue(null);
             }

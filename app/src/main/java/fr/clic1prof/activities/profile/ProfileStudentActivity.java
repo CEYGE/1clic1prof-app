@@ -13,6 +13,7 @@ import fr.clic1prof.R;
 import fr.clic1prof.activities.dashboard.student.MainStudentActivity;
 import fr.clic1prof.models.other.SchoolLevel;
 import fr.clic1prof.models.profile.StudentProfile;
+import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 
@@ -22,7 +23,6 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_student_page);
         this.setImage();
         this.setSwitcher();
         this.setEditText();
@@ -31,23 +31,15 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
 
     @Override
     protected void assignInformation(StudentProfile profile){
-        //View to return to dashboard
-        TextView view = findViewById(R.id.textReturnView);
-        String fullName = profile.getFirstName() + profile.getLastName();
-        view.setText(fullName);
-
         //TextView profile
         TextView textFirst = findViewById(R.id.viewFirstName01);
-        if(profile.getFirstName() == null) textFirst.setText(getResources().getText(R.string.FirstName));
-        else textFirst.setText(profile.getFirstName());
+        if(profile.getFirstName() != null) textFirst.setText(profile.getFirstName());
 
         TextView textLast = findViewById(R.id.viewLastName01);
-        if(profile.getLastName() == null) textLast.setText(getResources().getText(R.string.LastName));
-        else textLast.setText(profile.getLastName());
+        if(profile.getLastName() != null) textLast.setText(profile.getLastName());
 
         TextView textMail = findViewById(R.id.viewMail01);
-        if (profile.getEmail() == null) textMail.setText(getResources().getText(R.string.Email_Text));
-        else textMail.setText(profile.getEmail());
+        if (profile.getEmail() != null) textMail.setText(profile.getEmail());
 
         //SchoolLevel profile
         Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
@@ -56,8 +48,7 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         //Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img01);
         //TODO: default pic
-        if (profile.getPicture() == null) imgView.setImageBitmap(null);
-        else imgView.setImageBitmap(profile.getPicture());
+        if (profile.getPicture() != null) imgView.setImageBitmap(profile.getPicture());
     }
 
     @Override
@@ -69,10 +60,13 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
     private void setSpinnerObserver(){
         Spinner spinner = findViewById(R.id.spinnerSchoolLevel);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SchoolLevel schoolLevel = new SchoolLevel(position,parent.getItemAtPosition(position).toString());
+                StudentProfile profile = getViewModel().getProfileLiveData().getValue();
+                if(profile == null) return;
+                SchoolLevel schoolLevel = new SchoolLevel(position, parent.getItemAtPosition(position).toString());
+                if(profile.getLevel().getId() == schoolLevel.getId()) return;
+                System.out.println("SchoolLevel"+getViewModel().getErrorLiveData().hasObservers());
                 setObserverError("Le niveau d'élève n'arrive pas à se renouveler");
                 getViewModel().updateSchoolLevel(schoolLevel);
             }
@@ -106,6 +100,16 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
         this.setEditLastName(R.id.editTextLastName01);
         this.setEditMail(R.id.editTextMail01);
         this.setEditPassword(R.id.editTextPassword01);
+    }
+
+    @Override
+    protected void setLayout() {
+        setContentView(R.layout.profile_student_page);
+    }
+
+    @Override
+    public void setErrorEntry() {
+         this.setError(new ErrorEntrie(findViewById(R.id.errorInvisibleViewProfile01)));
     }
 
     @Override

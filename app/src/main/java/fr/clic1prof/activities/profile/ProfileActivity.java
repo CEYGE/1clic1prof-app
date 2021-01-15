@@ -9,11 +9,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
@@ -31,12 +33,14 @@ import fr.clic1prof.R;
 import fr.clic1prof.activities.login.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.util.Camera;
+import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
+import fr.clic1prof.viewmodels.profile.profileV2.StudentProfileViewModel;
 
 public abstract class ProfileActivity<T extends Profile> extends AppCompatActivity {
 
     private ProfileViewModel<T> viewModel;
-    private Toast error;
+    private ErrorEntrie error;
     private AlertDialog dialog;
     private ImageView selectedImage;
     private Camera camera;
@@ -63,6 +67,10 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
 
     protected abstract void setEditText();
 
+    protected abstract void setLayout();
+
+    public abstract void setErrorEntry();
+
     protected abstract Class<? extends ProfileViewModel<T>> getProfileViewModelClass();
 
     public abstract void sendHomePage(View view);
@@ -72,10 +80,11 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.setLayout();
         this.setImage();
-
-        this.setError(Toast.makeText(this," ", Toast.LENGTH_SHORT));
+        this.setErrorEntry();
+        this.error.setText(" ");
+        this.error.cleanse();
         this.setCamera(new Camera(this));
 
         this.viewModel = new ViewModelProvider(this).get(getProfileViewModelClass());
@@ -120,28 +129,31 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         }else {
             if(verifString(editFirstName.getText().toString())) {
                 //Update
+                System.out.println("First"+viewModel.getErrorLiveData().hasObservers());
                 setObserverError("Le prénom n'a pas pu s'update");
                 this.viewModel.updateFirstName(editFirstName.getText().toString());
+                this.viewModel.getErrorLiveData().removeObservers(this);
                 this.alternate(imageFirstName, R.string.versionModification, switcherFirstName);
             }else {
                 error.setText("Le prénom ne répond pas aux critères.");
-                error.show();
+                error.showError();
             }
         }
     }
 
     public void switchLastNameAndUpdate(View view){
-        if(imageLastName.getContentDescription() == getResources().getText(R.string.versionModification)) {
-            this.alternate(imageLastName, R.string.versionConfirmation, switcherLastName);
+        if(view.getContentDescription() == getResources().getText(R.string.versionModification)) {
+            this.alternate(view, R.string.versionConfirmation, switcherLastName);
         }else {
             if(verifString(editLastName.getText().toString())) {
                 //Update
+                System.out.println("Last"+viewModel.getErrorLiveData().hasObservers());
                 setObserverError("Le nom n'a pas pu s'update");
                 this.viewModel.updateLastName(editLastName.getText().toString());
                 this.alternate(imageLastName, R.string.versionModification, switcherLastName);
             }else {
                 error.setText("Le nom ne répond pas aux critères.");
-                error.show();
+                error.showError();
             }
         }
     }
@@ -155,7 +167,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 this.alternate(imageMail, R.string.versionModification, switcherMail);
             }else {
                 error.setText("Le mail ne répond pas aux critères.");
-                error.show();
+                error.showError();
             }
         }
     }
@@ -169,7 +181,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 this.alternate(imagePassword, R.string.versionModification, switcherPassword);
             }else {
                 error.setText("Le mot de passe ne répond pas aux critères.");
-                error.show();
+                error.showError();
             }
         }
     }
@@ -197,16 +209,14 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
 
     private void alternate(View image,int value, ViewSwitcher switcher){
         switcher.showNext();
-        image.setMinimumHeight(20);
-        image.setMinimumWidth(20);
-
-        image.setBackground( image.getContentDescription() == getResources().getText(R.string.versionConfirmation) ? ContextCompat.getDrawable(this, R.drawable.write_icon) :ContextCompat.getDrawable(this, R.drawable.check_icon));
+        image.setBackground( image.getContentDescription() == getResources().getText(R.string.versionConfirmation) ? ContextCompat.getDrawable(this, R.drawable.write_icon)
+                :ContextCompat.getDrawable(this, R.drawable.check_icon));
         image.setContentDescription(getResources().getText(value));
 
     }
 
     private boolean verifString(String value){
-        return !Pattern.matches("^\\w$",value);
+        return Pattern.matches("^\\w+$",value);
     }
 
     //Observer fixe sur model
@@ -217,17 +227,13 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
 
     //Observer dynamic sur les errors.
     protected void setObserverError(String message){
-        if(error != null){
-            this.setError(new Toast(this));
-            this.error.setDuration(Toast.LENGTH_SHORT);
-        }
         // Supp tous les observer sur le LiveDataError avant de l'observer
         this.viewModel.getErrorLiveData().removeObservers(this);
         this.viewModel.getErrorLiveData().observe(this, result -> {
             //Action en observant une erreur
-            error.setText(message);
-            error.show();
-
+            System.out.println(viewModel.getErrorLiveData());
+            this.error.setText(message);
+            this.error.showError();
         });
     }
 
@@ -280,16 +286,16 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.editPassword = findViewById(editPassword);
     }
 
-    public void setError(Toast error) {
-        this.error = error;
-    }
-
     public void setSelectedImage(ImageView selectedImage) {
         this.selectedImage = selectedImage;
     }
 
     public void setDialog(AlertDialog dialog) {
         this.dialog = dialog;
+    }
+
+    public void setError(ErrorEntrie error) {
+        this.error = error;
     }
 
     public void setCamera(Camera camera) {
@@ -300,7 +306,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.viewModel = viewModel;
     }
 
-    public Toast getError() {
+    public ErrorEntrie getError() {
         return this.error;
     }
 

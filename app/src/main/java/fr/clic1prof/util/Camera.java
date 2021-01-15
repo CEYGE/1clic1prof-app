@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
@@ -40,13 +41,18 @@ public class Camera extends AppCompatActivity {
     }
 
     public void askCameraPermission() {
-        if(ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
-            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, GALLERY_REQUEST_CODE);
+        if(Build.VERSION.SDK_INT >= 23) {
+            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    && ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, GALLERY_REQUEST_CODE);
+            } else {
+                dispatchTakePictureIntent();
+            }
         }else {
             dispatchTakePictureIntent();
         }
+
     }
 
     @Override
@@ -59,13 +65,6 @@ public class Camera extends AppCompatActivity {
             }
         }
     }
-
-    public String getFileExtension(Uri contentUri) {
-        ContentResolver c = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(c.getType(contentUri));
-    }
-
 
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -110,28 +109,6 @@ public class Camera extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        assert data != null;
-        if (requestCode == CAMERA_REQUEST_CODE) {
-            if(resultCode == Activity.RESULT_OK) {
-                File f = new File(currentPhotoPath);
-                //Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                //selectedImage.setImageUri(contentUri);
-                //mediaScanIntent.setData(contentUri);
-                //this.sendBroadcast(mediaScanIntent);
-
-                image = Uri.fromFile(f);
-
-            }
-        }else if( requestCode == GALLERY_REQUEST_CODE){
-            if(resultCode == Activity.RESULT_OK){
-                //TODO: repair
-                //Uri contentUri = data.getData();
-                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                //String imageFileName = "JPEG" + timeStamp + "." + getFileExtension(contentUri);
-                //selectedImage.setImageUri(contentUri);
-
-            }
-        }
     }
 
     public Uri getImage() {

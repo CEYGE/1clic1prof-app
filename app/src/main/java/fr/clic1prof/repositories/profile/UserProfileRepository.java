@@ -61,7 +61,6 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
 
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-
                 if(response.isSuccessful()) listener.onSuccess(null);
                 else listener.onError("Cannot update user's first name.");
             }

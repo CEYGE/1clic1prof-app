@@ -38,11 +38,12 @@
             <TextView
                 android:id="@+id/textReturnView"
                 style="@style/EntryText"
+                android:textStyle="bold"
                 android:layout_width="59dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="@string/FirstName" />
+                android:text="@string/returndashboard" />
 
         </LinearLayout>
 
@@ -95,8 +96,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearImageLayout"
-            android:text="@string/error_Entries"
-            android:visibility="invisible"
+            android:text="@string/Dialog_error"
+            android:visibility="gone"
             android:textColor="@color/red"/>
 
 
@@ -138,7 +139,7 @@
                     android:layout_height="20dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/write_icon"
-                    android:contentDescription="@string/profile_image"
+                    android:contentDescription="@string/versionModification"
                     android:onClick="switchFirstNameAndUpdate"
                     android:scaleType="centerInside" />
 
@@ -188,7 +189,7 @@
                     android:textSize="14sp"/>
 
                 <ImageView
-                    android:contentDescription="@string/profile_image"
+                    android:contentDescription="@string/versionModification"
                     android:id="@+id/switchLastButton02"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -239,7 +240,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:contentDescription="@string/profile_image"
+                    android:contentDescription="@string/versionModification"
                     android:id="@+id/switchMailButton02"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -289,7 +290,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:contentDescription="@string/profile_image"
+                    android:contentDescription="@string/versionModification"
                     android:id="@+id/switchPasswordButton02"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -339,7 +340,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:contentDescription="@string/profile_image"
+                    android:contentDescription="@string/versionModification"
                     android:id="@+id/switchDescriptionButton02"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -375,7 +376,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:contentDescription="@string/profile_image"
+                    android:contentDescription="@string/versionModification"
                     android:id="@+id/switchStudiesButton02"
                     android:layout_width="20dp"
                     android:layout_height="20dp"

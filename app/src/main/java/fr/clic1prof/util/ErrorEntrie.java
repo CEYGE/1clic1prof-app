@@ -1,5 +1,6 @@
 package fr.clic1prof.util;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,6 +13,13 @@ public class ErrorEntrie {
 
     public ErrorEntrie(TextView view){
         this.error = view;
+        this.error.setVisibility(View.GONE);
+        this.cleanse();
+    }
+
+    public ErrorEntrie(ErrorEntrie errorEntrie){
+        this.error = errorEntrie.error;
+        this.error.setVisibility(View.INVISIBLE);
     }
 
     public TextView getError() {
@@ -19,13 +27,20 @@ public class ErrorEntrie {
     }
 
     public void showError(){
-        this.error.setText(R.string.error_Entries);
         this.error.setVisibility(View.VISIBLE);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cleanse();
+            }
+        }, 5000);
     }
 
     public void cleanse(){
         if(this.error.getVisibility() == View.VISIBLE) {
             this.error.setVisibility(View.GONE);
+            this.error.setText(R.string.Dialog_error);
         }
     }
 

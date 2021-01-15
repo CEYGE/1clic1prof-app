@@ -140,7 +140,7 @@
     <string name="payslip">Payslips</string>
     <string name="my_contacts">My contacts</string>
     <string name="invoice">Factures</string>
-    <string name="returndashboard">retour</string>
+    <string name="returndashboard">Retour</string>
     <string name="ReturnName">retourNom</string>
     <string name="deconnexionimage">Deconnection</string>
 </resources>

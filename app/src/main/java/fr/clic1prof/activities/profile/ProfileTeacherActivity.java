@@ -15,6 +15,7 @@ import fr.clic1prof.R;
 import fr.clic1prof.activities.dashboard.teacher.MainTeacherActivity;
 import fr.clic1prof.models.other.Speciality;
 import fr.clic1prof.models.profile.TeacherProfile;
+import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 import fr.clic1prof.viewmodels.profile.profileV2.TeacherProfileViewModel;
 
@@ -25,28 +26,31 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_teacher_page);
+        this.setImage();
+        this.setSwitcher();
+        this.setEditText();
     }
 
     @Override
     protected void assignInformation(TeacherProfile profile){
-        //View to return to dashboard
-        TextView view = findViewById(R.id.textReturnView);
-        String fullName = profile.getFirstName() + profile.getLastName();
-        view.setText(fullName);
         //TextView profile
         TextView textFirst = findViewById(R.id.viewFirstName02);
-        textFirst.setText(profile.getFirstName());
+        if(profile.getFirstName() != null) textFirst.setText(profile.getFirstName());
+
         TextView textLast = findViewById(R.id.viewLastName02);
-        textLast.setText(profile.getLastName());
+        if(profile.getLastName() != null) textLast.setText(profile.getLastName());
+
         TextView textMail = findViewById(R.id.viewMail02);
-        textMail.setText(profile.getEmail());
+        if (profile.getEmail() != null) textMail.setText(profile.getEmail());
+
         //Description profile
         EditText description = findViewById(R.id.editDescription02);
         description.setText(profile.getDescription());
+
         //Studies profile
         EditText studies = findViewById(R.id.editStudies02);
         studies.setText(profile.getStudies());
+
         //Speciality profile
         ChipGroup chipGroup = findViewById(R.id.Speciality);
         for (Speciality speciality : profile.getSpecialities()){
@@ -59,7 +63,7 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         }
         //Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img);
-        imgView.setImageBitmap(profile.getPicture());
+        if(profile.getPicture() != null) imgView.setImageBitmap(profile.getPicture());
     }
 
     @Override
@@ -112,6 +116,16 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
         this.setEditLastName(R.id.editTextLastName02);
         this.setEditMail(R.id.editTextMail02);
         this.setEditPassword(R.id.editTextPassword02);
+    }
+
+    @Override
+    protected void setLayout() {
+        setContentView(R.layout.profile_teacher_page);
+    }
+
+    @Override
+    public void setErrorEntry() {
+        this.setError(new ErrorEntrie(findViewById(R.id.errorInvisibleViewProfile02)));
     }
 
     @Override

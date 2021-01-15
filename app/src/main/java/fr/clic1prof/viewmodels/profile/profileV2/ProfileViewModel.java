@@ -46,6 +46,7 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
+                System.out.println("ErrorUpdate1");
                 // Or, post a String with a custom error message.
                 ProfileViewModel.this.errorLiveData.postValue(null);
             }
@@ -62,6 +63,7 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
+                System.out.println("ErrorUpdate2");
                 Log.e("Failure_Picture",message);
                 ProfileViewModel.this.errorLiveData.postValue(null);
             }
@@ -74,7 +76,6 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onSuccess(Void value) {
-
                 T profile = ProfileViewModel.this.profileLiveData.getValue();
                 profile.setFirstName(firstName);
 
@@ -83,6 +84,7 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
+                System.out.println("ErrorUpdate3");
                 // Or, post a String with a custom error message.
                 ProfileViewModel.this.errorLiveData.postValue(null);
                 Log.e("Failure_FirstName",message);
@@ -105,6 +107,7 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
+                System.out.println("ErrorUpdate4");
                 // Or, post a String with a custom error message.
                 ProfileViewModel.this.errorLiveData.postValue(null);
                 Log.e("Failure_LastName",message);
@@ -127,6 +130,7 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
+                System.out.println("ErrorUpdate5");
                 ProfileViewModel.this.errorLiveData.postValue(null);
                 Log.e("Failure_Picture",message);
             }

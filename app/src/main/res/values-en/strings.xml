@@ -5,6 +5,6 @@
     <string name="versionConfirmation">Confirm</string>
     <string name="invoice">Invoices</string>
     <string name="deconnexionimage">Log out</string>
-    <string name="returndashboard">return</string>
+    <string name="returndashboard">Return</string>
     <string name="ReturnName">returnName</string>
 </resources>
