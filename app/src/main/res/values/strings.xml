@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">1clic1prof</string>
     <string name="Connection_Message">Bon retour parmi nous !</string>
     <string name="Inscription">S\'inscrire</string>
