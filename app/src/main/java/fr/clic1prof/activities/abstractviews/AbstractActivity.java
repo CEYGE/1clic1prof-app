@@ -18,13 +18,19 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.navigation.NavigationView;
 
+import javax.inject.Inject;
+
 import fr.clic1prof.R;
 import fr.clic1prof.activities.dashboard.student.StudentInvoiceFragment;
 import fr.clic1prof.activities.login.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
+import fr.clic1prof.models.session.UserSession;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 
 public abstract class AbstractActivity<T extends Profile> extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    public UserSession model;
 
     private ProfileViewModel<T> viewModel;
 
@@ -90,6 +96,7 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
                 break;
             case R.id.nav_disconnection:
                 Intent intent = new Intent(this, LoginActivity.class);
+                model.close();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             default :

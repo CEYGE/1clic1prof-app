@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
-
+        System.out.println("Start: "+model.isOpened());
         this.loadingDialog = new LoadingDialog(LoginActivity.this);
         this.error = new ErrorEntrie(findViewById(R.id.errorInvisibleViewLogin));
         this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if(result.getType() == ResultType.SUCCESS) {
                 this.loadingDialog.dismissDialog();
+                System.out.println("Connected :"+model.isOpened());
                 if(model.getSessionType() == SessionType.STUDENT) sendToStudentHome();
                 else sendToTeacherHome();
 

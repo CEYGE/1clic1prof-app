@@ -21,14 +21,20 @@ import androidx.lifecycle.ViewModelProvider;
 import java.io.File;
 import java.util.regex.Pattern;
 
+import javax.inject.Inject;
+
 import fr.clic1prof.R;
 import fr.clic1prof.activities.login.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
+import fr.clic1prof.models.session.UserSession;
 import fr.clic1prof.util.Camera;
 import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 
 public abstract class ProfileActivity<T extends Profile> extends AppCompatActivity {
+
+    @Inject
+    public UserSession model;
 
     private ProfileViewModel<T> viewModel;
     private ErrorEntrie error;
@@ -111,6 +117,8 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
 
     public void disconnect(View view){
         Intent intent = new Intent(this, LoginActivity.class);
+        model.close();
+        System.out.println("Fermeture: "+model.isOpened());
         startActivity(intent);
     }
 
