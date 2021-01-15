@@ -42,7 +42,7 @@ public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
 
         getViewModel().getProfileLiveData().observe(this, profile -> {
 
-            TextView drawer_name = findViewById(R.id.textView_docName);
+            TextView drawer_name = findViewById(R.id.drawer_name);
             TextView drawer_studies = findViewById(R.id.textView_studies);
             ImageView profileImage = findViewById(R.id.profile_image);
 

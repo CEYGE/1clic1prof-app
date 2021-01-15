@@ -199,7 +199,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     private void alternate(View image,int value, ViewSwitcher switcher){
         switcher.showNext();
         image.setBackground( image.getContentDescription() == getResources().getText(R.string.versionConfirmation) ? ContextCompat.getDrawable(this, R.drawable.write_icon)
-                :ContextCompat.getDrawable(this, R.drawable.check_icon));
+                :ContextCompat.getDrawable(this, R.drawable.default_profile_picture));
         image.setContentDescription(getResources().getText(value));
 
     }

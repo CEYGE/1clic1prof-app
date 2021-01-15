@@ -13,7 +13,7 @@
     <string name="FirstName">Prénom</string>
     <string name="LastName">Nom</string>
     <string name="CB_Text" translatable="false">CB</string>
-    <string name="ImageModification" tools:ignore="MissingTranslation">Changer la photo</string>
+    <string name="ImageModification" >Changer la photo</string>
     <string name="profile_image">Image de profil</string>
     <string name="Welcome_Message">Bienvenue</string>
     <string name="Teacher">Professeur</string>
@@ -54,8 +54,8 @@
     <string name="error_Entries" translatable="false">L\'adresse mail ou le mot de passe est erroné</string>
     <string name="CameraButton" translatable="false">CAMERA</string>
     <string name="GalleryButton" translatable="false">GALLERY</string>
-    <string name="versionModification" tools:ignore="MissingTranslation">Modifier</string>
-    <string name="versionConfirmation" tools:ignore="MissingTranslation">Valider</string>
+    <string name="versionModification" >Modifier</string>
+    <string name="versionConfirmation" >Valider</string>
     <string name="Studies" translatable="false">Études</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="grey_line">Grey Line</string>
@@ -139,8 +139,8 @@
     <string name="notebook">Notebook</string>
     <string name="payslip">Payslips</string>
     <string name="my_contacts">My contacts</string>
-    <string name="invoice" tools:ignore="MissingTranslation">Factures</string>
-    <string name="returndashboard" tools:ignore="MissingTranslation">retour</string>
-    <string name="ReturnName" tools:ignore="MissingTranslation">retourNom</string>
-    <string name="deconnexionimage" tools:ignore="MissingTranslation">Deconnection</string>
+    <string name="invoice" >Factures</string>
+    <string name="returndashboard" >retour</string>
+    <string name="ReturnName" >retourNom</string>
+    <string name="deconnexionimage" >Deconnection</string>
 </resources>

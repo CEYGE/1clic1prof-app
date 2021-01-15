@@ -9,13 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.navigation.NavigationView;
 
 import fr.clic1prof.R;
+import fr.clic1prof.activities.dashboard.student.StudentInvoiceFragment;
 import fr.clic1prof.activities.login.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
@@ -73,7 +77,13 @@ public abstract class AbstractActivity<T extends Profile> extends AppCompatActiv
                 navController.navigate(R.id.action_global_notebookFragment);
                 break;
             case R.id.nav_invoice:
-                navController.navigate(R.id.action_global_payslipInvoiceFragment);
+                // Resolving the error "No adapter attached", skipping layout occurring when navigate to the invoice / payslip
+                // when being already to the invoice / payslip.
+                // If already in invoice / payslip, it does not navigate again.
+                int currentDestination = navController.getCurrentDestination().getId();
+                if ((currentDestination != R.id.studentInvoiceFragment)||(currentDestination != R.id.teacherPayslipFragment)){
+                    navController.navigate(R.id.action_global_payslipInvoiceFragment);
+                }else{ return false;}
                 break;
             case R.id.nav_teacher:
                 navController.navigate(R.id.action_global_contactActivity);
