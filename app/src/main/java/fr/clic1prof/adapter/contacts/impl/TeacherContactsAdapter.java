@@ -1,16 +1,21 @@
 package fr.clic1prof.adapter.contacts.impl;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import fr.clic1prof.R;
 import fr.clic1prof.adapter.contacts.ContactsAdapter;
 import fr.clic1prof.adapter.contacts.viewholders.ContactViewHolder;
 import fr.clic1prof.adapter.contacts.viewholders.HeaderViewHolder;
 import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.models.contacts.HeaderContact;
+import fr.clic1prof.models.contacts.StudentContact;
 import fr.clic1prof.models.contacts.TeacherContact;
 
 public  class TeacherContactsAdapter extends ContactsAdapter {
@@ -31,12 +36,22 @@ public  class TeacherContactsAdapter extends ContactsAdapter {
         }
 
         ContactViewHolder contactVh = (ContactViewHolder)holder;
-        TeacherContact contact = (TeacherContact) mContacts.get(position);
+        StudentContact contact = (StudentContact) mContacts.get(position);
 
         // Set item views based on your views and data model
-        contactVh.imageView.setImageBitmap(contact.getPicture());
-        //TODO: Image par défaut
-        contactVh.nameTextView.setText(contact.getFirstName() + " " + contact.getLastName());
-        contactVh.studyLevelTextView.setText(contact.getStudies());
+        Bitmap picture;
+        if (contact.getPicture() == null) {
+            picture = BitmapFactory.decodeResource(holder.itemView.getResources(), R.mipmap.default_profile_picture_round);
+        }
+        else {
+            picture = contact.getPicture();
+        }
+        contactVh.imageView.setImageBitmap(picture);
+        String contactName = holder.itemView.getResources().getString(R.string.contactName);
+        contactName = contactName.replace("{firstName}", contact.getFirstName());
+        contactName = contactName.replace("{lastName}", contact.getLastName());
+        contactVh.nameTextView.setText(contactName);
+
+        contactVh.studyLevelTextView.setText(contact.getLevel().getLabel());
     }
 }
