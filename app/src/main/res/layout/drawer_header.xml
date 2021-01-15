@@ -10,11 +10,11 @@
         android:layout_height="100sp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
+        android:contentDescription="@string/profile_image"
+        android:onClick="sendToProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profil_img1"
-        android:onClick="sendToProfile"
-        android:contentDescription="@string/profile_image" />
+        app:srcCompat="@drawable/default_profile_picture" />
 
     <TextView
         android:id="@+id/textView_studies"

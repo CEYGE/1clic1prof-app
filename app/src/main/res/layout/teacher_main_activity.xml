@@ -84,9 +84,9 @@
                         android:id="@+id/profile_image"
                         android:layout_width="40sp"
                         android:layout_height="40sp"
-                        app:srcCompat="@drawable/profil_img1"
+                        android:contentDescription="@string/profile_image"
                         android:onClick="sendToProfile"
-                        android:contentDescription="@string/profile_image" />
+                        app:srcCompat="@drawable/default_profile_picture" />
                 </LinearLayout>
 
             </LinearLayout>

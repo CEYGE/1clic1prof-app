@@ -1,25 +1,12 @@
 package fr.clic1prof.viewmodels.invoice;
 
-import android.Manifest;
-import android.app.DownloadManager;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Environment;
-import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -28,8 +15,6 @@ import javax.annotation.Nullable;
 import fr.clic1prof.models.document.Document;
 import fr.clic1prof.repositories.invoices.StudentInvoiceRepositoryImpl;
 import fr.clic1prof.util.DataListener;
-
-import static android.content.Context.DOWNLOAD_SERVICE;
 
 public class StudentInvoiceViewModel extends ViewModel {
 
@@ -62,7 +47,7 @@ public class StudentInvoiceViewModel extends ViewModel {
         this.getRepository().getInvoice(id, new DataListener<InputStream>() {
             @Override
             public void onSuccess(@Nullable InputStream value) {
-                fileCreation fc = new fileCreation(context, value, name);
+                FileCreation fc = new FileCreation(context, value, name);
                 fc.askPermissionAndWriteFile();
             }
 

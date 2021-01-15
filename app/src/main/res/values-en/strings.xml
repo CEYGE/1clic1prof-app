@@ -2,9 +2,10 @@
 <resources>
     <string name="ImageModification">Modify picture</string>
     <string name="versionModification">Modify</string>
-    <string name="versionConfirmation">Confirm</string>
+    <string name="versionConfirmation">Validate</string>
     <string name="invoice">Invoices</string>
-    <string name="deconnexionimage">Log out</string>
     <string name="returndashboard">Return</string>
-    <string name="ReturnName">returnName</string>
+    <string name="ReturnName">Return Name</string>
+    <string name="deconnexionimage">disconnection</string>
+    <string name="ImageModification">Change picture</string>
 </resources>

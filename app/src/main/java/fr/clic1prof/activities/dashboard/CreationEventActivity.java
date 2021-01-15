@@ -23,10 +23,8 @@ import fr.clic1prof.R;
 
 public class CreationEventActivity extends AppCompatActivity {
 
-    private EditText title_event;
     private TextView date_begin;
     private TextView date_end;
-    private EditText description;
     private TextView frequency;
     private TextView reminder;
 
@@ -36,10 +34,8 @@ public class CreationEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creation_event);
 
-        title_event = findViewById(R.id.editTextEventName);
         date_begin = findViewById(R.id.editTextDateBegin);
         date_end = findViewById(R.id.editTextDateEnd);
-        description = findViewById(R.id.textViewDescription);
         frequency = findViewById(R.id.textViewFrequency);
         reminder = findViewById(R.id.textViewReminder);
 

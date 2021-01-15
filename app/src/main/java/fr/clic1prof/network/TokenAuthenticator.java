@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import fr.clic1prof.api.UserController;
 import fr.clic1prof.models.session.Credentials;
-import fr.clic1prof.models.session.SessionType;
 import fr.clic1prof.models.session.Token;
 import fr.clic1prof.models.session.UserSessionModel;
 import fr.clic1prof.network.authentication.AuthenticationRequest;

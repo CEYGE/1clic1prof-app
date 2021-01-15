@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import fr.clic1prof.api.contacts.TeacherContactController;
 import fr.clic1prof.models.contacts.ContactHandler;
 import fr.clic1prof.models.contacts.StudentContact;
-import fr.clic1prof.models.contacts.TeacherContact;
 import fr.clic1prof.network.NetworkProvider;
 import retrofit2.Call;
 import retrofit2.Callback;

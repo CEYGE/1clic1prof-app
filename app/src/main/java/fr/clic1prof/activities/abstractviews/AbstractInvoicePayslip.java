@@ -8,16 +8,22 @@ import fr.clic1prof.adapter.InvoicePayslipAdapter;
 public abstract class AbstractInvoicePayslip extends AbstractFragment {
 
     // Must be private.
-    protected AbstractAdapter.RecyclerViewClickListener clickListener;
-    protected InvoicePayslipAdapter adapter;
-    protected RecyclerView recyclerView;
+    private AbstractAdapter.RecyclerViewClickListener clickListener;
+    private InvoicePayslipAdapter adapter;
+    private RecyclerView recyclerView;
 
-    /*
-    public abstract AbstractAdapter.RecyclerViewClickListener setClickListener();
 
-    public abstract InvoicePayslipAdapter setInvoicePayslipAdapter();
+    public void setClickListener(AbstractAdapter.RecyclerViewClickListener listener){
+        this.clickListener=listener;
+    }
 
-    public abstract RecyclerView setRecyclerView();
+    public void setAdapter(InvoicePayslipAdapter adapter){
+        this.adapter = adapter;
+    }
+
+    public void setRecyclerView(RecyclerView recyclerView){
+        this.recyclerView = recyclerView;
+    }
 
     public AbstractAdapter.RecyclerViewClickListener getClickListener() {
         return this.clickListener;
@@ -30,5 +36,5 @@ public abstract class AbstractInvoicePayslip extends AbstractFragment {
     public RecyclerView getRecyclerView() {
         return this.recyclerView;
     }
-     */
+
 }
