@@ -84,6 +84,7 @@
                 android:text="@string/ImageModification"
                 android:textColor="@color/cyan"
                 android:textStyle="bold"
+                android:onClick="modifyImage"
                 />
         </LinearLayout>
 
@@ -236,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
                     android:layout_weight="0.9"
-                    android:text="@string/FirstName"
+                    android:text="@string/Email_Text"
                     android:textSize="14sp" />
 
                 <ImageView
