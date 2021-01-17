@@ -29,7 +29,7 @@ public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_main_activity);
         this.setListenerMenu();
-        //setProfileObserver();
+        setProfileObserver();
     }
 
     @Override
@@ -57,5 +57,5 @@ public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
     protected Class<? extends ProfileViewModel<TeacherProfile> > getProfileViewModelClass() {
         return TeacherProfileViewModel.class;
     }
-//
+
 }
