@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractAdapter<T, VH extends AbstractViewHolder<T>> extends RecyclerView.Adapter<VH>  {
@@ -20,6 +21,7 @@ public abstract class AbstractAdapter<T, VH extends AbstractViewHolder<T>> exten
 
     public AbstractAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
+        this.items= new ArrayList<>();
     }
 
     /**
