@@ -26,6 +26,7 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setSelectedImage(findViewById(R.id.profile_img02));
         this.setImage();
         this.setSwitcher();
         this.setEditText();
@@ -62,7 +63,7 @@ public class ProfileTeacherActivity extends ProfileActivity<TeacherProfile> {
             }
         }
         //Image bitmap profile
-        ImageView imgView = findViewById(R.id.profile_img);
+        ImageView imgView = findViewById(R.id.profile_img02);
         if(profile.getPicture() != null) imgView.setImageBitmap(profile.getPicture());
     }
 

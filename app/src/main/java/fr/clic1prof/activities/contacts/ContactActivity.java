@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.abstractviews.AbstractFragment;
 import fr.clic1prof.adapter.contacts.ContactsAdapter;
@@ -80,23 +81,15 @@ public abstract class ContactActivity extends AbstractFragment {
             // If contact list is null, then there is an error.
             // Else, display contacts.
 
-            TextView view;// = findViewById(R.id.textView); // TODO To change.
-            String text;
-
             if (result.getType() == ResultType.SUCCESS) {
                 List<TeacherContact> teachers = result.getData();
                 createList(teachers);
-                text = teachers.isEmpty() ? "Aucun contact trouvé" : "Voici vos contacts";
 
             } else if(result.getType() == ResultType.ERROR) {
 
-                text = "Une erreur est survenue";
-                System.out.println(text);
             } else {
 
-                text = "Chargement des contacts...";
             }
-            //view.setText(text);
         });
     }
 

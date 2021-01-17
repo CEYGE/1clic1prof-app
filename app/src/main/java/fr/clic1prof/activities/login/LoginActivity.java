@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
-
         this.loadingDialog = new LoadingDialog(LoginActivity.this);
         this.error = new ErrorEntrie(findViewById(R.id.errorInvisibleViewLogin));
         this.viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);

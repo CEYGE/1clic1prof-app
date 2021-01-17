@@ -45,8 +45,8 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
-                System.out.println("ErrorUpdate1");
                 // Or, post a String with a custom error message.
+                Log.e("Failure_Profile",message);
                 ProfileViewModel.this.errorLiveData.postValue(null);
             }
         });
@@ -62,7 +62,6 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
-                System.out.println("ErrorUpdate2");
                 Log.e("Failure_Picture",message);
                 ProfileViewModel.this.errorLiveData.postValue(null);
             }
@@ -83,7 +82,6 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
-                System.out.println("ErrorUpdate3");
                 // Or, post a String with a custom error message.
                 ProfileViewModel.this.errorLiveData.postValue(null);
                 Log.e("Failure_FirstName",message);
@@ -106,7 +104,6 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
 
             @Override
             public void onError(String message) {
-                System.out.println("ErrorUpdate4");
                 // Or, post a String with a custom error message.
                 ProfileViewModel.this.errorLiveData.postValue(null);
                 Log.e("Failure_LastName",message);
@@ -123,13 +120,13 @@ public class ProfileViewModel<T extends Profile> extends ViewModel {
                 Bitmap image = BitmapFactory.decodeFile(picture.getAbsolutePath());
                 profile.setPicture(image);
                 profile.setPictureId(value);
-
+                System.out.println("Picture viewModel : "+profile.getPicture());
                 ProfileViewModel.this.profileLiveData.postValue(profile);
             }
 
             @Override
             public void onError(String message) {
-                System.out.println("ErrorUpdate5");
+                System.out.println("Error viewModel");
                 ProfileViewModel.this.errorLiveData.postValue(null);
                 Log.e("Failure_Picture",message);
             }

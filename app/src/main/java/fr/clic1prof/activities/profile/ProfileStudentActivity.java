@@ -23,6 +23,7 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setSelectedImage(findViewById(R.id.profile_img01));
         this.setImage();
         this.setSwitcher();
         this.setEditText();
@@ -47,7 +48,6 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
 
         //Image bitmap profile
         ImageView imgView = findViewById(R.id.profile_img01);
-        //TODO: default pic
         if (profile.getPicture() != null) imgView.setImageBitmap(profile.getPicture());
     }
 
@@ -66,7 +66,6 @@ public class ProfileStudentActivity extends ProfileActivity<StudentProfile> {
                 if(profile == null) return;
                 SchoolLevel schoolLevel = new SchoolLevel(position, parent.getItemAtPosition(position).toString());
                 if(profile.getLevel().getId() == schoolLevel.getId()) return;
-                System.out.println("SchoolLevel"+getViewModel().getErrorLiveData().hasObservers());
                 setObserverError("Le niveau d'élève n'arrive pas à se renouveler");
                 getViewModel().updateSchoolLevel(schoolLevel);
             }

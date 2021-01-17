@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.Nullable;
@@ -21,14 +20,20 @@ import androidx.lifecycle.ViewModelProvider;
 import java.io.File;
 import java.util.regex.Pattern;
 
+import javax.inject.Inject;
+
 import fr.clic1prof.R;
 import fr.clic1prof.activities.login.LoginActivity;
 import fr.clic1prof.models.profile.Profile;
+import fr.clic1prof.models.session.UserSession;
 import fr.clic1prof.util.Camera;
 import fr.clic1prof.util.ErrorEntrie;
 import fr.clic1prof.viewmodels.profile.profileV2.ProfileViewModel;
 
 public abstract class ProfileActivity<T extends Profile> extends AppCompatActivity {
+
+    @Inject
+    public UserSession model;
 
     private ProfileViewModel<T> viewModel;
     private ErrorEntrie error;
@@ -95,6 +100,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 Uri contentUri = Uri.fromFile(f);
                 camera.setImage(contentUri);
                 setObserverError("Erreur de la prise de photo");
+                selectedImage.setImageURI(camera.getImage());
                 this.viewModel.updatePicture(f);
             }
         }else if( requestCode == 103){
@@ -102,15 +108,16 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
                 Uri contentUri = data.getData();
                 File f = new File(contentUri.getPath());
                 camera.setImage(contentUri);
+                selectedImage.setImageURI(camera.getImage());
                 setObserverError("Erreur d'envoi de la photo");
-                this.viewModel.updatePicture(f);
-
+                viewModel.updatePicture(f);
             }
         }
     }
 
     public void disconnect(View view){
         Intent intent = new Intent(this, LoginActivity.class);
+        model.close();
         startActivity(intent);
     }
 
@@ -199,7 +206,7 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
     private void alternate(View image,int value, ViewSwitcher switcher){
         switcher.showNext();
         image.setBackground( image.getContentDescription() == getResources().getText(R.string.versionConfirmation) ? ContextCompat.getDrawable(this, R.drawable.write_icon)
-                :ContextCompat.getDrawable(this, R.drawable.default_profile_picture));
+                :ContextCompat.getDrawable(this, R.drawable.check_icon));
         image.setContentDescription(getResources().getText(value));
 
     }
@@ -220,7 +227,6 @@ public abstract class ProfileActivity<T extends Profile> extends AppCompatActivi
         this.viewModel.getErrorLiveData().removeObservers(this);
         this.viewModel.getErrorLiveData().observe(this, result -> {
             //Action en observant une erreur
-            System.out.println(viewModel.getErrorLiveData());
             this.error.setText(message);
             this.error.showError();
         });

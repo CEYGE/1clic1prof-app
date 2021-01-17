@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import dagger.hilt.android.AndroidEntryPoint;
 import fr.clic1prof.R;
 import fr.clic1prof.activities.abstractviews.AbstractActivity;
@@ -27,6 +29,7 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_main_activity);
         this.setListenerMenu();
+        setProfileObserver();
     }
 
     @Override
@@ -55,5 +58,5 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
     protected Class<? extends ProfileViewModel<StudentProfile>> getProfileViewModelClass() {
         return StudentProfileViewModel.class;
     }
-//
+
 }

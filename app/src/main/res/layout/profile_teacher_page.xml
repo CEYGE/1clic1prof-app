@@ -65,11 +65,11 @@
                 app:cardCornerRadius="250dp">
 
                 <ImageView
-                    android:id="@+id/profile_img"
+                    android:id="@+id/profile_img02"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:contentDescription="@string/profile_image"
-                    app:srcCompat="@drawable/ic_launcher_background"
+                    app:srcCompat="@drawable/default_profile_picture"
                     tools:ignore="VectorDrawableCompat" />
 
             </androidx.cardview.widget.CardView>
@@ -84,6 +84,7 @@
                 android:text="@string/ImageModification"
                 android:textColor="@color/cyan"
                 android:textStyle="bold"
+                android:onClick="modifyImage"
                 />
         </LinearLayout>
 
@@ -236,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
                     android:layout_weight="0.9"
-                    android:text="@string/FirstName"
+                    android:text="@string/Email_Text"
                     android:textSize="14sp" />
 
                 <ImageView

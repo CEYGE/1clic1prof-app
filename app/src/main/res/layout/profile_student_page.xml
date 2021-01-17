@@ -71,7 +71,8 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:contentDescription="@string/profile_image"
-                    app:srcCompat="@drawable/ic_launcher_background"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/default_profile_picture"
                     tools:ignore="VectorDrawableCompat" />
 
             </androidx.cardview.widget.CardView>
