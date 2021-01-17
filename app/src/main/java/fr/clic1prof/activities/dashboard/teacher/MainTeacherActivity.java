@@ -56,5 +56,5 @@ public class MainTeacherActivity extends AbstractActivity<TeacherProfile> {
     protected Class<? extends ProfileViewModel<TeacherProfile> > getProfileViewModelClass() {
         return TeacherProfileViewModel.class;
     }
-
+//
 }

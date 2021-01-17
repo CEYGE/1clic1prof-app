@@ -41,6 +41,7 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
         getViewModel().getProfileLiveData().observe(this, profile -> {
 
             TextView drawerName = findViewById(R.id.drawer_name);
+
             TextView drawerStudies = findViewById(R.id.textView_studies);
             ImageView profileImage = findViewById(R.id.profile_image);
 
@@ -54,5 +55,5 @@ public class MainStudentActivity extends AbstractActivity<StudentProfile> {
     protected Class<? extends ProfileViewModel<StudentProfile>> getProfileViewModelClass() {
         return StudentProfileViewModel.class;
     }
-
+//
 }
