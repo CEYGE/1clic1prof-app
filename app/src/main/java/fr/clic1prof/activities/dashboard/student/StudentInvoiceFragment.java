@@ -36,13 +36,17 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setRecyclerView(getActivity().findViewById(R.id.recycler_invoicePayslip));
         viewModel = new ViewModelProvider(requireActivity()).get(StudentInvoiceViewModel.class);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        setRecyclerView(getActivity().findViewById(R.id.recycler_invoicePayslip));
+        setOnClickListener();
+        setAdapter(new InvoicePayslipAdapter(getActivity().getApplicationContext(), getClickListener()));
+        getRecyclerView().setAdapter(getAdapter());
+        getRecyclerView().setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 3));
         TextView title = getActivity().findViewById(R.id.titleFragment);
         title.setText(this.getString(R.string.invoice));
         viewModel.fetchInvoices();
@@ -50,13 +54,7 @@ public class StudentInvoiceFragment extends AbstractInvoicePayslip {
         viewModel.getdocumentsLiveData().observe(this, new Observer<List<Document>>() {
             @Override
             public void onChanged(List<Document> invoices) {
-                if (invoices != null){
-                    setOnClickListener();
-                    setAdapter(new InvoicePayslipAdapter(getActivity().getApplicationContext(), getClickListener()));
-                    getRecyclerView().setAdapter(getAdapter());
-                    getRecyclerView().setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 3));
-                    getAdapter().setItems(invoices);
-                }
+                getAdapter().setItems(invoices);
             }
         });
 

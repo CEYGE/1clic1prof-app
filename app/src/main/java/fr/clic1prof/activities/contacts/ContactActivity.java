@@ -34,6 +34,14 @@ public abstract class ContactActivity extends AbstractFragment {
     protected ContactsAdapter adapter;
     protected RecyclerView rvContacts;
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TextView title = getActivity().findViewById(R.id.titleFragment);
+        title.setText("Contacts");
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
