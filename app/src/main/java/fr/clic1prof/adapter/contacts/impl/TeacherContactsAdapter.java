@@ -52,6 +52,6 @@ public  class TeacherContactsAdapter extends ContactsAdapter {
         contactName = contactName.replace("{lastName}", contact.getLastName());
         contactVh.nameTextView.setText(contactName);
 
-        contactVh.studyLevelTextView.setText(contact.getLevel().getLabel());
+        if(contact.getLevel() != null) contactVh.studyLevelTextView.setText(contact.getLevel().getLabel());
     }
 }

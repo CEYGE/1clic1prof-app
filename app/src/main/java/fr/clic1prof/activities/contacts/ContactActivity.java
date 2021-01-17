@@ -26,11 +26,13 @@ import fr.clic1prof.models.contacts.Contact;
 import fr.clic1prof.models.contacts.HeaderContact;
 import fr.clic1prof.models.contacts.TeacherContact;
 import fr.clic1prof.viewmodels.ResultType;
+import fr.clic1prof.viewmodels.contacts.ContactActivityViewModel;
 import fr.clic1prof.viewmodels.contacts.StudentContactActivityViewModel;
 
-public abstract class ContactActivity extends AbstractFragment {
+public abstract class ContactActivity<T extends Contact> extends AbstractFragment {
+
     protected List<Contact> contacts;
-    private StudentContactActivityViewModel viewModel;
+    private ContactActivityViewModel<? extends Contact> viewModel;
     protected ContactsAdapter adapter;
     protected RecyclerView rvContacts;
 
@@ -38,7 +40,7 @@ public abstract class ContactActivity extends AbstractFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        this.viewModel = new ViewModelProvider(this).get(StudentContactActivityViewModel.class);
+        this.viewModel = new ViewModelProvider(this).get(this.getViewModelClass());
 
         this.setEditTextListener();
         this.setContactObserver();
@@ -52,7 +54,11 @@ public abstract class ContactActivity extends AbstractFragment {
 
     protected abstract void createAdapter();
 
-    private void createList(List<TeacherContact> toAdd) {
+    protected abstract Class<? extends ContactActivityViewModel<T>> getViewModelClass();
+
+    protected abstract void setContactObserver();
+
+    protected void createList(List<Contact> toAdd) {
         contacts = new ArrayList<>();
         contacts.addAll(toAdd);
         Collections.sort(contacts);
@@ -71,26 +77,6 @@ public abstract class ContactActivity extends AbstractFragment {
                 contacts.add(i, contact);
             }
         }
-    }
-
-    private void setContactObserver() {
-
-        // Observe the list of contacts and make view update when necessary.
-        this.viewModel.getContactLiveData().observe(getActivity(), result -> {
-            // Update view here.
-            // If contact list is null, then there is an error.
-            // Else, display contacts.
-
-            if (result.getType() == ResultType.SUCCESS) {
-                List<TeacherContact> teachers = result.getData();
-                createList(teachers);
-
-            } else if(result.getType() == ResultType.ERROR) {
-
-            } else {
-
-            }
-        });
     }
 
     private void setEditTextListener() {
@@ -124,5 +110,9 @@ public abstract class ContactActivity extends AbstractFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_contact, container, false);
+    }
+
+    public ContactActivityViewModel<? extends Contact> getViewModel() {
+        return viewModel;
     }
 }
