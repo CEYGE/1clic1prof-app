@@ -10,7 +10,7 @@ import retrofit2.http.Path;
 
 public interface TeacherPayslipController {
 
-    @GET("/teacher/invoices")
+    @GET("/teacher/payslip")
     Call<List<Document>> getPayslips();
 
     @GET("/teacher/payslip/{payslipId}")
