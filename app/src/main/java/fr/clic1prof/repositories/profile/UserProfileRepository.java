@@ -39,12 +39,16 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
 
-                InputStream stream = response.body().byteStream();
+                if(response.isSuccessful() && response.body() != null) {
 
-                Bitmap bitmap = BitmapFactory.decodeStream(stream);
+                    InputStream stream = response.body().byteStream();
 
-                if(bitmap != null) listener.onSuccess(bitmap);
-                else listener.onError("Cannot decode bitmap."); // TODO to review.
+                    Bitmap bitmap = BitmapFactory.decodeStream(stream);
+
+                    if(bitmap != null) listener.onSuccess(bitmap);
+                    else listener.onError("Cannot decode bitmap."); // TODO to review.
+
+                } else listener.onError("Cannot retrieve user's profile picture.");
             }
 
             @Override
@@ -114,7 +118,7 @@ public abstract class UserProfileRepository<T extends Profile> implements Profil
     public void updatePicture(File picture, DataListener<Integer> listener) {
 
         String mediaType = FileUtils.getMimeType(Uri.fromFile(picture));
-        System.out.println(mediaType);
+
         // MediaType cannot be found.
         if(mediaType == null) {
             listener.onError("MediaType not found.");

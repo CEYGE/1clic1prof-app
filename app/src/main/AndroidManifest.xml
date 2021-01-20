@@ -22,6 +22,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.1clic1prof.LightMode"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
         android:usesCleartextTraffic="true">
 
         <activity android:name=".activities.login.InscriptionActivity" />
