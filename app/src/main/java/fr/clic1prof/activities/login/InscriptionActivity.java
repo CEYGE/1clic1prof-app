@@ -110,6 +110,6 @@ public class InscriptionActivity extends AppCompatActivity {
     private boolean isStudent(){
         ChipGroup chipGroup = findViewById(R.id.ChipGroup);
         int identifier = chipGroup.getCheckedChipId();
-        return identifier - 2131296366 == 0;
+        return identifier - 2131296393 == 0;
     }
 }
